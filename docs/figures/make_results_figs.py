@@ -437,9 +437,6 @@ def fig3():
     centers = [(ys[2 * i] + ys[2 * i + 1]) / 2 for i in range(len(ORDER))]
     ax.set_yticks(centers)
     ax.set_yticklabels([MODELS[m] for m in ORDER])
-    for lab, m in zip(ax.get_yticklabels(), ORDER):
-        if m == LLAMA:
-            lab.set_fontweight("bold")
     ax.set_ylim(ys[-1] + 0.7, -0.7)
     ax.set_xlim(0, 1)
     ax.set_xticks([0, 0.25, 0.5, 0.75, 1])
@@ -450,15 +447,13 @@ def fig3():
     h = [Patch(color=c, label=l) for _, l, c in CATS]
     fig.legend(handles=h, loc="lower left", bbox_to_anchor=(0.2, 0.905), ncol=4, frameon=False,
                handlelength=1.2, handletextpad=0.4, columnspacing=1.5)
-    fig.text(0.9, 0.915, "excerpt · neutral, flagged, flagged + cite", ha="right", va="bottom", fontsize=7,
-             color=MID)
     save(fig, "fig3-partial-evidence-outcomes")
 
 
 # ---------------------------------------------------------------- Fig. 4
 def fig4():
     fig, ax = plt.subplots(figsize=(W2 * 0.62, 92 * MM))
-    fig.subplots_adjust(left=0.3, right=0.96, top=0.87, bottom=0.18)
+    fig.subplots_adjust(left=0.3, right=0.96, top=0.87, bottom=0.13)
     clean(ax)
     ax.axvline(0, color=GREEN, lw=0.8, ls=(0, (4, 3)), alpha=0.7, zorder=1)
     for y, m in enumerate(ORDER):
@@ -472,7 +467,7 @@ def fig4():
             conditions="neutral+flagged+flagged_cite")
         row("fig4", m, "collateral_per_reply", value=f, n=nf, context="full", reasoning=FULL_AGG[m]["reasoning"],
             conditions="neutral+flagged+flagged_cite")
-    ylabels(ax, ORDER)
+    ylabels(ax, ORDER, bold=())
     ax.set_xlim(-0.15, 6)
     ax.set_xlabel("Changes to non-target cells per reply (mean)")
     fig.text(0.02, 0.985, "Collateral editing: changes to cells that were not under review", ha="left", va="top",
@@ -482,9 +477,6 @@ def fig4():
          Line2D([], [], ls=(0, (4, 3)), color=GREEN, lw=0.8, label="0 = no change")]
     fig.legend(handles=h, loc="lower left", bbox_to_anchor=(0.29, 0.875), ncol=3, frameon=False,
                handletextpad=0.3, columnspacing=1.2, handlelength=1.6)
-    fig.text(0.96, 0.935, "neutral, flagged, flagged + cite", ha="right", va="bottom", fontsize=7, color=MID)
-    fig.text(0.3, 0.02, "Non-target cells are correct as printed;\nany change to them is a reviewer error.",
-             ha="left", va="bottom", fontsize=6.5, color=MID)
     save(fig, "fig4-collateral-edits")
 
 
@@ -511,15 +503,13 @@ def fig5():
     ax.set_xticklabels([COND_LABEL[c] for c in CONDS])
     ax.xaxis.tick_top()
     ax.tick_params(axis="x", length=0, colors=INK)
-    ylabels(ax, ORDER)
+    ylabels(ax, ORDER, bold=())
     for s in ax.spines.values():
         s.set_visible(False)
     for x0, x1, lab in ((-0.45, 2.45, "without a keep rule"), (2.55, 3.45, "keep rule")):
         ax.plot([x0, x1], [-1.3, -1.3], color=MID, lw=0.5, clip_on=False)
         ax.text((x0 + x1) / 2, -1.4, lab, ha="center", va="bottom", fontsize=6.5, color=MID, style="italic")
     ax.set_title("Effect of the instruction on erasure", x=-0.42, pad=28)
-    fig.text(0.97, 0.025, "Erased / evidence-absent correct cells, both twins, excerpt (9 replies per twin "
-             "per condition)", ha="right", fontsize=7, color=MID)
     save(fig, "fig5-instruction-erasure")
 
 
@@ -532,11 +522,10 @@ LV_STYLE = {"off": dict(mfc="white", mec=INK), "low": dict(mfc="#9A9A9A", mec="#
 def fig6():
     fig, (axA, axB) = plt.subplots(1, 2, figsize=(W2, 104 * MM), sharey=True,
                                    gridspec_kw=dict(wspace=0.08))
-    fig.subplots_adjust(left=0.155, right=0.98, top=0.83, bottom=0.16)
+    fig.subplots_adjust(left=0.155, right=0.98, top=0.83, bottom=0.12)
     fig.text(0.015, 0.985, "Effect of reasoning effort on erasure and on its cost", ha="left", va="top",
              fontsize=7.5, fontweight="bold")
-    fig.text(0.155, 0.02, "Points of one model are offset vertically so that equal values stay visible: "
-             "off above, low centre, high below.", ha="left", va="bottom", fontsize=6.5, color=MID)
+
     order = ORDER
     for ax in (axA, axB):
         clean(ax)
@@ -577,8 +566,6 @@ def fig6():
     h = [Line2D([], [], marker="o", ls="", ms=4, mew=0.8, label=f"reasoning {l}", **LV_STYLE[l]) for l in LEVELS]
     fig.legend(handles=h, loc="upper left", bbox_to_anchor=(0.155, 0.945), ncol=3, frameon=False,
                handletextpad=0.3, columnspacing=1.4)
-    fig.text(0.98, 0.925, "excerpt · neutral · 12 cells per twin, 18 replies per level", ha="right",
-             va="bottom", fontsize=7, color=MID)
     save(fig, "fig6-reasoning-effort")
 
 
@@ -617,13 +604,12 @@ def figS1():
     ax.set_xticklabels([mm[1] for mm in metrics])
     ax.xaxis.tick_top()
     ax.tick_params(axis="x", length=0, colors=INK)
-    ylabels(ax, ORDER)
+    ylabels(ax, ORDER, bold=())
     for s in ax.spines.values():
         s.set_visible(False)
     ax.set_title("Summary of the five reviewer-discipline metrics",
                  x=-0.36, pad=24)
-    fig.text(0.98, 0.025, "Excerpt, three no-rule conditions; rates in %, collateral as mean per reply; "
-             "↓ lower is better, ↑ higher is better", ha="right", fontsize=7, color=MID)
+    fig.text(0.98, 0.025, "↓ lower is better, ↑ higher is better", ha="right", fontsize=7, color=MID)
     save(fig, "figS1-metric-summary")
 
 

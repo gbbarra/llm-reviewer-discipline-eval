@@ -16,7 +16,7 @@ condition × twin × scenario was run 3 times (9 replies per condition and twin)
 (3 in all: two DeepSeek V4.1 Flash excerpt replies, one DeepSeek V4 Pro excerpt reply with reasoning off) are
 excluded from every rate; this is why a few n values are below the nominal one. Intervals: Wilson 95%.
 Colours follow Fig. 1: green = kept and flagged, vermilion = erased, blue = flipped, grey = kept without a note;
-Llama 4 Maverick, the only model without a reasoning parameter, is marked in bold (and in yellow where shaded).
+Llama 4 Maverick, the only model without a reasoning parameter, is highlighted in Figs. 2 and 6 (bold label, yellow band).
 
 ---
 

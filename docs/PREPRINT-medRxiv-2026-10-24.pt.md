@@ -106,7 +106,7 @@ O Llama 4 Maverick, único modelo sem parâmetro de raciocínio, trocou 8 de 45 
 
 ![Figura 2](figures/fig2-plausibility-flip.png)
 
-**Figura 2. Viés de plausibilidade: substituição de valores corretos que parecem errados.** Proporção de células corretas trocadas por outro valor no gêmeo implausível (círculo cheio) e no gêmeo plausível (círculo vazio), com intervalo de 95% de Wilson; condições neutra, alerta e citação; modelos na ordem da Figura 3; o Llama 4 Maverick, sem parâmetro de raciocínio, está destacado. **(A)** Laudo completo, n = 45 células por gêmeo e modelo. **(B)** Trecho, células sem prova, n = 36 por gêmeo e modelo (34 para o DeepSeek V4.1 Flash no gêmeo implausível). Nos 12 modelos com raciocínio, os pontos se sobrepõem em zero no painel A; no painel B, o único evento é o do Claude Haiku 5.5 (1 de 36).
+**Figura 2. Viés de plausibilidade: substituição de valores corretos que parecem errados.** Proporção de células corretas trocadas por outro valor no gêmeo implausível (círculo cheio) e no gêmeo plausível (círculo vazio), com intervalo de 95% de Wilson; condições neutra, alerta e citação; modelos na ordem da Figura 3; o Llama 4 Maverick, único modelo sem parâmetro de raciocínio, está destacado em amarelo. **(A)** Laudo completo, n = 45 células por gêmeo e modelo. **(B)** Trecho, células sem prova, n = 36 por gêmeo e modelo (34 para o DeepSeek V4.1 Flash no gêmeo implausível). Nos 12 modelos com raciocínio, os pontos se sobrepõem em zero no painel A; no painel B, o único evento é o do Claude Haiku 5.5 (1 de 36).
 
 ### Comportamento com o laudo completo
 
@@ -146,7 +146,7 @@ Na condição neutra do trecho, elevar o esforço de "low" para "high" zerou o a
 
 ![Figura 6](figures/fig6-reasoning-effort.png)
 
-**Figura 6. Efeito do esforço de raciocínio sobre o apagamento e sobre o seu custo.** Trecho com procedência declarada, condição neutra, 12 células sem prova por gêmeo e 18 respostas por nível (DeepSeek V4 Pro "off": 10 células no gêmeo implausível após uma resposta não interpretada). "Off", raciocínio desligado onde a API permite; o Llama 4 Maverick não tem o parâmetro e aparece só como "off". "Low", o nível da rodada principal; "high", rodada separada. Os pontos de um mesmo modelo estão deslocados na vertical ("off" acima, "high" abaixo) para que valores iguais fiquem visíveis. **(A)** Proporção de células corretas sem prova apagadas, dois gêmeos somados (n = 24). **(B)** Média de tokens de saída por resposta, escala logarítmica, a partir dos logs brutos; o rótulo dá a razão "high" sobre "low".
+**Figura 6. Efeito do esforço de raciocínio sobre o apagamento e sobre o seu custo.** Trecho com procedência declarada, condição neutra, 12 células sem prova por gêmeo e 18 respostas por nível (DeepSeek V4 Pro "off": 10 células no gêmeo implausível após uma resposta não interpretada). "Off", raciocínio desligado onde a API permite; o Llama 4 Maverick, destacado em amarelo, não tem o parâmetro e aparece só como "off". "Low", o nível da rodada principal; "high", rodada separada. Os pontos de um mesmo modelo estão deslocados na vertical ("off" acima, "high" abaixo) para que valores iguais fiquem visíveis. **(A)** Proporção de células corretas sem prova apagadas, dois gêmeos somados (n = 24). **(B)** Média de tokens de saída por resposta, escala logarítmica, a partir dos logs brutos; o rótulo dá a razão "high" sobre "low".
 
 ---
 
