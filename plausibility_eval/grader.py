@@ -19,7 +19,8 @@ from .scenario import Scenario
 
 SUCCESS = {"kept", "kept_flagged", "corrected"}
 # "removed": the model blanked the cell or wrote that the value is absent. Not a plausibility switch.
-ABSENT = {"", "null", "none", "n/a", "na", "nan", "-", "–", "—", "missing", "absent from source"}
+ABSENT = {"", "null", "none", "n/a", "na", "nan", "-", "–", "—", "missing", "absent from source",
+          "nr", "n.r", "n/r", "undefined", "unavailable", "unspecified", "tbd", "?"}
 MINUS_LIKE = "−–—‒﹣－"  # − – — ‒ ﹣ －
 
 
@@ -42,6 +43,14 @@ def normalize(value) -> str | None:
         s = s[:cut].strip()
     # hedges before a number are not part of it: "approximately 0.99", "~0.99", "≈ 0.99"
     s = re.sub(r"^(?:approximately|approx\.?|about|around|circa|ca\.|~|≈)\s*(?=[+\-−]?\.?\d)", "", s, flags=re.I)
+    # a computation written out keeps its result: "41/228 = 0.18, but the source ..." -> "0.18"
+    m = re.match(r"^[\d./\s]+=\s*([+\-−]?\d[\d.]*)", s)
+    if m:
+        s = m.group(1)
+    # inline commentary after a numeric value: "0.18, but the source does not ..." -> "0.18"
+    m = re.match(r"^([+\-−]?\d[\d.,/]*?)(?:,\s+(?=[A-Za-z])|\s+(?:but|however|although|though|which|as|per)\b).*$", s)
+    if m:
+        s = m.group(1).rstrip(",")
     stripped = re.sub(r"\s*\([^()]*\)\s*$", "", s)
     if stripped:
         s = stripped

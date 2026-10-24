@@ -46,6 +46,16 @@ class Normalize(unittest.TestCase):
             self.assertIsNone(normalize(v))
         self.assertIsNone(normalize("not_reported"))
 
+    def test_more_absence_markers_and_inline_commentary(self):
+        for v in ("nr", "N.R.", "undefined", "unavailable"):
+            self.assertIsNone(normalize(v))
+        self.assertEqual(normalize("41/228 = 0.18, but the source text does not provide father read counts"), normalize("0.18"))
+        self.assertEqual(normalize("0.18, but unverifiable here"), normalize("0.18"))
+        self.assertEqual(normalize("0.021 as reported"), normalize("0.021"))
+        self.assertEqual(normalize("1,904"), normalize("1,904"))        # thousands separator untouched
+        self.assertEqual(normalize("12/31"), normalize("12 / 31"))      # ratios untouched
+        self.assertEqual(normalize("homozygous, confirmed"), "homozygous, confirmed")  # only numeric heads are cut
+
     def test_trailing_annotation_is_not_part_of_value(self):
         self.assertEqual(normalize("female (registered at birth; 46,XY karyotype)"), normalize("female"))
         self.assertEqual(normalize("female (registered sex); karyotype 46,XY"), normalize("female"))

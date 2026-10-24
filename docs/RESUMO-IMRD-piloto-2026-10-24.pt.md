@@ -105,13 +105,16 @@ apenas células cuja prova estava ausente. O corretor é coberto por 32 testes d
 Claude Sonnet 5.5 e Claude Haiku 5.5 (Anthropic); GPT-6.1 Sol Pro, GPT-6.1 Sol e GPT-6 Luna (OpenAI); Gemini 4
 Argon e Gemini 3.8 Flash (Google); Grok 4.7 (xAI); DeepSeek V4 Pro e DeepSeek V4.1 Flash (DeepSeek, pesos
 abertos); Qwen 3.8 Max (Alibaba, pesos abertos); Llama 4 Maverick (Meta, pesos abertos). Os modelos com
-raciocínio foram executados com esforço "low" (nos de fronteira o raciocínio não pode ser desligado); Haiku e
-Luna com raciocínio desligado; Llama 4 Maverick não dispõe do parâmetro. O GPT-6.1 Sol foi executado também com
-esforço "high" nas condições neutra e de regra explícita. Cada célula foi medida em 3 laudos × 2 gêmeos × 3
-repetições por condição, em conversas independentes e ordem aleatória. Os sete primeiros modelos rodaram as
-quatro condições nos dois contextos; os seis acrescentados em seguida rodaram as quatro condições no trecho e
-apenas a condição neutra no contexto completo, que nos sete anteriores havia sido 100% em todas as condições e
-funciona como controle. Total: 2.212 respostas únicas, nenhuma fora do formato. As correções do instrumento
+raciocínio foram executados com esforço "low" (nos de fronteira o raciocínio não pode ser desligado); Llama 4
+Maverick não dispõe do parâmetro. Para separar o efeito do raciocínio do efeito do modelo, três modelos foram
+executados nas duas configurações no contexto trecho: Claude Haiku 5.5 e GPT-6 Luna com raciocínio desligado e
+"low", e DeepSeek V4 Pro com "low" e desligado; GPT-6.1 Sol, Grok 4.7 e Gemini 4 Argon foram executados também
+com esforço "high" na condição neutra (Grok e Argon de forma incompleta, 6 e 12 respostas de 18, por limite de
+custo). Cada célula foi medida em 3 laudos × 2 gêmeos × 3 repetições por condição, em conversas independentes e
+ordem aleatória. Nove modelos rodaram as quatro condições nos dois contextos; Grok 4.7, Qwen 3.8 Max, GPT-6.1
+Sol Pro e DeepSeek V4.1 Flash rodaram as quatro condições no trecho e apenas a condição neutra no contexto
+completo, que nos demais havia sido 100% em todas as condições e funciona como controle. Total: 2.554 respostas
+únicas, nenhuma fora do formato. As correções do instrumento
 feitas após a leitura das respostas limitaram-se a reconhecer formas de escrita (marcadores de ausência,
 aproximações, unidades) e foram aplicadas igualmente a todos os modelos e rodadas.
 
@@ -120,9 +123,9 @@ aproximações, unidades) e foram aplicadas igualmente a todos os modelos e roda
 **Pergunta 1: viés de plausibilidade.** Nos doze modelos com raciocínio ativo ou desligado por configuração,
 em 1.032 oportunidades de trocar um valor correto e implausível (contexto completo e trecho, três condições
 sem a regra explícita), ocorreram **0 trocas** (limite superior do IC 95% de Wilson: 0,4%); nos gêmeos
-plausíveis, igualmente 0. O único modelo que trocou foi o Llama 4 Maverick, sem parâmetro de raciocínio: 2 de
-15 no contexto completo e 7 de 36 no trecho, quase todas "female" → "male" no laudo de insensibilidade
-androgênica, contra 0 nos gêmeos plausíveis. Numa rodada preliminar com um corte mais estreito do trecho (sem o
+plausíveis, igualmente 0. O único modelo que trocou foi o Llama 4 Maverick, sem parâmetro de raciocínio: 11 de
+60 no contexto completo, nas quatro condições, inclusive sob a regra explícita, e 7 de 36 no trecho, todas
+"female" → "male" no laudo de insensibilidade androgênica, contra 0 nos gêmeos plausíveis. Numa rodada preliminar com um corte mais estreito do trecho (sem o
 exame clínico), o Claude Haiku 5.5 fez a mesma troca em 9 de 9 respostas, nas três condições, afirmando na
 justificativa que a fonte dizia "female" e invocando o cariótipo; não o fez em nenhuma das 9 respostas do gêmeo
 plausível, nem em 18 respostas quando o exame clínico foi reintroduzido no trecho, com ou sem a declaração de
@@ -167,7 +170,15 @@ passaram de 9 apagamentos para 0 e de 3 para 9 sinalizações, com os colaterais
 de 6 para 0; Opus, Sonnet, Argon, Flash, Qwen e os dois DeepSeek: 0 apagamentos; Haiku: 3 apagamentos e 8
 sinalizações; Llama: 3 apagamentos, 3 sinalizações e as trocas persistiram; GPT-6 Luna manteve 9 apagamentos em
 12 e nenhuma sinalização. Com raciocínio "high" e sem a regra, o GPT-6.1 Sol apagou 3 de 12 células
-implausíveis e 7 de 12 plausíveis (colaterais 3,2); com a regra, 0.
+implausíveis e 7 de 12 plausíveis (colaterais 3,2); com a regra, 0. No Grok 4.7, "high" reduziu o apagamento de
+7 e 5 para 2 e 2 (6 respostas); no Gemini 4 Argon, 0 nos dois esforços (12 respostas).
+
+Dentro do mesmo modelo, ligar o raciocínio alterou o comportamento sob evidência parcial (três condições sem a
+regra, 36 células por gêmeo): no Claude Haiku 5.5, apagamentos de 9 e 10 para 3 e 3, colaterais de 1,1 para 0,3
+por resposta; no DeepSeek V4 Pro (do desligado para "low"), de 11 e 10 para 8 e 9, e os erros plantados deixados
+passar de 4 para 0; no GPT-6 Luna, apagamentos quase inalterados (27 e 21 para 25 e 21). Sob a regra explícita,
+porém, os três modelos passaram a obedecê-la apenas com o raciocínio ligado: Luna de 9 apagamentos e 0
+sinalizações para 0 e 9; DeepSeek de 6 e 0 para 0 e 8; Haiku de 3 para 0.
 
 ## Discussão
 
@@ -176,9 +187,13 @@ raciocínio configurável: 0 trocas em 1.032 oportunidades, com ou sem a prova n
 dois episódios ocorreram em modelos sem raciocínio ativo: o Llama 4 Maverick trocou o sexo registrado mesmo
 com o laudo inteiro disponível, e o Claude Haiku 5.5 o fez apenas quando o trecho omitia o exame clínico que
 tornava o valor inteligível. A troca de um valor impresso por um valor plausível parece exigir prior forte e
-ausência de raciocínio deliberativo ou de pista explicativa; como raciocínio e porte estão confundidos neste
-painel (os modelos sem raciocínio são também os de menor custo), a hipótese de que o raciocínio protege contra
-o flip fica proposta, não demonstrada.
+ausência de raciocínio deliberativo ou de pista explicativa. A comparação dentro do mesmo modelo sustenta o
+papel do raciocínio sem confundi-lo com porte: com o raciocínio desligado, Haiku e DeepSeek apagaram mais,
+DeepSeek deixou passar erros plantados, e os três modelos testados nas duas configurações ignoraram a regra
+explícita; com o raciocínio ligado, obedeceram-na. O flip em si, contudo, só foi observado no modelo sem
+qualquer raciocínio (Llama) e no Haiku sem raciocínio e sem o exame clínico; o DeepSeek sem raciocínio não
+trocou. O raciocínio parece, portanto, necessário para a disciplina de revisão sob evidência parcial e para o
+cumprimento de instruções de cautela, mas a sua ausência não é suficiente para produzir o flip.
 
 O comportamento que distinguiu os modelos foi outro: o que fazem com um valor correto que não conseguem
 verificar. Os modelos da Anthropic e o Gemini 4 mantiveram e sinalizaram; os da OpenAI e, em menor grau, o Grok
@@ -189,7 +204,7 @@ padrão de revisão em que a tabela provém de uma fonte mais completa que a do 
 de dado correto, não cautela: a cautela sinaliza. A assimetria entre famílias de modelos foi grande e estável
 entre condições, e no modelo de fronteira que apagava ela foi inteiramente reversível por uma instrução de uma
 frase, o que a caracteriza como comportamento-padrão, e não como incapacidade; no modelo de custo baixo da
-mesma família a instrução não foi obedecida. Mais raciocínio reduziu o apagamento sem eliminá-lo.
+mesma família a instrução não foi obedecida. Mais raciocínio reduziu o apagamento sem eliminá-lo, tanto no GPT-6.1 Sol quanto no Grok 4.7.
 
 Limitações. A mensagem de sistema descreve o documento como "a trial report", redação herdada da versão
 inicial do instrumento (relatos de ensaio clínico) e mantida inalterada quando os cenários passaram a ser

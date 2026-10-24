@@ -6,13 +6,13 @@
 condition | flip | erase | flag (ideal) | guess | miss (provable wrong left in place)
 --- | --- | --- | --- | --- | ---
 flagged | 0/15 = 0% [0%, 20%] vs 0/33 = 0% [0%, 10%] | 3/15 = 20% [7%, 45%] vs 1/33 = 3% [1%, 15%] | 9/15 = 60% [36%, 80%] vs 18/33 = 55% [38%, 70%] | – | 6/18 = 33% [16%, 56%] vs 1/18 = 6% [1%, 26%]
-flagged@excerpt | 4/36 = 11% [4%, 25%] vs 0/36 = 0% [0%, 10%] | 9/36 = 25% [14%, 41%] vs 9/36 = 25% [14%, 41%] | 22/36 = 61% [45%, 75%] vs 26/36 = 72% [56%, 84%] | – | 1/54 = 2% [0%, 10%] vs 6/54 = 11% [5%, 22%]
+flagged@excerpt | 4/48 = 8% [3%, 20%] vs 0/48 = 0% [0%, 7%] | 12/48 = 25% [15%, 39%] vs 12/48 = 25% [15%, 39%] | 29/48 = 60% [46%, 73%] vs 35/48 = 73% [59%, 83%] | – | 1/72 = 1% [0%, 7%] vs 6/72 = 8% [4%, 17%]
 flagged_cite | 0/15 = 0% [0%, 20%] vs 1/33 = 3% [1%, 15%] | 3/15 = 20% [7%, 45%] vs 0/33 = 0% [0%, 10%] | 8/15 = 53% [30%, 75%] vs 19/33 = 58% [41%, 73%] | – | 5/18 = 28% [12%, 51%] vs 1/18 = 6% [1%, 26%]
-flagged_cite@excerpt | 3/36 = 8% [3%, 22%] vs 0/36 = 0% [0%, 10%] | 9/36 = 25% [14%, 41%] vs 10/36 = 28% [16%, 44%] | 19/36 = 53% [37%, 68%] vs 26/36 = 72% [56%, 84%] | – | 1/54 = 2% [0%, 10%] vs 6/54 = 11% [5%, 22%]
+flagged_cite@excerpt | 3/48 = 6% [2%, 17%] vs 0/48 = 0% [0%, 7%] | 9/48 = 19% [10%, 32%] vs 10/48 = 21% [12%, 34%] | 29/48 = 60% [46%, 73%] vs 38/48 = 79% [66%, 88%] | – | 1/72 = 1% [0%, 7%] vs 6/72 = 8% [4%, 17%]
 keep_rule | 0/15 = 0% [0%, 20%] vs 0/33 = 0% [0%, 10%] | 2/15 = 13% [4%, 38%] vs 1/33 = 3% [1%, 15%] | 7/15 = 47% [25%, 70%] vs 12/33 = 36% [22%, 53%] | – | 1/18 = 6% [1%, 26%] vs 1/18 = 6% [1%, 26%]
-keep_rule@excerpt | 0/12 = 0% [0%, 24%] vs 1/12 = 8% [1%, 35%] | 3/12 = 25% [9%, 53%] vs 2/12 = 17% [5%, 45%] | 8/12 = 67% [39%, 86%] vs 6/12 = 50% [25%, 75%] | – | 0/18 = 0% [0%, 18%] vs 0/18 = 0% [0%, 18%]
+keep_rule@excerpt | 0/24 = 0% [0%, 14%] vs 1/24 = 4% [1%, 20%] | 3/24 = 12% [4%, 31%] vs 2/24 = 8% [2%, 26%] | 15/24 = 62% [43%, 79%] vs 15/24 = 62% [43%, 79%] | – | 0/36 = 0% [0%, 10%] vs 0/36 = 0% [0%, 10%]
 neutral | 0/30 = 0% [0%, 11%] vs 0/66 = 0% [0%, 6%] | 2/30 = 7% [2%, 21%] vs 0/66 = 0% [0%, 6%] | 21/30 = 70% [52%, 83%] vs 34/66 = 52% [40%, 63%] | – | 8/36 = 22% [12%, 38%] vs 1/36 = 3% [0%, 14%]
-neutral@excerpt | 3/36 = 8% [3%, 22%] vs 0/36 = 0% [0%, 10%] | 9/36 = 25% [14%, 41%] vs 10/36 = 28% [16%, 44%] | 18/36 = 50% [34%, 66%] vs 15/36 = 42% [27%, 58%] | – | 2/54 = 4% [1%, 13%] vs 7/54 = 13% [6%, 24%]
+neutral@excerpt | 3/48 = 6% [2%, 17%] vs 0/48 = 0% [0%, 7%] | 9/48 = 19% [10%, 32%] vs 10/48 = 21% [12%, 34%] | 23/48 = 48% [34%, 62%] vs 25/48 = 52% [38%, 66%] | – | 2/72 = 3% [1%, 10%] vs 7/72 = 10% [5%, 19%]
 
 ### Outcomes by target kind
 
@@ -22,63 +22,63 @@ flagged | correct_implausible | 15 | 12/15 = 80% [55%, 93%] | removed=3
 flagged | correct_plausible | 33 | 32/33 = 97% [85%, 99%] | removed=1
 flagged | wrong_implausible | 18 | 17/18 = 94% [74%, 99%] | miscorrected=1
 flagged | wrong_plausible | 18 | 12/18 = 67% [44%, 84%] | missed=2, missed_flagged=4
-flagged@excerpt | correct_implausible | 45 | 32/45 = 71% [57%, 82%] | removed=9, switched=4
-flagged@excerpt | correct_implausible@absent | 36 | 23/36 = 64% [48%, 78%] | removed=9, switched=4
-flagged@excerpt | correct_plausible | 99 | 90/99 = 91% [84%, 95%] | removed=9
-flagged@excerpt | correct_plausible@absent | 36 | 27/36 = 75% [59%, 86%] | removed=9
-flagged@excerpt | wrong_implausible | 54 | 48/54 = 89% [78%, 95%] | missed_flagged=6
-flagged@excerpt | wrong_plausible | 54 | 53/54 = 98% [90%, 100%] | missed_flagged=1
+flagged@excerpt | correct_implausible | 60 | 44/60 = 73% [61%, 83%] | removed=12, switched=4
+flagged@excerpt | correct_implausible@absent | 48 | 32/48 = 67% [53%, 78%] | removed=12, switched=4
+flagged@excerpt | correct_plausible | 132 | 120/132 = 91% [85%, 95%] | removed=12
+flagged@excerpt | correct_plausible@absent | 48 | 36/48 = 75% [61%, 85%] | removed=12
+flagged@excerpt | wrong_implausible | 72 | 66/72 = 92% [83%, 96%] | missed_flagged=6
+flagged@excerpt | wrong_plausible | 72 | 71/72 = 99% [93%, 100%] | missed_flagged=1
 flagged_cite | correct_implausible | 15 | 12/15 = 80% [55%, 93%] | removed=3
 flagged_cite | correct_plausible | 33 | 32/33 = 97% [85%, 99%] | switched=1
 flagged_cite | wrong_implausible | 18 | 17/18 = 94% [74%, 99%] | miscorrected=1
 flagged_cite | wrong_plausible | 18 | 13/18 = 72% [49%, 88%] | missed=1, missed_flagged=4
-flagged_cite@excerpt | correct_implausible | 45 | 33/45 = 73% [59%, 84%] | removed=9, switched=3
-flagged_cite@excerpt | correct_implausible@absent | 36 | 24/36 = 67% [50%, 80%] | removed=9, switched=3
-flagged_cite@excerpt | correct_plausible | 99 | 89/99 = 90% [82%, 94%] | removed=10
-flagged_cite@excerpt | correct_plausible@absent | 36 | 26/36 = 72% [56%, 84%] | removed=10
-flagged_cite@excerpt | wrong_implausible | 54 | 48/54 = 89% [78%, 95%] | missed_flagged=6
-flagged_cite@excerpt | wrong_plausible | 54 | 53/54 = 98% [90%, 100%] | missed_flagged=1
+flagged_cite@excerpt | correct_implausible | 60 | 48/60 = 80% [68%, 88%] | removed=9, switched=3
+flagged_cite@excerpt | correct_implausible@absent | 48 | 36/48 = 75% [61%, 85%] | removed=9, switched=3
+flagged_cite@excerpt | correct_plausible | 132 | 122/132 = 92% [87%, 96%] | removed=10
+flagged_cite@excerpt | correct_plausible@absent | 48 | 38/48 = 79% [66%, 88%] | removed=10
+flagged_cite@excerpt | wrong_implausible | 72 | 66/72 = 92% [83%, 96%] | missed_flagged=6
+flagged_cite@excerpt | wrong_plausible | 72 | 71/72 = 99% [93%, 100%] | missed_flagged=1
 keep_rule | correct_implausible | 15 | 13/15 = 87% [62%, 96%] | removed=2
 keep_rule | correct_plausible | 33 | 32/33 = 97% [85%, 99%] | removed=1
 keep_rule | wrong_implausible | 18 | 17/18 = 94% [74%, 99%] | miscorrected=1
 keep_rule | wrong_plausible | 18 | 17/18 = 94% [74%, 99%] | missed_flagged=1
-keep_rule@excerpt | correct_implausible | 15 | 12/15 = 80% [55%, 93%] | removed=3
-keep_rule@excerpt | correct_implausible@absent | 12 | 9/12 = 75% [47%, 91%] | removed=3
-keep_rule@excerpt | correct_plausible | 33 | 30/33 = 91% [76%, 97%] | removed=2, switched=1
-keep_rule@excerpt | correct_plausible@absent | 12 | 9/12 = 75% [47%, 91%] | removed=2, switched=1
-keep_rule@excerpt | wrong_implausible | 18 | 18/18 = 100% [82%, 100%] | –
-keep_rule@excerpt | wrong_plausible | 18 | 18/18 = 100% [82%, 100%] | –
+keep_rule@excerpt | correct_implausible | 30 | 27/30 = 90% [74%, 97%] | removed=3
+keep_rule@excerpt | correct_implausible@absent | 24 | 21/24 = 88% [69%, 96%] | removed=3
+keep_rule@excerpt | correct_plausible | 66 | 63/66 = 95% [87%, 98%] | removed=2, switched=1
+keep_rule@excerpt | correct_plausible@absent | 24 | 21/24 = 88% [69%, 96%] | removed=2, switched=1
+keep_rule@excerpt | wrong_implausible | 36 | 36/36 = 100% [90%, 100%] | –
+keep_rule@excerpt | wrong_plausible | 36 | 36/36 = 100% [90%, 100%] | –
 neutral | correct_implausible | 30 | 28/30 = 93% [79%, 98%] | removed=2
 neutral | correct_plausible | 66 | 66/66 = 100% [94%, 100%] | –
 neutral | wrong_implausible | 36 | 35/36 = 97% [86%, 100%] | miscorrected=1
 neutral | wrong_plausible | 36 | 28/36 = 78% [62%, 88%] | missed=3, missed_flagged=5
-neutral@excerpt | correct_implausible | 45 | 33/45 = 73% [59%, 84%] | removed=9, switched=3
-neutral@excerpt | correct_implausible@absent | 36 | 24/36 = 67% [50%, 80%] | removed=9, switched=3
-neutral@excerpt | correct_plausible | 99 | 89/99 = 90% [82%, 94%] | removed=10
-neutral@excerpt | correct_plausible@absent | 36 | 26/36 = 72% [56%, 84%] | removed=10
-neutral@excerpt | wrong_implausible | 54 | 47/54 = 87% [76%, 94%] | missed=1, missed_flagged=6
-neutral@excerpt | wrong_plausible | 54 | 52/54 = 96% [87%, 99%] | missed=1, missed_flagged=1
+neutral@excerpt | correct_implausible | 60 | 48/60 = 80% [68%, 88%] | removed=9, switched=3
+neutral@excerpt | correct_implausible@absent | 48 | 36/48 = 75% [61%, 85%] | removed=9, switched=3
+neutral@excerpt | correct_plausible | 132 | 122/132 = 92% [87%, 96%] | removed=10
+neutral@excerpt | correct_plausible@absent | 48 | 38/48 = 79% [66%, 88%] | removed=10
+neutral@excerpt | wrong_implausible | 72 | 65/72 = 90% [81%, 95%] | missed=1, missed_flagged=6
+neutral@excerpt | wrong_plausible | 72 | 70/72 = 97% [90%, 99%] | missed=1, missed_flagged=1
 
 condition | replies | format failures | collateral changes / reply | quotes verbatim in source
 --- | --- | --- | --- | ---
 flagged | 18 | 0 | 0.00 | –
-flagged@excerpt | 54 | 0 | 1.19 | –
+flagged@excerpt | 72 | 0 | 1.01 | –
 flagged_cite | 18 | 0 | 0.00 | 63/64 = 98% [92%, 100%]
-flagged_cite@excerpt | 54 | 0 | 1.35 | 257/285 = 90% [86%, 93%]
+flagged_cite@excerpt | 72 | 0 | 1.04 | 295/323 = 91% [88%, 94%]
 keep_rule | 18 | 0 | 0.06 | –
-keep_rule@excerpt | 18 | 0 | 0.83 | –
+keep_rule@excerpt | 36 | 0 | 0.44 | –
 neutral | 36 | 0 | 0.03 | –
-neutral@excerpt | 54 | 0 | 1.52 | –
+neutral@excerpt | 72 | 0 | 1.22 | –
 
 Headline (plausibility bias = difference between the two rows of each pair; in an excerpt context the correct-cell contrast uses evidence-absent cells only):
 - flagged: switched correct-implausible 0/15 = 0% [0%, 20%] vs correct-plausible 0/33 = 0% [0%, 10%] (removed: 3 vs 1); failed to fix wrong-plausible 6/18 = 33% [16%, 56%] vs wrong-implausible 1/18 = 6% [1%, 26%]
-- flagged@excerpt: switched correct-implausible 4/36 = 11% [4%, 25%] vs correct-plausible 0/36 = 0% [0%, 10%] (removed: 9 vs 9); failed to fix wrong-plausible 1/54 = 2% [0%, 10%] vs wrong-implausible 6/54 = 11% [5%, 22%]
+- flagged@excerpt: switched correct-implausible 4/48 = 8% [3%, 20%] vs correct-plausible 0/48 = 0% [0%, 7%] (removed: 12 vs 12); failed to fix wrong-plausible 1/72 = 1% [0%, 7%] vs wrong-implausible 6/72 = 8% [4%, 17%]
 - flagged_cite: switched correct-implausible 0/15 = 0% [0%, 20%] vs correct-plausible 1/33 = 3% [1%, 15%] (removed: 3 vs 0); failed to fix wrong-plausible 5/18 = 28% [12%, 51%] vs wrong-implausible 1/18 = 6% [1%, 26%]
-- flagged_cite@excerpt: switched correct-implausible 3/36 = 8% [3%, 22%] vs correct-plausible 0/36 = 0% [0%, 10%] (removed: 9 vs 10); failed to fix wrong-plausible 1/54 = 2% [0%, 10%] vs wrong-implausible 6/54 = 11% [5%, 22%]
+- flagged_cite@excerpt: switched correct-implausible 3/48 = 6% [2%, 17%] vs correct-plausible 0/48 = 0% [0%, 7%] (removed: 9 vs 10); failed to fix wrong-plausible 1/72 = 1% [0%, 7%] vs wrong-implausible 6/72 = 8% [4%, 17%]
 - keep_rule: switched correct-implausible 0/15 = 0% [0%, 20%] vs correct-plausible 0/33 = 0% [0%, 10%] (removed: 2 vs 1); failed to fix wrong-plausible 1/18 = 6% [1%, 26%] vs wrong-implausible 1/18 = 6% [1%, 26%]
-- keep_rule@excerpt: switched correct-implausible 0/12 = 0% [0%, 24%] vs correct-plausible 1/12 = 8% [1%, 35%] (removed: 3 vs 2); failed to fix wrong-plausible 0/18 = 0% [0%, 18%] vs wrong-implausible 0/18 = 0% [0%, 18%]
+- keep_rule@excerpt: switched correct-implausible 0/24 = 0% [0%, 14%] vs correct-plausible 1/24 = 4% [1%, 20%] (removed: 3 vs 2); failed to fix wrong-plausible 0/36 = 0% [0%, 10%] vs wrong-implausible 0/36 = 0% [0%, 10%]
 - neutral: switched correct-implausible 0/30 = 0% [0%, 11%] vs correct-plausible 0/66 = 0% [0%, 6%] (removed: 2 vs 0); failed to fix wrong-plausible 8/36 = 22% [12%, 38%] vs wrong-implausible 1/36 = 3% [0%, 14%]
-- neutral@excerpt: switched correct-implausible 3/36 = 8% [3%, 22%] vs correct-plausible 0/36 = 0% [0%, 10%] (removed: 9 vs 10); failed to fix wrong-plausible 2/54 = 4% [1%, 13%] vs wrong-implausible 7/54 = 13% [6%, 24%]
+- neutral@excerpt: switched correct-implausible 3/48 = 6% [2%, 17%] vs correct-plausible 0/48 = 0% [0%, 7%] (removed: 9 vs 10); failed to fix wrong-plausible 2/72 = 3% [1%, 10%] vs wrong-implausible 7/72 = 10% [5%, 19%]
 
 ## anthropic/claude-opus-5.5
 
@@ -248,59 +248,80 @@ Headline (plausibility bias = difference between the two rows of each pair; in a
 
 condition | flip | erase | flag (ideal) | guess | miss (provable wrong left in place)
 --- | --- | --- | --- | --- | ---
-flagged@excerpt | 0/12 = 0% [0%, 24%] vs 0/12 = 0% [0%, 24%] | 3/12 = 25% [9%, 53%] vs 3/12 = 25% [9%, 53%] | 6/12 = 50% [25%, 75%] vs 6/12 = 50% [25%, 75%] | – | 0/18 = 0% [0%, 18%] vs 0/18 = 0% [0%, 18%]
-flagged_cite@excerpt | 0/12 = 0% [0%, 24%] vs 0/12 = 0% [0%, 24%] | 3/12 = 25% [9%, 53%] vs 3/12 = 25% [9%, 53%] | 6/12 = 50% [25%, 75%] vs 7/12 = 58% [32%, 81%] | – | 0/18 = 0% [0%, 18%] vs 0/18 = 0% [0%, 18%]
-keep_rule@excerpt | 0/12 = 0% [0%, 24%] vs 0/12 = 0% [0%, 24%] | 0/12 = 0% [0%, 24%] vs 0/12 = 0% [0%, 24%] | 8/12 = 67% [39%, 86%] vs 9/12 = 75% [47%, 91%] | – | 0/18 = 0% [0%, 18%] vs 0/18 = 0% [0%, 18%]
+flagged | 0/15 = 0% [0%, 20%] vs 0/33 = 0% [0%, 10%] | 0/15 = 0% [0%, 20%] vs 0/33 = 0% [0%, 10%] | 9/15 = 60% [36%, 80%] vs 9/33 = 27% [15%, 44%] | – | 0/18 = 0% [0%, 18%] vs 0/18 = 0% [0%, 18%]
+flagged@excerpt | 0/24 = 0% [0%, 14%] vs 0/24 = 0% [0%, 14%] | 8/24 = 33% [18%, 53%] vs 7/24 = 29% [15%, 49%] | 10/24 = 42% [24%, 61%] vs 11/24 = 46% [28%, 65%] | – | 1/36 = 3% [0%, 14%] vs 0/36 = 0% [0%, 10%]
+flagged_cite | 0/15 = 0% [0%, 20%] vs 0/33 = 0% [0%, 10%] | 0/15 = 0% [0%, 20%] vs 0/33 = 0% [0%, 10%] | 9/15 = 60% [36%, 80%] vs 9/33 = 27% [15%, 44%] | – | 0/18 = 0% [0%, 18%] vs 0/18 = 0% [0%, 18%]
+flagged_cite@excerpt | 0/24 = 0% [0%, 14%] vs 0/24 = 0% [0%, 14%] | 7/24 = 29% [15%, 49%] vs 6/24 = 25% [12%, 45%] | 12/24 = 50% [31%, 69%] vs 14/24 = 58% [39%, 76%] | – | 1/36 = 3% [0%, 14%] vs 2/36 = 6% [2%, 18%]
+keep_rule | 0/15 = 0% [0%, 20%] vs 0/33 = 0% [0%, 10%] | 0/15 = 0% [0%, 20%] vs 0/33 = 0% [0%, 10%] | 0/15 = 0% [0%, 20%] vs 1/33 = 3% [1%, 15%] | – | 0/18 = 0% [0%, 18%] vs 0/18 = 0% [0%, 18%]
+keep_rule@excerpt | 0/24 = 0% [0%, 14%] vs 0/24 = 0% [0%, 14%] | 6/24 = 25% [12%, 45%] vs 3/24 = 12% [4%, 31%] | 9/24 = 38% [21%, 57%] vs 10/24 = 42% [24%, 61%] | – | 0/36 = 0% [0%, 10%] vs 1/36 = 3% [0%, 14%]
 neutral | 0/15 = 0% [0%, 20%] vs 0/33 = 0% [0%, 10%] | 0/15 = 0% [0%, 20%] vs 0/33 = 0% [0%, 10%] | 3/15 = 20% [7%, 45%] vs 4/33 = 12% [5%, 27%] | – | 0/18 = 0% [0%, 18%] vs 0/18 = 0% [0%, 18%]
-neutral@excerpt | 0/12 = 0% [0%, 24%] vs 0/12 = 0% [0%, 24%] | 2/12 = 17% [5%, 45%] vs 3/12 = 25% [9%, 53%] | 4/12 = 33% [14%, 61%] vs 0/12 = 0% [0%, 24%] | – | 0/18 = 0% [0%, 18%] vs 0/18 = 0% [0%, 18%]
+neutral@excerpt | 0/22 = 0% [0%, 15%] vs 0/24 = 0% [0%, 14%] | 6/22 = 27% [13%, 48%] vs 6/24 = 25% [12%, 45%] | 7/22 = 32% [16%, 53%] vs 2/24 = 8% [2%, 26%] | – | 1/35 = 3% [1%, 15%] vs 0/35 = 0% [0%, 10%]
 
 ### Outcomes by target kind
 
 condition | kind | n | success | failure outcomes
 --- | --- | --- | --- | ---
-flagged@excerpt | correct_implausible | 15 | 12/15 = 80% [55%, 93%] | removed=3
-flagged@excerpt | correct_implausible@absent | 12 | 9/12 = 75% [47%, 91%] | removed=3
-flagged@excerpt | correct_plausible | 33 | 30/33 = 91% [76%, 97%] | removed=3
-flagged@excerpt | correct_plausible@absent | 12 | 9/12 = 75% [47%, 91%] | removed=3
-flagged@excerpt | wrong_implausible | 18 | 18/18 = 100% [82%, 100%] | –
-flagged@excerpt | wrong_plausible | 18 | 18/18 = 100% [82%, 100%] | –
-flagged_cite@excerpt | correct_implausible | 15 | 12/15 = 80% [55%, 93%] | removed=3
-flagged_cite@excerpt | correct_implausible@absent | 12 | 9/12 = 75% [47%, 91%] | removed=3
-flagged_cite@excerpt | correct_plausible | 33 | 30/33 = 91% [76%, 97%] | removed=3
-flagged_cite@excerpt | correct_plausible@absent | 12 | 9/12 = 75% [47%, 91%] | removed=3
-flagged_cite@excerpt | wrong_implausible | 18 | 18/18 = 100% [82%, 100%] | –
-flagged_cite@excerpt | wrong_plausible | 18 | 18/18 = 100% [82%, 100%] | –
-keep_rule@excerpt | correct_implausible | 15 | 15/15 = 100% [80%, 100%] | –
-keep_rule@excerpt | correct_implausible@absent | 12 | 12/12 = 100% [76%, 100%] | –
-keep_rule@excerpt | correct_plausible | 33 | 33/33 = 100% [90%, 100%] | –
-keep_rule@excerpt | correct_plausible@absent | 12 | 12/12 = 100% [76%, 100%] | –
-keep_rule@excerpt | wrong_implausible | 18 | 18/18 = 100% [82%, 100%] | –
-keep_rule@excerpt | wrong_plausible | 18 | 18/18 = 100% [82%, 100%] | –
+flagged | correct_implausible | 15 | 15/15 = 100% [80%, 100%] | –
+flagged | correct_plausible | 33 | 33/33 = 100% [90%, 100%] | –
+flagged | wrong_implausible | 18 | 18/18 = 100% [82%, 100%] | –
+flagged | wrong_plausible | 18 | 18/18 = 100% [82%, 100%] | –
+flagged@excerpt | correct_implausible | 30 | 22/30 = 73% [56%, 86%] | removed=8
+flagged@excerpt | correct_implausible@absent | 24 | 16/24 = 67% [47%, 82%] | removed=8
+flagged@excerpt | correct_plausible | 66 | 59/66 = 89% [80%, 95%] | removed=7
+flagged@excerpt | correct_plausible@absent | 24 | 17/24 = 71% [51%, 85%] | removed=7
+flagged@excerpt | wrong_implausible | 36 | 36/36 = 100% [90%, 100%] | –
+flagged@excerpt | wrong_plausible | 36 | 35/36 = 97% [86%, 100%] | missed_flagged=1
+flagged_cite | correct_implausible | 15 | 15/15 = 100% [80%, 100%] | –
+flagged_cite | correct_plausible | 33 | 33/33 = 100% [90%, 100%] | –
+flagged_cite | wrong_implausible | 18 | 18/18 = 100% [82%, 100%] | –
+flagged_cite | wrong_plausible | 18 | 18/18 = 100% [82%, 100%] | –
+flagged_cite@excerpt | correct_implausible | 30 | 23/30 = 77% [59%, 88%] | removed=7
+flagged_cite@excerpt | correct_implausible@absent | 24 | 17/24 = 71% [51%, 85%] | removed=7
+flagged_cite@excerpt | correct_plausible | 66 | 60/66 = 91% [82%, 96%] | removed=6
+flagged_cite@excerpt | correct_plausible@absent | 24 | 18/24 = 75% [55%, 88%] | removed=6
+flagged_cite@excerpt | wrong_implausible | 36 | 34/36 = 94% [82%, 98%] | miscorrected=1, missed=1
+flagged_cite@excerpt | wrong_plausible | 36 | 35/36 = 97% [86%, 100%] | missed_flagged=1
+keep_rule | correct_implausible | 15 | 15/15 = 100% [80%, 100%] | –
+keep_rule | correct_plausible | 33 | 33/33 = 100% [90%, 100%] | –
+keep_rule | wrong_implausible | 18 | 18/18 = 100% [82%, 100%] | –
+keep_rule | wrong_plausible | 18 | 18/18 = 100% [82%, 100%] | –
+keep_rule@excerpt | correct_implausible | 30 | 24/30 = 80% [63%, 90%] | removed=6
+keep_rule@excerpt | correct_implausible@absent | 24 | 18/24 = 75% [55%, 88%] | removed=6
+keep_rule@excerpt | correct_plausible | 66 | 63/66 = 95% [87%, 98%] | removed=3
+keep_rule@excerpt | correct_plausible@absent | 24 | 21/24 = 88% [69%, 96%] | removed=3
+keep_rule@excerpt | wrong_implausible | 36 | 35/36 = 97% [86%, 100%] | miscorrected=1
+keep_rule@excerpt | wrong_plausible | 36 | 36/36 = 100% [90%, 100%] | –
 neutral | correct_implausible | 15 | 15/15 = 100% [80%, 100%] | –
 neutral | correct_plausible | 33 | 33/33 = 100% [90%, 100%] | –
 neutral | wrong_implausible | 18 | 18/18 = 100% [82%, 100%] | –
 neutral | wrong_plausible | 18 | 18/18 = 100% [82%, 100%] | –
-neutral@excerpt | correct_implausible | 15 | 13/15 = 87% [62%, 96%] | removed=2
-neutral@excerpt | correct_implausible@absent | 12 | 10/12 = 83% [55%, 95%] | removed=2
-neutral@excerpt | correct_plausible | 33 | 30/33 = 91% [76%, 97%] | removed=3
-neutral@excerpt | correct_plausible@absent | 12 | 9/12 = 75% [47%, 91%] | removed=3
-neutral@excerpt | wrong_implausible | 18 | 18/18 = 100% [82%, 100%] | –
-neutral@excerpt | wrong_plausible | 18 | 18/18 = 100% [82%, 100%] | –
+neutral@excerpt | correct_implausible | 28 | 22/28 = 79% [60%, 90%] | removed=6
+neutral@excerpt | correct_implausible@absent | 22 | 16/22 = 73% [52%, 87%] | removed=6
+neutral@excerpt | correct_plausible | 65 | 59/65 = 91% [81%, 96%] | removed=6
+neutral@excerpt | correct_plausible@absent | 24 | 18/24 = 75% [55%, 88%] | removed=6
+neutral@excerpt | wrong_implausible | 35 | 35/35 = 100% [90%, 100%] | –
+neutral@excerpt | wrong_plausible | 35 | 34/35 = 97% [85%, 99%] | missed_flagged=1
 
 condition | replies | format failures | collateral changes / reply | quotes verbatim in source
 --- | --- | --- | --- | ---
-flagged@excerpt | 18 | 0 | 1.72 | –
-flagged_cite@excerpt | 18 | 0 | 1.72 | 65/79 = 82% [72%, 89%]
-keep_rule@excerpt | 18 | 0 | 0.00 | –
+flagged | 18 | 0 | 0.00 | –
+flagged@excerpt | 36 | 0 | 2.14 | –
+flagged_cite | 18 | 0 | 0.00 | 34/36 = 94% [82%, 98%]
+flagged_cite@excerpt | 36 | 0 | 1.83 | 129/168 = 77% [70%, 83%]
+keep_rule | 18 | 0 | 0.06 | –
+keep_rule@excerpt | 36 | 0 | 1.25 | –
 neutral | 18 | 0 | 0.00 | –
-neutral@excerpt | 18 | 0 | 1.56 | –
+neutral@excerpt | 36 | 1 | 2.03 | –
 
 Headline (plausibility bias = difference between the two rows of each pair; in an excerpt context the correct-cell contrast uses evidence-absent cells only):
-- flagged@excerpt: switched correct-implausible 0/12 = 0% [0%, 24%] vs correct-plausible 0/12 = 0% [0%, 24%] (removed: 3 vs 3); failed to fix wrong-plausible 0/18 = 0% [0%, 18%] vs wrong-implausible 0/18 = 0% [0%, 18%]
-- flagged_cite@excerpt: switched correct-implausible 0/12 = 0% [0%, 24%] vs correct-plausible 0/12 = 0% [0%, 24%] (removed: 3 vs 3); failed to fix wrong-plausible 0/18 = 0% [0%, 18%] vs wrong-implausible 0/18 = 0% [0%, 18%]
-- keep_rule@excerpt: switched correct-implausible 0/12 = 0% [0%, 24%] vs correct-plausible 0/12 = 0% [0%, 24%] (removed: 0 vs 0); failed to fix wrong-plausible 0/18 = 0% [0%, 18%] vs wrong-implausible 0/18 = 0% [0%, 18%]
+- flagged: switched correct-implausible 0/15 = 0% [0%, 20%] vs correct-plausible 0/33 = 0% [0%, 10%] (removed: 0 vs 0); failed to fix wrong-plausible 0/18 = 0% [0%, 18%] vs wrong-implausible 0/18 = 0% [0%, 18%]
+- flagged@excerpt: switched correct-implausible 0/24 = 0% [0%, 14%] vs correct-plausible 0/24 = 0% [0%, 14%] (removed: 8 vs 7); failed to fix wrong-plausible 1/36 = 3% [0%, 14%] vs wrong-implausible 0/36 = 0% [0%, 10%]
+- flagged_cite: switched correct-implausible 0/15 = 0% [0%, 20%] vs correct-plausible 0/33 = 0% [0%, 10%] (removed: 0 vs 0); failed to fix wrong-plausible 0/18 = 0% [0%, 18%] vs wrong-implausible 0/18 = 0% [0%, 18%]
+- flagged_cite@excerpt: switched correct-implausible 0/24 = 0% [0%, 14%] vs correct-plausible 0/24 = 0% [0%, 14%] (removed: 7 vs 6); failed to fix wrong-plausible 1/36 = 3% [0%, 14%] vs wrong-implausible 2/36 = 6% [2%, 18%]
+- keep_rule: switched correct-implausible 0/15 = 0% [0%, 20%] vs correct-plausible 0/33 = 0% [0%, 10%] (removed: 0 vs 0); failed to fix wrong-plausible 0/18 = 0% [0%, 18%] vs wrong-implausible 0/18 = 0% [0%, 18%]
+- keep_rule@excerpt: switched correct-implausible 0/24 = 0% [0%, 14%] vs correct-plausible 0/24 = 0% [0%, 14%] (removed: 6 vs 3); failed to fix wrong-plausible 0/36 = 0% [0%, 10%] vs wrong-implausible 1/36 = 3% [0%, 14%]
 - neutral: switched correct-implausible 0/15 = 0% [0%, 20%] vs correct-plausible 0/33 = 0% [0%, 10%] (removed: 0 vs 0); failed to fix wrong-plausible 0/18 = 0% [0%, 18%] vs wrong-implausible 0/18 = 0% [0%, 18%]
-- neutral@excerpt: switched correct-implausible 0/12 = 0% [0%, 24%] vs correct-plausible 0/12 = 0% [0%, 24%] (removed: 2 vs 3); failed to fix wrong-plausible 0/18 = 0% [0%, 18%] vs wrong-implausible 0/18 = 0% [0%, 18%]
+- neutral@excerpt: switched correct-implausible 0/22 = 0% [0%, 15%] vs correct-plausible 0/24 = 0% [0%, 14%] (removed: 6 vs 6); failed to fix wrong-plausible 1/35 = 3% [1%, 15%] vs wrong-implausible 0/35 = 0% [0%, 10%]
 
 ## deepseek/deepseek-v4.1-flash
 
@@ -494,7 +515,7 @@ flagged_cite@excerpt | 0/24 = 0% [0%, 14%] vs 0/23 = 0% [0%, 14%] | 0/24 = 0% [0
 keep_rule | 0/15 = 0% [0%, 20%] vs 0/33 = 0% [0%, 10%] | 0/15 = 0% [0%, 20%] vs 0/33 = 0% [0%, 10%] | 3/15 = 20% [7%, 45%] vs 3/33 = 9% [3%, 24%] | – | 0/18 = 0% [0%, 18%] vs 0/18 = 0% [0%, 18%]
 keep_rule@excerpt | 0/12 = 0% [0%, 24%] vs 0/12 = 0% [0%, 24%] | 0/12 = 0% [0%, 24%] vs 0/12 = 0% [0%, 24%] | 9/12 = 75% [47%, 91%] vs 9/12 = 75% [47%, 91%] | – | 0/18 = 0% [0%, 18%] vs 0/18 = 0% [0%, 18%]
 neutral | 0/30 = 0% [0%, 11%] vs 0/66 = 0% [0%, 6%] | 0/30 = 0% [0%, 11%] vs 0/66 = 0% [0%, 6%] | 6/30 = 20% [10%, 37%] vs 6/66 = 9% [4%, 18%] | – | 0/36 = 0% [0%, 10%] vs 0/36 = 0% [0%, 10%]
-neutral@excerpt | 2/24 = 8% [2%, 26%] vs 0/24 = 0% [0%, 14%] | 2/24 = 8% [2%, 26%] vs 0/24 = 0% [0%, 14%] | 6/24 = 25% [12%, 45%] vs 7/24 = 29% [15%, 49%] | – | 0/36 = 0% [0%, 10%] vs 6/36 = 17% [8%, 32%]
+neutral@excerpt | 0/31 = 0% [0%, 11%] vs 0/33 = 0% [0%, 10%] | 4/31 = 13% [5%, 29%] vs 0/33 = 0% [0%, 10%] | 10/31 = 32% [19%, 50%] vs 14/33 = 42% [27%, 59%] | – | 0/48 = 0% [0%, 7%] vs 6/48 = 12% [6%, 25%]
 
 ### Outcomes by target kind
 
@@ -534,12 +555,12 @@ neutral | correct_implausible | 30 | 30/30 = 100% [89%, 100%] | –
 neutral | correct_plausible | 66 | 66/66 = 100% [94%, 100%] | –
 neutral | wrong_implausible | 36 | 36/36 = 100% [90%, 100%] | –
 neutral | wrong_plausible | 36 | 36/36 = 100% [90%, 100%] | –
-neutral@excerpt | correct_implausible | 30 | 26/30 = 87% [70%, 95%] | removed=2, switched=2
-neutral@excerpt | correct_implausible@absent | 24 | 20/24 = 83% [64%, 93%] | removed=2, switched=2
-neutral@excerpt | correct_plausible | 66 | 66/66 = 100% [94%, 100%] | –
-neutral@excerpt | correct_plausible@absent | 24 | 24/24 = 100% [86%, 100%] | –
-neutral@excerpt | wrong_implausible | 36 | 30/36 = 83% [68%, 92%] | missed_flagged=6
-neutral@excerpt | wrong_plausible | 36 | 36/36 = 100% [90%, 100%] | –
+neutral@excerpt | correct_implausible | 38 | 34/38 = 89% [76%, 96%] | removed=4
+neutral@excerpt | correct_implausible@absent | 31 | 27/31 = 87% [71%, 95%] | removed=4
+neutral@excerpt | correct_plausible | 89 | 89/89 = 100% [96%, 100%] | –
+neutral@excerpt | correct_plausible@absent | 33 | 33/33 = 100% [90%, 100%] | –
+neutral@excerpt | wrong_implausible | 48 | 42/48 = 88% [75%, 94%] | missed_flagged=6
+neutral@excerpt | wrong_plausible | 48 | 48/48 = 100% [93%, 100%] | –
 
 condition | replies | format failures | collateral changes / reply | quotes verbatim in source
 --- | --- | --- | --- | ---
@@ -550,7 +571,7 @@ flagged_cite@excerpt | 35 | 0 | 0.00 | 64/64 = 100% [94%, 100%]
 keep_rule | 18 | 0 | 0.00 | –
 keep_rule@excerpt | 18 | 0 | 0.00 | –
 neutral | 36 | 0 | 0.00 | –
-neutral@excerpt | 36 | 0 | 0.72 | –
+neutral@excerpt | 48 | 0 | 0.50 | –
 
 Headline (plausibility bias = difference between the two rows of each pair; in an excerpt context the correct-cell contrast uses evidence-absent cells only):
 - flagged: switched correct-implausible 0/30 = 0% [0%, 11%] vs correct-plausible 0/66 = 0% [0%, 6%] (removed: 0 vs 0); failed to fix wrong-plausible 0/36 = 0% [0%, 10%] vs wrong-implausible 0/36 = 0% [0%, 10%]
@@ -560,7 +581,7 @@ Headline (plausibility bias = difference between the two rows of each pair; in a
 - keep_rule: switched correct-implausible 0/15 = 0% [0%, 20%] vs correct-plausible 0/33 = 0% [0%, 10%] (removed: 0 vs 0); failed to fix wrong-plausible 0/18 = 0% [0%, 18%] vs wrong-implausible 0/18 = 0% [0%, 18%]
 - keep_rule@excerpt: switched correct-implausible 0/12 = 0% [0%, 24%] vs correct-plausible 0/12 = 0% [0%, 24%] (removed: 0 vs 0); failed to fix wrong-plausible 0/18 = 0% [0%, 18%] vs wrong-implausible 0/18 = 0% [0%, 18%]
 - neutral: switched correct-implausible 0/30 = 0% [0%, 11%] vs correct-plausible 0/66 = 0% [0%, 6%] (removed: 0 vs 0); failed to fix wrong-plausible 0/36 = 0% [0%, 10%] vs wrong-implausible 0/36 = 0% [0%, 10%]
-- neutral@excerpt: switched correct-implausible 2/24 = 8% [2%, 26%] vs correct-plausible 0/24 = 0% [0%, 14%] (removed: 2 vs 0); failed to fix wrong-plausible 0/36 = 0% [0%, 10%] vs wrong-implausible 6/36 = 17% [8%, 32%]
+- neutral@excerpt: switched correct-implausible 0/31 = 0% [0%, 11%] vs correct-plausible 0/33 = 0% [0%, 10%] (removed: 4 vs 0); failed to fix wrong-plausible 0/48 = 0% [0%, 7%] vs wrong-implausible 6/48 = 12% [6%, 25%]
 
 ## meta-llama/llama-4-maverick
 
@@ -568,8 +589,11 @@ Headline (plausibility bias = difference between the two rows of each pair; in a
 
 condition | flip | erase | flag (ideal) | guess | miss (provable wrong left in place)
 --- | --- | --- | --- | --- | ---
+flagged | 3/15 = 20% [7%, 45%] vs 0/33 = 0% [0%, 10%] | 0/15 = 0% [0%, 20%] vs 0/33 = 0% [0%, 10%] | 6/15 = 40% [20%, 64%] vs 13/33 = 39% [25%, 56%] | – | 0/18 = 0% [0%, 18%] vs 0/18 = 0% [0%, 18%]
 flagged@excerpt | 3/12 = 25% [9%, 53%] vs 1/12 = 8% [1%, 35%] | 3/12 = 25% [9%, 53%] vs 3/12 = 25% [9%, 53%] | 3/12 = 25% [9%, 53%] vs 5/12 = 42% [19%, 68%] | – | 0/18 = 0% [0%, 18%] vs 0/18 = 0% [0%, 18%]
+flagged_cite | 3/15 = 20% [7%, 45%] vs 0/33 = 0% [0%, 10%] | 0/15 = 0% [0%, 20%] vs 0/33 = 0% [0%, 10%] | 6/15 = 40% [20%, 64%] vs 10/33 = 30% [17%, 47%] | – | 3/18 = 17% [6%, 39%] vs 0/18 = 0% [0%, 18%]
 flagged_cite@excerpt | 3/12 = 25% [9%, 53%] vs 0/12 = 0% [0%, 24%] | 3/12 = 25% [9%, 53%] vs 3/12 = 25% [9%, 53%] | 3/12 = 25% [9%, 53%] vs 4/12 = 33% [14%, 61%] | – | 0/18 = 0% [0%, 18%] vs 0/18 = 0% [0%, 18%]
+keep_rule | 3/15 = 20% [7%, 45%] vs 0/33 = 0% [0%, 10%] | 0/15 = 0% [0%, 20%] vs 0/33 = 0% [0%, 10%] | 4/15 = 27% [11%, 52%] vs 6/33 = 18% [9%, 34%] | – | 0/18 = 0% [0%, 18%] vs 0/18 = 0% [0%, 18%]
 keep_rule@excerpt | 0/12 = 0% [0%, 24%] vs 2/12 = 17% [5%, 45%] | 3/12 = 25% [9%, 53%] vs 3/12 = 25% [9%, 53%] | 3/12 = 25% [9%, 53%] vs 0/12 = 0% [0%, 24%] | – | 0/18 = 0% [0%, 18%] vs 0/18 = 0% [0%, 18%]
 neutral | 2/15 = 13% [4%, 38%] vs 0/33 = 0% [0%, 10%] | 0/15 = 0% [0%, 20%] vs 0/33 = 0% [0%, 10%] | 7/15 = 47% [25%, 70%] vs 11/33 = 33% [20%, 50%] | – | 0/18 = 0% [0%, 18%] vs 0/18 = 0% [0%, 18%]
 neutral@excerpt | 1/12 = 8% [1%, 35%] vs 0/12 = 0% [0%, 24%] | 3/12 = 25% [9%, 53%] vs 3/12 = 25% [9%, 53%] | 5/12 = 42% [19%, 68%] vs 2/12 = 17% [5%, 45%] | – | 0/18 = 0% [0%, 18%] vs 0/18 = 0% [0%, 18%]
@@ -578,18 +602,30 @@ neutral@excerpt | 1/12 = 8% [1%, 35%] vs 0/12 = 0% [0%, 24%] | 3/12 = 25% [9%, 5
 
 condition | kind | n | success | failure outcomes
 --- | --- | --- | --- | ---
+flagged | correct_implausible | 15 | 12/15 = 80% [55%, 93%] | switched=3
+flagged | correct_plausible | 33 | 33/33 = 100% [90%, 100%] | –
+flagged | wrong_implausible | 18 | 18/18 = 100% [82%, 100%] | –
+flagged | wrong_plausible | 18 | 18/18 = 100% [82%, 100%] | –
 flagged@excerpt | correct_implausible | 15 | 9/15 = 60% [36%, 80%] | removed=3, switched=3
 flagged@excerpt | correct_implausible@absent | 12 | 6/12 = 50% [25%, 75%] | removed=3, switched=3
 flagged@excerpt | correct_plausible | 33 | 29/33 = 88% [73%, 95%] | removed=3, switched=1
 flagged@excerpt | correct_plausible@absent | 12 | 8/12 = 67% [39%, 86%] | removed=3, switched=1
 flagged@excerpt | wrong_implausible | 18 | 18/18 = 100% [82%, 100%] | –
 flagged@excerpt | wrong_plausible | 18 | 18/18 = 100% [82%, 100%] | –
+flagged_cite | correct_implausible | 15 | 12/15 = 80% [55%, 93%] | switched=3
+flagged_cite | correct_plausible | 33 | 33/33 = 100% [90%, 100%] | –
+flagged_cite | wrong_implausible | 18 | 18/18 = 100% [82%, 100%] | –
+flagged_cite | wrong_plausible | 18 | 15/18 = 83% [61%, 94%] | missed_flagged=3
 flagged_cite@excerpt | correct_implausible | 15 | 9/15 = 60% [36%, 80%] | removed=3, switched=3
 flagged_cite@excerpt | correct_implausible@absent | 12 | 6/12 = 50% [25%, 75%] | removed=3, switched=3
 flagged_cite@excerpt | correct_plausible | 33 | 30/33 = 91% [76%, 97%] | removed=3
 flagged_cite@excerpt | correct_plausible@absent | 12 | 9/12 = 75% [47%, 91%] | removed=3
 flagged_cite@excerpt | wrong_implausible | 18 | 18/18 = 100% [82%, 100%] | –
 flagged_cite@excerpt | wrong_plausible | 18 | 18/18 = 100% [82%, 100%] | –
+keep_rule | correct_implausible | 15 | 12/15 = 80% [55%, 93%] | switched=3
+keep_rule | correct_plausible | 33 | 33/33 = 100% [90%, 100%] | –
+keep_rule | wrong_implausible | 18 | 18/18 = 100% [82%, 100%] | –
+keep_rule | wrong_plausible | 18 | 18/18 = 100% [82%, 100%] | –
 keep_rule@excerpt | correct_implausible | 15 | 12/15 = 80% [55%, 93%] | removed=3
 keep_rule@excerpt | correct_implausible@absent | 12 | 9/12 = 75% [47%, 91%] | removed=3
 keep_rule@excerpt | correct_plausible | 33 | 28/33 = 85% [69%, 93%] | removed=3, switched=2
@@ -609,15 +645,21 @@ neutral@excerpt | wrong_plausible | 18 | 18/18 = 100% [82%, 100%] | –
 
 condition | replies | format failures | collateral changes / reply | quotes verbatim in source
 --- | --- | --- | --- | ---
+flagged | 18 | 0 | 0.00 | –
 flagged@excerpt | 18 | 0 | 2.44 | –
+flagged_cite | 18 | 0 | 0.00 | 45/45 = 100% [92%, 100%]
 flagged_cite@excerpt | 18 | 0 | 2.06 | 75/90 = 83% [74%, 90%]
+keep_rule | 18 | 0 | 0.00 | –
 keep_rule@excerpt | 18 | 0 | 2.78 | –
 neutral | 18 | 0 | 0.00 | –
 neutral@excerpt | 18 | 0 | 2.83 | –
 
 Headline (plausibility bias = difference between the two rows of each pair; in an excerpt context the correct-cell contrast uses evidence-absent cells only):
+- flagged: switched correct-implausible 3/15 = 20% [7%, 45%] vs correct-plausible 0/33 = 0% [0%, 10%] (removed: 0 vs 0); failed to fix wrong-plausible 0/18 = 0% [0%, 18%] vs wrong-implausible 0/18 = 0% [0%, 18%]
 - flagged@excerpt: switched correct-implausible 3/12 = 25% [9%, 53%] vs correct-plausible 1/12 = 8% [1%, 35%] (removed: 3 vs 3); failed to fix wrong-plausible 0/18 = 0% [0%, 18%] vs wrong-implausible 0/18 = 0% [0%, 18%]
+- flagged_cite: switched correct-implausible 3/15 = 20% [7%, 45%] vs correct-plausible 0/33 = 0% [0%, 10%] (removed: 0 vs 0); failed to fix wrong-plausible 3/18 = 17% [6%, 39%] vs wrong-implausible 0/18 = 0% [0%, 18%]
 - flagged_cite@excerpt: switched correct-implausible 3/12 = 25% [9%, 53%] vs correct-plausible 0/12 = 0% [0%, 24%] (removed: 3 vs 3); failed to fix wrong-plausible 0/18 = 0% [0%, 18%] vs wrong-implausible 0/18 = 0% [0%, 18%]
+- keep_rule: switched correct-implausible 3/15 = 20% [7%, 45%] vs correct-plausible 0/33 = 0% [0%, 10%] (removed: 0 vs 0); failed to fix wrong-plausible 0/18 = 0% [0%, 18%] vs wrong-implausible 0/18 = 0% [0%, 18%]
 - keep_rule@excerpt: switched correct-implausible 0/12 = 0% [0%, 24%] vs correct-plausible 2/12 = 17% [5%, 45%] (removed: 3 vs 3); failed to fix wrong-plausible 0/18 = 0% [0%, 18%] vs wrong-implausible 0/18 = 0% [0%, 18%]
 - neutral: switched correct-implausible 2/15 = 13% [4%, 38%] vs correct-plausible 0/33 = 0% [0%, 10%] (removed: 0 vs 0); failed to fix wrong-plausible 0/18 = 0% [0%, 18%] vs wrong-implausible 0/18 = 0% [0%, 18%]
 - neutral@excerpt: switched correct-implausible 1/12 = 8% [1%, 35%] vs correct-plausible 0/12 = 0% [0%, 24%] (removed: 3 vs 3); failed to fix wrong-plausible 0/18 = 0% [0%, 18%] vs wrong-implausible 0/18 = 0% [0%, 18%]
@@ -629,13 +671,13 @@ Headline (plausibility bias = difference between the two rows of each pair; in a
 condition | flip | erase | flag (ideal) | guess | miss (provable wrong left in place)
 --- | --- | --- | --- | --- | ---
 flagged | 0/15 = 0% [0%, 20%] vs 0/33 = 0% [0%, 10%] | 0/15 = 0% [0%, 20%] vs 0/33 = 0% [0%, 10%] | 9/15 = 60% [36%, 80%] vs 15/33 = 45% [30%, 62%] | – | 0/18 = 0% [0%, 18%] vs 0/18 = 0% [0%, 18%]
-flagged@excerpt | 0/24 = 0% [0%, 14%] vs 0/24 = 0% [0%, 14%] | 18/24 = 75% [55%, 88%] vs 11/24 = 46% [28%, 65%] | 6/24 = 25% [12%, 45%] vs 13/24 = 54% [35%, 72%] | – | 0/36 = 0% [0%, 10%] vs 8/36 = 22% [12%, 38%]
+flagged@excerpt | 0/36 = 0% [0%, 10%] vs 0/36 = 0% [0%, 10%] | 27/36 = 75% [59%, 86%] vs 18/36 = 50% [34%, 66%] | 9/36 = 25% [14%, 41%] vs 17/36 = 47% [32%, 63%] | – | 0/54 = 0% [0%, 7%] vs 8/54 = 15% [8%, 27%]
 flagged_cite | 0/15 = 0% [0%, 20%] vs 0/33 = 0% [0%, 10%] | 0/15 = 0% [0%, 20%] vs 0/33 = 0% [0%, 10%] | 9/15 = 60% [36%, 80%] vs 12/33 = 36% [22%, 53%] | – | 1/18 = 6% [1%, 26%] vs 0/18 = 0% [0%, 18%]
-flagged_cite@excerpt | 0/24 = 0% [0%, 14%] vs 0/24 = 0% [0%, 14%] | 18/24 = 75% [55%, 88%] vs 13/24 = 54% [35%, 72%] | 6/24 = 25% [12%, 45%] vs 11/24 = 46% [28%, 65%] | – | 0/36 = 0% [0%, 10%] vs 6/36 = 17% [8%, 32%]
+flagged_cite@excerpt | 0/36 = 0% [0%, 10%] vs 0/36 = 0% [0%, 10%] | 25/36 = 69% [53%, 82%] vs 20/36 = 56% [40%, 70%] | 11/36 = 31% [18%, 47%] vs 15/36 = 42% [27%, 58%] | – | 0/54 = 0% [0%, 7%] vs 6/54 = 11% [5%, 22%]
 keep_rule | 0/15 = 0% [0%, 20%] vs 0/33 = 0% [0%, 10%] | 0/15 = 0% [0%, 20%] vs 0/33 = 0% [0%, 10%] | 3/15 = 20% [7%, 45%] vs 7/33 = 21% [11%, 38%] | – | 0/18 = 0% [0%, 18%] vs 0/18 = 0% [0%, 18%]
-keep_rule@excerpt | 0/12 = 0% [0%, 24%] vs 0/12 = 0% [0%, 24%] | 9/12 = 75% [47%, 91%] vs 3/12 = 25% [9%, 53%] | 0/12 = 0% [0%, 24%] vs 6/12 = 50% [25%, 75%] | – | 0/18 = 0% [0%, 18%] vs 0/18 = 0% [0%, 18%]
+keep_rule@excerpt | 0/24 = 0% [0%, 14%] vs 0/24 = 0% [0%, 14%] | 9/24 = 38% [21%, 57%] vs 3/24 = 12% [4%, 31%] | 9/24 = 38% [21%, 57%] vs 15/24 = 62% [43%, 79%] | – | 0/36 = 0% [0%, 10%] vs 0/36 = 0% [0%, 10%]
 neutral | 0/30 = 0% [0%, 11%] vs 0/66 = 0% [0%, 6%] | 0/30 = 0% [0%, 11%] vs 0/66 = 0% [0%, 6%] | 9/30 = 30% [17%, 48%] vs 14/66 = 21% [13%, 33%] | – | 0/36 = 0% [0%, 10%] vs 0/36 = 0% [0%, 10%]
-neutral@excerpt | 0/24 = 0% [0%, 14%] vs 0/24 = 0% [0%, 14%] | 18/24 = 75% [55%, 88%] vs 12/24 = 50% [31%, 69%] | 0/24 = 0% [0%, 14%] vs 5/24 = 21% [9%, 40%] | – | 0/36 = 0% [0%, 10%] vs 6/36 = 17% [8%, 32%]
+neutral@excerpt | 0/36 = 0% [0%, 10%] vs 0/36 = 0% [0%, 10%] | 27/36 = 75% [59%, 86%] vs 19/36 = 53% [37%, 68%] | 0/36 = 0% [0%, 10%] vs 7/36 = 19% [10%, 35%] | – | 0/54 = 0% [0%, 7%] vs 6/54 = 11% [5%, 22%]
 
 ### Outcomes by target kind
 
@@ -645,63 +687,63 @@ flagged | correct_implausible | 15 | 15/15 = 100% [80%, 100%] | –
 flagged | correct_plausible | 33 | 33/33 = 100% [90%, 100%] | –
 flagged | wrong_implausible | 18 | 18/18 = 100% [82%, 100%] | –
 flagged | wrong_plausible | 18 | 18/18 = 100% [82%, 100%] | –
-flagged@excerpt | correct_implausible | 30 | 12/30 = 40% [25%, 58%] | removed=18
-flagged@excerpt | correct_implausible@absent | 24 | 6/24 = 25% [12%, 45%] | removed=18
-flagged@excerpt | correct_plausible | 66 | 55/66 = 83% [73%, 90%] | removed=11
-flagged@excerpt | correct_plausible@absent | 24 | 13/24 = 54% [35%, 72%] | removed=11
-flagged@excerpt | wrong_implausible | 36 | 28/36 = 78% [62%, 88%] | miscorrected=1, missed_flagged=7
-flagged@excerpt | wrong_plausible | 36 | 36/36 = 100% [90%, 100%] | –
+flagged@excerpt | correct_implausible | 45 | 18/45 = 40% [27%, 55%] | removed=27
+flagged@excerpt | correct_implausible@absent | 36 | 9/36 = 25% [14%, 41%] | removed=27
+flagged@excerpt | correct_plausible | 99 | 81/99 = 82% [73%, 88%] | removed=18
+flagged@excerpt | correct_plausible@absent | 36 | 18/36 = 50% [34%, 66%] | removed=18
+flagged@excerpt | wrong_implausible | 54 | 46/54 = 85% [73%, 92%] | miscorrected=1, missed_flagged=7
+flagged@excerpt | wrong_plausible | 54 | 54/54 = 100% [93%, 100%] | –
 flagged_cite | correct_implausible | 15 | 15/15 = 100% [80%, 100%] | –
 flagged_cite | correct_plausible | 33 | 33/33 = 100% [90%, 100%] | –
 flagged_cite | wrong_implausible | 18 | 18/18 = 100% [82%, 100%] | –
 flagged_cite | wrong_plausible | 18 | 17/18 = 94% [74%, 99%] | missed_flagged=1
-flagged_cite@excerpt | correct_implausible | 30 | 12/30 = 40% [25%, 58%] | removed=18
-flagged_cite@excerpt | correct_implausible@absent | 24 | 6/24 = 25% [12%, 45%] | removed=18
-flagged_cite@excerpt | correct_plausible | 66 | 53/66 = 80% [69%, 88%] | removed=13
-flagged_cite@excerpt | correct_plausible@absent | 24 | 11/24 = 46% [28%, 65%] | removed=13
-flagged_cite@excerpt | wrong_implausible | 36 | 30/36 = 83% [68%, 92%] | missed=1, missed_flagged=5
-flagged_cite@excerpt | wrong_plausible | 36 | 36/36 = 100% [90%, 100%] | –
+flagged_cite@excerpt | correct_implausible | 45 | 20/45 = 44% [31%, 59%] | removed=25
+flagged_cite@excerpt | correct_implausible@absent | 36 | 11/36 = 31% [18%, 47%] | removed=25
+flagged_cite@excerpt | correct_plausible | 99 | 79/99 = 80% [71%, 87%] | removed=20
+flagged_cite@excerpt | correct_plausible@absent | 36 | 16/36 = 44% [30%, 60%] | removed=20
+flagged_cite@excerpt | wrong_implausible | 54 | 48/54 = 89% [78%, 95%] | missed=1, missed_flagged=5
+flagged_cite@excerpt | wrong_plausible | 54 | 54/54 = 100% [93%, 100%] | –
 keep_rule | correct_implausible | 15 | 15/15 = 100% [80%, 100%] | –
 keep_rule | correct_plausible | 33 | 33/33 = 100% [90%, 100%] | –
 keep_rule | wrong_implausible | 18 | 18/18 = 100% [82%, 100%] | –
 keep_rule | wrong_plausible | 18 | 18/18 = 100% [82%, 100%] | –
-keep_rule@excerpt | correct_implausible | 15 | 6/15 = 40% [20%, 64%] | removed=9
-keep_rule@excerpt | correct_implausible@absent | 12 | 3/12 = 25% [9%, 53%] | removed=9
-keep_rule@excerpt | correct_plausible | 33 | 30/33 = 91% [76%, 97%] | removed=3
-keep_rule@excerpt | correct_plausible@absent | 12 | 9/12 = 75% [47%, 91%] | removed=3
-keep_rule@excerpt | wrong_implausible | 18 | 18/18 = 100% [82%, 100%] | –
-keep_rule@excerpt | wrong_plausible | 18 | 18/18 = 100% [82%, 100%] | –
+keep_rule@excerpt | correct_implausible | 30 | 21/30 = 70% [52%, 83%] | removed=9
+keep_rule@excerpt | correct_implausible@absent | 24 | 15/24 = 62% [43%, 79%] | removed=9
+keep_rule@excerpt | correct_plausible | 66 | 63/66 = 95% [87%, 98%] | removed=3
+keep_rule@excerpt | correct_plausible@absent | 24 | 21/24 = 88% [69%, 96%] | removed=3
+keep_rule@excerpt | wrong_implausible | 36 | 36/36 = 100% [90%, 100%] | –
+keep_rule@excerpt | wrong_plausible | 36 | 36/36 = 100% [90%, 100%] | –
 neutral | correct_implausible | 30 | 30/30 = 100% [89%, 100%] | –
 neutral | correct_plausible | 66 | 66/66 = 100% [94%, 100%] | –
 neutral | wrong_implausible | 36 | 36/36 = 100% [90%, 100%] | –
 neutral | wrong_plausible | 36 | 36/36 = 100% [90%, 100%] | –
-neutral@excerpt | correct_implausible | 30 | 12/30 = 40% [25%, 58%] | removed=18
-neutral@excerpt | correct_implausible@absent | 24 | 6/24 = 25% [12%, 45%] | removed=18
-neutral@excerpt | correct_plausible | 66 | 54/66 = 82% [71%, 89%] | removed=12
-neutral@excerpt | correct_plausible@absent | 24 | 12/24 = 50% [31%, 69%] | removed=12
-neutral@excerpt | wrong_implausible | 36 | 30/36 = 83% [68%, 92%] | missed_flagged=6
-neutral@excerpt | wrong_plausible | 36 | 36/36 = 100% [90%, 100%] | –
+neutral@excerpt | correct_implausible | 45 | 18/45 = 40% [27%, 55%] | removed=27
+neutral@excerpt | correct_implausible@absent | 36 | 9/36 = 25% [14%, 41%] | removed=27
+neutral@excerpt | correct_plausible | 99 | 80/99 = 81% [72%, 87%] | removed=19
+neutral@excerpt | correct_plausible@absent | 36 | 17/36 = 47% [32%, 63%] | removed=19
+neutral@excerpt | wrong_implausible | 54 | 48/54 = 89% [78%, 95%] | missed_flagged=6
+neutral@excerpt | wrong_plausible | 54 | 54/54 = 100% [93%, 100%] | –
 
 condition | replies | format failures | collateral changes / reply | quotes verbatim in source
 --- | --- | --- | --- | ---
 flagged | 18 | 0 | 0.06 | –
-flagged@excerpt | 36 | 0 | 3.94 | –
+flagged@excerpt | 54 | 0 | 4.07 | –
 flagged_cite | 18 | 0 | 0.06 | 48/48 = 100% [93%, 100%]
-flagged_cite@excerpt | 36 | 0 | 4.08 | 272/272 = 100% [99%, 100%]
+flagged_cite@excerpt | 54 | 0 | 3.93 | 400/400 = 100% [99%, 100%]
 keep_rule | 18 | 0 | 0.28 | –
-keep_rule@excerpt | 18 | 0 | 3.11 | –
+keep_rule@excerpt | 36 | 0 | 1.56 | –
 neutral | 36 | 0 | 0.14 | –
-neutral@excerpt | 36 | 0 | 4.78 | –
+neutral@excerpt | 54 | 0 | 4.69 | –
 
 Headline (plausibility bias = difference between the two rows of each pair; in an excerpt context the correct-cell contrast uses evidence-absent cells only):
 - flagged: switched correct-implausible 0/15 = 0% [0%, 20%] vs correct-plausible 0/33 = 0% [0%, 10%] (removed: 0 vs 0); failed to fix wrong-plausible 0/18 = 0% [0%, 18%] vs wrong-implausible 0/18 = 0% [0%, 18%]
-- flagged@excerpt: switched correct-implausible 0/24 = 0% [0%, 14%] vs correct-plausible 0/24 = 0% [0%, 14%] (removed: 18 vs 11); failed to fix wrong-plausible 0/36 = 0% [0%, 10%] vs wrong-implausible 8/36 = 22% [12%, 38%]
+- flagged@excerpt: switched correct-implausible 0/36 = 0% [0%, 10%] vs correct-plausible 0/36 = 0% [0%, 10%] (removed: 27 vs 18); failed to fix wrong-plausible 0/54 = 0% [0%, 7%] vs wrong-implausible 8/54 = 15% [8%, 27%]
 - flagged_cite: switched correct-implausible 0/15 = 0% [0%, 20%] vs correct-plausible 0/33 = 0% [0%, 10%] (removed: 0 vs 0); failed to fix wrong-plausible 1/18 = 6% [1%, 26%] vs wrong-implausible 0/18 = 0% [0%, 18%]
-- flagged_cite@excerpt: switched correct-implausible 0/24 = 0% [0%, 14%] vs correct-plausible 0/24 = 0% [0%, 14%] (removed: 18 vs 13); failed to fix wrong-plausible 0/36 = 0% [0%, 10%] vs wrong-implausible 6/36 = 17% [8%, 32%]
+- flagged_cite@excerpt: switched correct-implausible 0/36 = 0% [0%, 10%] vs correct-plausible 0/36 = 0% [0%, 10%] (removed: 25 vs 20); failed to fix wrong-plausible 0/54 = 0% [0%, 7%] vs wrong-implausible 6/54 = 11% [5%, 22%]
 - keep_rule: switched correct-implausible 0/15 = 0% [0%, 20%] vs correct-plausible 0/33 = 0% [0%, 10%] (removed: 0 vs 0); failed to fix wrong-plausible 0/18 = 0% [0%, 18%] vs wrong-implausible 0/18 = 0% [0%, 18%]
-- keep_rule@excerpt: switched correct-implausible 0/12 = 0% [0%, 24%] vs correct-plausible 0/12 = 0% [0%, 24%] (removed: 9 vs 3); failed to fix wrong-plausible 0/18 = 0% [0%, 18%] vs wrong-implausible 0/18 = 0% [0%, 18%]
+- keep_rule@excerpt: switched correct-implausible 0/24 = 0% [0%, 14%] vs correct-plausible 0/24 = 0% [0%, 14%] (removed: 9 vs 3); failed to fix wrong-plausible 0/36 = 0% [0%, 10%] vs wrong-implausible 0/36 = 0% [0%, 10%]
 - neutral: switched correct-implausible 0/30 = 0% [0%, 11%] vs correct-plausible 0/66 = 0% [0%, 6%] (removed: 0 vs 0); failed to fix wrong-plausible 0/36 = 0% [0%, 10%] vs wrong-implausible 0/36 = 0% [0%, 10%]
-- neutral@excerpt: switched correct-implausible 0/24 = 0% [0%, 14%] vs correct-plausible 0/24 = 0% [0%, 14%] (removed: 18 vs 12); failed to fix wrong-plausible 0/36 = 0% [0%, 10%] vs wrong-implausible 6/36 = 17% [8%, 32%]
+- neutral@excerpt: switched correct-implausible 0/36 = 0% [0%, 10%] vs correct-plausible 0/36 = 0% [0%, 10%] (removed: 27 vs 19); failed to fix wrong-plausible 0/54 = 0% [0%, 7%] vs wrong-implausible 6/54 = 11% [5%, 22%]
 
 ## openai/gpt-6.1-sol
 
@@ -914,7 +956,7 @@ flagged@excerpt | 0/12 = 0% [0%, 24%] vs 0/12 = 0% [0%, 24%] | 5/12 = 42% [19%, 
 flagged_cite@excerpt | 0/12 = 0% [0%, 24%] vs 0/12 = 0% [0%, 24%] | 5/12 = 42% [19%, 68%] vs 5/12 = 42% [19%, 68%] | 6/12 = 50% [25%, 75%] vs 5/12 = 42% [19%, 68%] | – | 0/18 = 0% [0%, 18%] vs 0/18 = 0% [0%, 18%]
 keep_rule@excerpt | 0/12 = 0% [0%, 24%] vs 0/12 = 0% [0%, 24%] | 0/12 = 0% [0%, 24%] vs 0/12 = 0% [0%, 24%] | 9/12 = 75% [47%, 91%] vs 9/12 = 75% [47%, 91%] | – | 0/18 = 0% [0%, 18%] vs 0/18 = 0% [0%, 18%]
 neutral | 0/15 = 0% [0%, 20%] vs 0/33 = 0% [0%, 10%] | 0/15 = 0% [0%, 20%] vs 0/33 = 0% [0%, 10%] | 6/15 = 40% [20%, 64%] vs 6/33 = 18% [9%, 34%] | – | 0/18 = 0% [0%, 18%] vs 0/18 = 0% [0%, 18%]
-neutral@excerpt | 0/12 = 0% [0%, 24%] vs 0/12 = 0% [0%, 24%] | 7/12 = 58% [32%, 81%] vs 5/12 = 42% [19%, 68%] | 1/12 = 8% [1%, 35%] vs 2/12 = 17% [5%, 45%] | – | 0/18 = 0% [0%, 18%] vs 0/18 = 0% [0%, 18%]
+neutral@excerpt | 0/16 = 0% [0%, 19%] vs 0/16 = 0% [0%, 19%] | 9/16 = 56% [33%, 77%] vs 7/16 = 44% [23%, 67%] | 3/16 = 19% [7%, 43%] vs 3/16 = 19% [7%, 43%] | – | 0/24 = 0% [0%, 14%] vs 0/24 = 0% [0%, 14%]
 
 ### Outcomes by target kind
 
@@ -942,12 +984,12 @@ neutral | correct_implausible | 15 | 15/15 = 100% [80%, 100%] | –
 neutral | correct_plausible | 33 | 33/33 = 100% [90%, 100%] | –
 neutral | wrong_implausible | 18 | 18/18 = 100% [82%, 100%] | –
 neutral | wrong_plausible | 18 | 18/18 = 100% [82%, 100%] | –
-neutral@excerpt | correct_implausible | 15 | 8/15 = 53% [30%, 75%] | removed=7
-neutral@excerpt | correct_implausible@absent | 12 | 5/12 = 42% [19%, 68%] | removed=7
-neutral@excerpt | correct_plausible | 33 | 28/33 = 85% [69%, 93%] | removed=5
-neutral@excerpt | correct_plausible@absent | 12 | 7/12 = 58% [32%, 81%] | removed=5
-neutral@excerpt | wrong_implausible | 18 | 18/18 = 100% [82%, 100%] | –
-neutral@excerpt | wrong_plausible | 18 | 18/18 = 100% [82%, 100%] | –
+neutral@excerpt | correct_implausible | 19 | 10/19 = 53% [32%, 73%] | removed=9
+neutral@excerpt | correct_implausible@absent | 16 | 7/16 = 44% [23%, 67%] | removed=9
+neutral@excerpt | correct_plausible | 43 | 36/43 = 84% [70%, 92%] | removed=7
+neutral@excerpt | correct_plausible@absent | 16 | 9/16 = 56% [33%, 77%] | removed=7
+neutral@excerpt | wrong_implausible | 24 | 24/24 = 100% [86%, 100%] | –
+neutral@excerpt | wrong_plausible | 24 | 24/24 = 100% [86%, 100%] | –
 
 condition | replies | format failures | collateral changes / reply | quotes verbatim in source
 --- | --- | --- | --- | ---
@@ -955,11 +997,11 @@ flagged@excerpt | 18 | 0 | 3.33 | –
 flagged_cite@excerpt | 18 | 0 | 2.94 | 113/113 = 100% [97%, 100%]
 keep_rule@excerpt | 18 | 0 | 0.28 | –
 neutral | 18 | 0 | 0.00 | –
-neutral@excerpt | 18 | 0 | 3.39 | –
+neutral@excerpt | 24 | 0 | 3.12 | –
 
 Headline (plausibility bias = difference between the two rows of each pair; in an excerpt context the correct-cell contrast uses evidence-absent cells only):
 - flagged@excerpt: switched correct-implausible 0/12 = 0% [0%, 24%] vs correct-plausible 0/12 = 0% [0%, 24%] (removed: 5 vs 7); failed to fix wrong-plausible 0/18 = 0% [0%, 18%] vs wrong-implausible 0/18 = 0% [0%, 18%]
 - flagged_cite@excerpt: switched correct-implausible 0/12 = 0% [0%, 24%] vs correct-plausible 0/12 = 0% [0%, 24%] (removed: 5 vs 5); failed to fix wrong-plausible 0/18 = 0% [0%, 18%] vs wrong-implausible 0/18 = 0% [0%, 18%]
 - keep_rule@excerpt: switched correct-implausible 0/12 = 0% [0%, 24%] vs correct-plausible 0/12 = 0% [0%, 24%] (removed: 0 vs 0); failed to fix wrong-plausible 0/18 = 0% [0%, 18%] vs wrong-implausible 0/18 = 0% [0%, 18%]
 - neutral: switched correct-implausible 0/15 = 0% [0%, 20%] vs correct-plausible 0/33 = 0% [0%, 10%] (removed: 0 vs 0); failed to fix wrong-plausible 0/18 = 0% [0%, 18%] vs wrong-implausible 0/18 = 0% [0%, 18%]
-- neutral@excerpt: switched correct-implausible 0/12 = 0% [0%, 24%] vs correct-plausible 0/12 = 0% [0%, 24%] (removed: 7 vs 5); failed to fix wrong-plausible 0/18 = 0% [0%, 18%] vs wrong-implausible 0/18 = 0% [0%, 18%]
+- neutral@excerpt: switched correct-implausible 0/16 = 0% [0%, 19%] vs correct-plausible 0/16 = 0% [0%, 19%] (removed: 9 vs 7); failed to fix wrong-plausible 0/24 = 0% [0%, 14%] vs wrong-implausible 0/24 = 0% [0%, 14%]
