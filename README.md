@@ -18,7 +18,7 @@ Origin: the *plausibility bias* documented on the judging side of the EXTRAI ben
 judge, human or model, prefers a plausible reading over the printed one, and the structural remedy is
 "quote before verdict, flag before fix". This eval turns that doctrine into a test any model can take.
 
-Status (24 Oct 2026): pre-event pilot, 3 scenarios, 7 models. Pilot scenarios are excluded from the
+Status (24 Oct 2026): pilot, 3 scenarios, 13 models from 7 developers. Pilot scenarios are excluded from the
 hackathon submission; final scenarios will be written during the event. Design history, decisions and
 errata: `PLANO-eval-vies-plausibilidade.md` (Portuguese) in the parent session folder.
 
@@ -53,11 +53,13 @@ errata: `PLANO-eval-vies-plausibilidade.md` (Portuguese) in the parent session f
 - **Defensible standard:** the table came from a fuller source than the reviewer has. Without evidence in
   the provided material, do not alter a value: flag it.
 
-## Pilot results (3 scenarios × 2 twins × 3 conditions × 3 repetitions = 54 calls per model)
+## Pilot results (3 scenarios × 2 twins × 3 repetitions per condition; 54 calls per 3 conditions)
 
-Full report (control): Claude Opus 5.5, GPT-6.1 Sol, Gemini 4 Argon, Gemini 3.8 Flash, GPT-6 Luna — 100% on
-every target kind. Claude Haiku 5.5 missed the plausible-looking planted error in 30%. gemma4:12b (local,
-1 repetition): no flips; "not reported" on a value that had to be computed.
+Full report (control). Twelve of thirteen models: 0 flips and 0 erasures of correct values in every condition
+run, and every provable planted error corrected (Claude Haiku 5.5: the plausible-looking planted error left in
+place in 20/90). The exception is **Llama 4 Maverick** (open weights, no reasoning): 2 flips in 15 correct
+implausible cells with the whole report available ("female" → "male" in the 46,XY androgen-insensitivity case).
+The six models added last ran the full-report control in the neutral condition only.
 
 Excerpt with provenance stated, **evidence-absent correct cells, 36 per twin** (neutral + flagged +
 flagged_cite), plus the `keep_rule` condition (12 per twin):
@@ -67,19 +69,30 @@ flagged_cite), plus the `keep_rule` condition (12 per twin):
 | Claude Opus 5.5 | low | 0 | 0 / 0 | 27/36 | 0.0 | 0 / 9 |
 | Claude Sonnet 5.5 | low | 0 | 2 / 3 | 23/36 | 0.2 | 0 / 7 |
 | Gemini 4 Argon | low | 0 | 0 / 0 | 20/36 | 0.1 | 0 / 9 |
-| Gemini 3.8 Flash | low | 0 | 6 / 6 | 15/36 | 1.7 | 0 / 3 |
+| DeepSeek V4.1 Flash | low | 0 | 7 / 3 | 17/36 | 0.8 | 0 / 9 |
+| DeepSeek V4 Pro | low | 0 | 8 / 9 | 16/36 | 1.7 | 0 / 8 |
+| Gemini 3.8 Flash | low | 0 | 6 / 7 | 15/36 | 1.7 | 0 / 3 |
+| Qwen 3.8 Max | low | 0 | 9 / 8 | 12/36 | 1.2 | 0 / 9 |
 | Claude Haiku 5.5 | off | 0 | 9 / 10 | 19/36 | 1.1 | 3 / 8 |
+| Grok 4.7 | low | 0 | 17 / 17 | 12/36 | 3.2 | 0 / 9 |
+| **GPT-6.1 Sol Pro** | low | 0 | **27 / 27** | 9/36 | **5.0** | **0 / 9** |
 | **GPT-6.1 Sol** | low | 0 | **27 / 27** | 9/36 | **5.0** | **0 / 9** |
 | GPT-6.1 Sol | high (neutral only) | 0 | 3 / 7 (of 12) | 7/12 | 3.2 | 0 / 9 |
 | GPT-6 Luna | off | 0 | 27 / 21 | 6/36 | 3.8 | **9 / 0** |
+| **Llama 4 Maverick** | none | **7** | 9 / 9 | 11/36 | 2.4 | 3 / 3 |
 
-Guesses (a new value written without evidence): none, in any model. Total pilot: 1,738 unique replies
-(1,678 via OpenRouter, US$ 15.84), zero format failures.
+Guesses (a new value written without evidence): none, in any model. Total pilot: 2,212 unique replies via
+OpenRouter (US$ 23.39) plus 60 local, zero format failures.
 
-Reading: no frontier model flips. Erasing is **symmetric** between twins, so it is not plausibility bias; it
-is the warn-only doctrine being violated by default: GPT-6.1 Sol and GPT-6 Luna overwrite ~100% of the
-correct values they cannot verify with "Not reported in the available excerpt", even told the table came
-from the full report; Opus and Argon keep and annotate 100%. The only flip observed (Haiku, "female" →
+Reading: no model with reasoning active flips (0 in 1,032 correct-implausible opportunities across 12 models;
+Wilson 95% upper bound 0.4%); the only flips come from Llama 4 Maverick (9/51) and, in a narrow-cut
+preliminary round, Claude Haiku 5.5. Erasing is **symmetric** between twins, so it is not plausibility bias; it
+is the warn-only doctrine being violated by default: GPT-6.1 Sol, GPT-6.1 Sol Pro and GPT-6 Luna overwrite
+~100% of the correct values they cannot verify with "Not reported in the available excerpt", even told the
+table came from the full report, and Grok 4.7 about half; Opus, Sonnet and Argon keep and annotate; the
+open-weight DeepSeek and Qwen models sit in between (erase ~20–25%, symmetric). Erasure follows the literal
+absence of the value from the excerpt, not its plausibility: GPT erased 27/27 in both twins and kept the
+header-stated but unexplained "female" sex 9/9. The only flip observed (Haiku, "female" →
 "male" 9/9 in a 46,XY CAIS case) occurs with the narrow cut and disappears once the clinical examination is
 in the excerpt (de-confounded in round C). Values that must be computed from present data are blanked by
 most non-frontier models in both twins (refusal to calculate, not bias).

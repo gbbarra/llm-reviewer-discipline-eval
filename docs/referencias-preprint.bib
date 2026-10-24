@@ -1,0 +1,442 @@
+% Referencias do preprint (medRxiv, Health Informatics)
+% "Comportamento de modelos de linguagem ao revisar dados extraidos sob evidencia completa e parcial"
+% Todas as entradas verificadas em 2026-10-24 contra Crossref (DOI) ou API do arXiv.
+% Chaves no formato autorAnoPalavra. Lista anotada: referencias-preprint.md
+
+% ---------- Tema 1: LLMs como juizes e seus vieses ----------
+
+@inproceedings{zheng2023judging,
+  author    = {Zheng, Lianmin and Chiang, Wei-Lin and Sheng, Ying and Zhuang, Siyuan and Wu, Zhanghao and Zhuang, Yonghao and Lin, Zi and Li, Zhuohan and Li, Dacheng and Xing, Eric and Zhang, Hao and Gonzalez, Joseph and Stoica, Ion},
+  title     = {Judging {LLM}-as-a-Judge with {MT}-Bench and Chatbot Arena},
+  booktitle = {Advances in Neural Information Processing Systems 36},
+  pages     = {46595--46623},
+  year      = {2023},
+  doi       = {10.52202/075280-2020}
+}
+
+@inproceedings{chen2024humans,
+  author    = {Chen, Guiming Hardy and Chen, Shunian and Liu, Ziche and Jiang, Feng and Wang, Benyou},
+  title     = {Humans or {LLMs} as the Judge? {A} Study on Judgement Bias},
+  booktitle = {Proceedings of the 2024 Conference on Empirical Methods in Natural Language Processing},
+  pages     = {8301--8327},
+  publisher = {Association for Computational Linguistics},
+  year      = {2024},
+  doi       = {10.18653/v1/2024.emnlp-main.474}
+}
+
+@article{mccoy2024embers,
+  author  = {McCoy, R. Thomas and Yao, Shunyu and Friedman, Dan and Hardy, Mathew D. and Griffiths, Thomas L.},
+  title   = {Embers of autoregression show how large language models are shaped by the problem they are trained to solve},
+  journal = {Proceedings of the National Academy of Sciences},
+  volume  = {121},
+  number  = {41},
+  pages   = {e2322420121},
+  year    = {2024},
+  doi     = {10.1073/pnas.2322420121}
+}
+
+@article{lampinen2024content,
+  author  = {Lampinen, Andrew K. and Dasgupta, Ishita and Chan, Stephanie C. Y. and Sheahan, Hannah R. and Creswell, Antonia and Kumaran, Dharshan and McClelland, James L. and Hill, Felix},
+  title   = {Language models, like humans, show content effects on reasoning tasks},
+  journal = {PNAS Nexus},
+  volume  = {3},
+  number  = {7},
+  pages   = {pgae233},
+  year    = {2024},
+  doi     = {10.1093/pnasnexus/pgae233}
+}
+
+% ---------- Tema 2: Bajulacao (sycophancy) ----------
+
+@inproceedings{perez2023discovering,
+  author    = {Perez, Ethan and Ringer, Sam and Lukosiute, Kamile and Nguyen, Karina and Chen, Edwin and Heiner, Scott and Pettit, Craig and Olsson, Catherine and Kundu, Sandipan and Kadavath, Saurav and Jones, Andy and Chen, Anna and Mann, Benjamin and Israel, Brian and Seethor, Bryan and McKinnon, Cameron and Olah, Christopher and Yan, Da and Amodei, Daniela and Amodei, Dario and Drain, Dawn and Li, Dustin and Tran-Johnson, Eli and Khundadze, Guro and Kernion, Jackson and Landis, James and Kerr, Jamie and Mueller, Jared and Hyun, Jeeyoon and Landau, Joshua and Ndousse, Kamal and Goldberg, Landon and Lovitt, Liane and Lucas, Martin and Sellitto, Michael and Zhang, Miranda and Kingsland, Neerav and Elhage, Nelson and Joseph, Nicholas and Mercado, Noemi and DasSarma, Nova and Rausch, Oliver and Larson, Robin and McCandlish, Sam and Johnston, Scott and Kravec, Shauna and El Showk, Sheer and Lanham, Tamera and Telleen-Lawton, Timothy and Brown, Tom and Henighan, Tom and Hume, Tristan and Bai, Yuntao and Hatfield-Dodds, Zac and Clark, Jack and Bowman, Samuel R. and Askell, Amanda and Grosse, Roger and Hernandez, Danny and Ganguli, Deep and Hubinger, Evan and Schiefer, Nicholas and Kaplan, Jared},
+  title     = {Discovering Language Model Behaviors with Model-Written Evaluations},
+  booktitle = {Findings of the Association for Computational Linguistics: ACL 2023},
+  pages     = {13387--13434},
+  publisher = {Association for Computational Linguistics},
+  year      = {2023},
+  doi       = {10.18653/v1/2023.findings-acl.847}
+}
+
+@inproceedings{sharma2024sycophancy,
+  author    = {Sharma, Mrinank and Tong, Meg and Korbak, Tomasz and Duvenaud, David and Askell, Amanda and Bowman, Samuel R. and Cheng, Newton and Durmus, Esin and Hatfield-Dodds, Zac and Johnston, Scott R. and Kravec, Shauna and Maxwell, Timothy and McCandlish, Sam and Ndousse, Kamal and Rausch, Oliver and Schiefer, Nicholas and Yan, Da and Zhang, Miranda and Perez, Ethan},
+  title     = {Towards Understanding Sycophancy in Language Models},
+  booktitle = {The Twelfth International Conference on Learning Representations (ICLR 2024)},
+  year      = {2024},
+  eprint    = {2310.13548},
+  archivePrefix = {arXiv},
+  url       = {https://arxiv.org/abs/2310.13548}
+}
+
+@article{chen2025helpfulness,
+  author  = {Chen, Shan and Gao, Mingye and Sasse, Kuleen and Hartvigsen, Thomas and Anthony, Brian and Fan, Lizhou and Aerts, Hugo and Gallifant, Jack and Bitterman, Danielle S.},
+  title   = {When helpfulness backfires: {LLMs} and the risk of false medical information due to sycophantic behavior},
+  journal = {npj Digital Medicine},
+  volume  = {8},
+  pages   = {605},
+  year    = {2025},
+  doi     = {10.1038/s41746-025-02008-z}
+}
+
+% ---------- Tema 3: Fidelidade ao contexto, abstencao vs fabricacao ----------
+
+@inproceedings{rajpurkar2018know,
+  author    = {Rajpurkar, Pranav and Jia, Robin and Liang, Percy},
+  title     = {Know What You Don't Know: Unanswerable Questions for {SQuAD}},
+  booktitle = {Proceedings of the 56th Annual Meeting of the Association for Computational Linguistics (Volume 2: Short Papers)},
+  pages     = {784--789},
+  publisher = {Association for Computational Linguistics},
+  year      = {2018},
+  doi       = {10.18653/v1/P18-2124}
+}
+
+@article{wen2025know,
+  author  = {Wen, Bingbing and Yao, Jihan and Feng, Shangbin and Xu, Chenjun and Tsvetkov, Yulia and Howe, Bill and Wang, Lucy Lu},
+  title   = {Know Your Limits: A Survey of Abstention in Large Language Models},
+  journal = {Transactions of the Association for Computational Linguistics},
+  volume  = {13},
+  pages   = {529--556},
+  year    = {2025},
+  doi     = {10.1162/tacl_a_00754}
+}
+
+@article{kalai2026evaluating,
+  author  = {Kalai, Adam Tauman and Nachum, Ofir and Vempala, Santosh S. and Zhang, Edwin},
+  title   = {Evaluating large language models for accuracy incentivizes hallucinations},
+  journal = {Nature},
+  volume  = {653},
+  number  = {8116},
+  pages   = {1047--1051},
+  year    = {2026},
+  doi     = {10.1038/s41586-026-10549-w}
+}
+
+@inproceedings{xu2024knowledge,
+  author    = {Xu, Rongwu and Qi, Zehan and Guo, Zhijiang and Wang, Cunxiang and Wang, Hongru and Zhang, Yue and Xu, Wei},
+  title     = {Knowledge Conflicts for {LLMs}: A Survey},
+  booktitle = {Proceedings of the 2024 Conference on Empirical Methods in Natural Language Processing},
+  pages     = {8541--8565},
+  publisher = {Association for Computational Linguistics},
+  year      = {2024},
+  doi       = {10.18653/v1/2024.emnlp-main.486}
+}
+
+@misc{zhang2026rethinking,
+  author        = {Zhang, Zizhuo and Peng, Xiong and Sun, Jingwei and Yao, Rong and Jiang, Borui and Han, Bo},
+  title         = {Rethinking Faithfulness in {LLMs}: A Pairwise Context-Sensitive Perspective},
+  year          = {2026},
+  eprint        = {2610.07894},
+  archivePrefix = {arXiv},
+  howpublished  = {arXiv preprint},
+  url           = {https://arxiv.org/abs/2610.07894}
+}
+
+% ---------- Tema 4: Extracao de dados (revisoes sistematicas e notas clinicas) ----------
+
+@article{mathes2017frequency,
+  author  = {Mathes, Tim and Kla{\ss}en, Pauline and Pieper, Dawid},
+  title   = {Frequency of data extraction errors and methods to increase data extraction quality: a methodological review},
+  journal = {BMC Medical Research Methodology},
+  volume  = {17},
+  number  = {1},
+  pages   = {152},
+  year    = {2017},
+  doi     = {10.1186/s12874-017-0431-4}
+}
+
+@article{buscemi2006single,
+  author  = {Buscemi, Nina and Hartling, Lisa and Vandermeer, Ben and Tjosvold, Lisa and Klassen, Terry P.},
+  title   = {Single data extraction generated more errors than double data extraction in systematic reviews},
+  journal = {Journal of Clinical Epidemiology},
+  volume  = {59},
+  number  = {7},
+  pages   = {697--703},
+  year    = {2006},
+  doi     = {10.1016/j.jclinepi.2005.11.010}
+}
+
+@article{gartlehner2024data,
+  author  = {Gartlehner, Gerald and Kahwati, Leila and Hilscher, Rainer and Thomas, Ian and Kugley, Shannon and Crotty, Karen and Viswanathan, Meera and Nussbaumer-Streit, Barbara and Booth, Graham and Erskine, Nathaniel and Konet, Amanda and Chew, Robert},
+  title   = {Data extraction for evidence synthesis using a large language model: A proof-of-concept study},
+  journal = {Research Synthesis Methods},
+  volume  = {15},
+  number  = {4},
+  pages   = {576--589},
+  year    = {2024},
+  doi     = {10.1002/jrsm.1710}
+}
+
+@article{gartlehner2025artificial,
+  author  = {Gartlehner, Gerald and Kugley, Shannon and Crotty, Karen and Viswanathan, Meera and Dobrescu, Andreea and Nussbaumer-Streit, Barbara and Booth, Graham and Treadwell, Jonathan R. and Han, Jung Min and Wagner, Jesse and Apaydin, Eric A. and Coppola, Erin L. and Maglione, Margaret and Hilscher, Rainer and Chew, Robert and Pilar, Meagan and Swanton, Bryan and Kahwati, Leila C.},
+  title   = {Artificial Intelligence--Assisted Data Extraction With a Large Language Model: A Study Within Reviews},
+  journal = {Annals of Internal Medicine},
+  volume  = {178},
+  number  = {12},
+  pages   = {1763--1771},
+  year    = {2025},
+  doi     = {10.7326/ANNALS-25-00739}
+}
+
+@article{huang2024critical,
+  author  = {Huang, Jingwei and Yang, Donghan M. and Rong, Ruichen and Nezafati, Kuroush and Treager, Colin and Chi, Zhikai and Wang, Shidan and Cheng, Xian and Guo, Yujia and Klesse, Laura J. and Xiao, Guanghua and Peterson, Eric D. and Zhan, Xiaowei and Xie, Yang},
+  title   = {A critical assessment of using {ChatGPT} for extracting structured data from clinical notes},
+  journal = {npj Digital Medicine},
+  volume  = {7},
+  pages   = {106},
+  year    = {2024},
+  doi     = {10.1038/s41746-024-01079-8}
+}
+
+% ---------- Tema 5: LLMs em genomica clinica e interpretacao de variantes ----------
+
+@article{richards2015standards,
+  author  = {Richards, Sue and Aziz, Nazneen and Bale, Sherri and Bick, David and Das, Soma and Gastier-Foster, Julie and Grody, Wayne W. and Hegde, Madhuri and Lyon, Elaine and Spector, Elaine and Voelkerding, Karl and Rehm, Heidi L.},
+  title   = {Standards and guidelines for the interpretation of sequence variants: a joint consensus recommendation of the {American College of Medical Genetics and Genomics} and the {Association for Molecular Pathology}},
+  journal = {Genetics in Medicine},
+  volume  = {17},
+  number  = {5},
+  pages   = {405--424},
+  year    = {2015},
+  doi     = {10.1038/gim.2015.30}
+}
+
+@article{dendunnen2016hgvs,
+  author  = {den Dunnen, Johan T. and Dalgleish, Raymond and Maglott, Donna R. and Hart, Reece K. and Greenblatt, Marc S. and McGowan-Jordan, Jean and Roux, Anne-Francoise and Smith, Timothy and Antonarakis, Stylianos E. and Taschner, Peter E. M.},
+  title   = {{HGVS} Recommendations for the Description of Sequence Variants: 2016 Update},
+  journal = {Human Mutation},
+  volume  = {37},
+  number  = {6},
+  pages   = {564--569},
+  year    = {2016},
+  doi     = {10.1002/humu.22981}
+}
+
+@article{duong2024analysis,
+  author  = {Duong, Dat and Solomon, Benjamin D.},
+  title   = {Analysis of large-language model versus human performance for genetics questions},
+  journal = {European Journal of Human Genetics},
+  volume  = {32},
+  number  = {4},
+  pages   = {466--468},
+  year    = {2024},
+  doi     = {10.1038/s41431-023-01396-8}
+}
+
+@article{lu2025boosting,
+  author  = {Lu, Shuangjia and Cosgun, Erdal},
+  title   = {Boosting {GPT} models for genomics analysis: generating trusted genetic variant annotations and interpretations through {RAG} and Fine-tuning},
+  journal = {Bioinformatics Advances},
+  volume  = {5},
+  number  = {1},
+  pages   = {vbaf019},
+  year    = {2025},
+  doi     = {10.1093/bioadv/vbaf019}
+}
+
+@article{li2025autopm3,
+  author  = {Li, Shumin and Wang, Yiding and Liu, Chi-Man and Huang, Yuanhua and Lam, Tak-Wah and Luo, Ruibang},
+  title   = {{AutoPM3}: enhancing variant interpretation via {LLM}-driven {PM3} evidence extraction from scientific literature},
+  journal = {Bioinformatics},
+  volume  = {41},
+  number  = {7},
+  pages   = {btaf382},
+  year    = {2025},
+  doi     = {10.1093/bioinformatics/btaf382}
+}
+
+% ---------- Tema 6: Automation bias ----------
+
+@article{goddard2012automation,
+  author  = {Goddard, Kate and Roudsari, Abdul and Wyatt, Jeremy C.},
+  title   = {Automation bias: a systematic review of frequency, effect mediators, and mitigators},
+  journal = {Journal of the American Medical Informatics Association},
+  volume  = {19},
+  number  = {1},
+  pages   = {121--127},
+  year    = {2012},
+  doi     = {10.1136/amiajnl-2011-000089}
+}
+
+@article{parasuraman2010complacency,
+  author  = {Parasuraman, Raja and Manzey, Dietrich H.},
+  title   = {Complacency and Bias in Human Use of Automation: An Attentional Integration},
+  journal = {Human Factors},
+  volume  = {52},
+  number  = {3},
+  pages   = {381--410},
+  year    = {2010},
+  doi     = {10.1177/0018720810376055}
+}
+
+@article{dratsch2023automation,
+  author  = {Dratsch, Thomas and Chen, Xue and Rezazade Mehrizi, Mohammad and Kloeckner, Roman and M{\"a}hringer-Kunz, Aline and P{\"u}sken, Michael and Bae{\ss}ler, Bettina and Sauer, Stephanie and Maintz, David and Pinto dos Santos, Daniel},
+  title   = {Automation Bias in Mammography: The Impact of Artificial Intelligence {BI-RADS} Suggestions on Reader Performance},
+  journal = {Radiology},
+  volume  = {307},
+  number  = {4},
+  pages   = {e222176},
+  year    = {2023},
+  doi     = {10.1148/radiol.222176}
+}
+
+% ---------- Tema 7: Instrucoes explicitas e esforco de raciocinio ----------
+
+@inproceedings{wei2022chain,
+  author    = {Wei, Jason and Wang, Xuezhi and Schuurmans, Dale and Bosma, Maarten and Ichter, Brian and Xia, Fei and Chi, Ed and Le, Quoc V. and Zhou, Denny},
+  title     = {Chain-of-Thought Prompting Elicits Reasoning in Large Language Models},
+  booktitle = {Advances in Neural Information Processing Systems 35},
+  pages     = {24824--24837},
+  year      = {2022},
+  doi       = {10.52202/068431-1800}
+}
+
+@misc{zhou2023instruction,
+  author        = {Zhou, Jeffrey and Lu, Tianjian and Mishra, Swaroop and Brahma, Siddhartha and Basu, Sujoy and Luan, Yi and Zhou, Denny and Hou, Le},
+  title         = {Instruction-Following Evaluation for Large Language Models},
+  year          = {2023},
+  eprint        = {2311.07911},
+  archivePrefix = {arXiv},
+  howpublished  = {arXiv preprint},
+  url           = {https://arxiv.org/abs/2311.07911}
+}
+
+@inproceedings{turpin2023language,
+  author    = {Turpin, Miles and Michael, Julian and Perez, Ethan and Bowman, Samuel R.},
+  title     = {Language Models Don't Always Say What They Think: Unfaithful Explanations in Chain-of-Thought Prompting},
+  booktitle = {Advances in Neural Information Processing Systems 36},
+  pages     = {74952--74965},
+  year      = {2023},
+  doi       = {10.52202/075280-3275}
+}
+
+@article{gema2025inverse,
+  author        = {Gema, Aryo Pradipta and H{\"a}gele, Alexander and Chen, Runjin and Arditi, Andy and Goldman-Wetzler, Jacob and Fraser-Taliente, Kit and Sleight, Henry and Petrini, Linda and Michael, Julian and Alex, Beatrice and Minervini, Pasquale and Chen, Yanda and Benton, Joe and Perez, Ethan},
+  title         = {Inverse Scaling in Test-Time Compute},
+  journal       = {Transactions on Machine Learning Research},
+  year          = {2025},
+  eprint        = {2507.14417},
+  archivePrefix = {arXiv},
+  url           = {https://openreview.net/forum?id=NXgyHW1c7M}
+}
+
+% ---------- Tema 8: Metodologia ----------
+
+@article{wilson1927probable,
+  author  = {Wilson, Edwin B.},
+  title   = {Probable Inference, the Law of Succession, and Statistical Inference},
+  journal = {Journal of the American Statistical Association},
+  volume  = {22},
+  number  = {158},
+  pages   = {209--212},
+  year    = {1927},
+  doi     = {10.1080/01621459.1927.10502953}
+}
+
+@article{brown2001interval,
+  author  = {Brown, Lawrence D. and Cai, T. Tony and DasGupta, Anirban},
+  title   = {Interval Estimation for a Binomial Proportion},
+  journal = {Statistical Science},
+  volume  = {16},
+  number  = {2},
+  pages   = {101--133},
+  year    = {2001},
+  doi     = {10.1214/ss/1009213286}
+}
+
+@article{hanley1983nothing,
+  author  = {Hanley, James A. and Lippman-Hand, Abby},
+  title   = {If Nothing Goes Wrong, Is Everything All Right? {Interpreting} Zero Numerators},
+  journal = {JAMA},
+  volume  = {249},
+  number  = {13},
+  pages   = {1743--1745},
+  year    = {1983},
+  doi     = {10.1001/jama.1983.03330370053031}
+}
+
+@inproceedings{gardner2020contrast,
+  author    = {Gardner, Matt and Artzi, Yoav and Basmov, Victoria and Berant, Jonathan and Bogin, Ben and Chen, Sihao and Dasigi, Pradeep and Dua, Dheeru and Elazar, Yanai and Gottumukkala, Ananth and Gupta, Nitish and Hajishirzi, Hannaneh and Ilharco, Gabriel and Khashabi, Daniel and Lin, Kevin and Liu, Jiangming and Liu, Nelson F. and Mulcaire, Phoebe and Ning, Qiang and Singh, Sameer and Smith, Noah A. and Subramanian, Sanjay and Tsarfaty, Reut and Wallace, Eric and Zhang, Ally and Zhou, Ben},
+  title     = {Evaluating Models' Local Decision Boundaries via Contrast Sets},
+  booktitle = {Findings of the Association for Computational Linguistics: EMNLP 2020},
+  pages     = {1307--1323},
+  publisher = {Association for Computational Linguistics},
+  year      = {2020},
+  doi       = {10.18653/v1/2020.findings-emnlp.117}
+}
+
+@article{nosek2018preregistration,
+  author  = {Nosek, Brian A. and Ebersole, Charles R. and DeHaven, Alexander C. and Mellor, David T.},
+  title   = {The preregistration revolution},
+  journal = {Proceedings of the National Academy of Sciences},
+  volume  = {115},
+  number  = {11},
+  pages   = {2600--2606},
+  year    = {2018},
+  doi     = {10.1073/pnas.1708274114}
+}
+
+@inproceedings{vanmiltenburg2021preregistering,
+  author    = {van Miltenburg, Emiel and van der Lee, Chris and Krahmer, Emiel},
+  title     = {Preregistering {NLP} research},
+  booktitle = {Proceedings of the 2021 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies},
+  pages     = {613--623},
+  publisher = {Association for Computational Linguistics},
+  year      = {2021},
+  doi       = {10.18653/v1/2021.naacl-main.51}
+}
+
+@misc{miller2024adding,
+  author        = {Miller, Evan},
+  title         = {Adding Error Bars to Evals: A Statistical Approach to Language Model Evaluations},
+  year          = {2024},
+  eprint        = {2411.00640},
+  archivePrefix = {arXiv},
+  howpublished  = {arXiv preprint},
+  url           = {https://arxiv.org/abs/2411.00640}
+}
+
+% ---------- Tema 9: Contexto clinico dos cenarios ----------
+
+@article{ghosh2018updated,
+  author  = {Ghosh, Rajarshi and Harrison, Steven M. and Rehm, Heidi L. and Plon, Sharon E. and Biesecker, Leslie G. and {ClinGen Sequence Variant Interpretation Working Group}},
+  title   = {Updated recommendation for the benign stand-alone {ACMG/AMP} criterion},
+  journal = {Human Mutation},
+  volume  = {39},
+  number  = {11},
+  pages   = {1525--1530},
+  year    = {2018},
+  doi     = {10.1002/humu.23642}
+}
+
+@article{arcosburgos2002genetics,
+  author  = {Arcos-Burgos, M. and Muenke, M.},
+  title   = {Genetics of population isolates},
+  journal = {Clinical Genetics},
+  volume  = {61},
+  number  = {4},
+  pages   = {233--247},
+  year    = {2002},
+  doi     = {10.1034/j.1399-0004.2002.610401.x}
+}
+
+@article{hughes2012androgen,
+  author  = {Hughes, Ieuan A. and Davies, John D. and Bunch, Trevor I. and Pasterski, Vickie and Mastroyannopoulou, Kiki and MacDougall, Jane},
+  title   = {Androgen insensitivity syndrome},
+  journal = {The Lancet},
+  volume  = {380},
+  number  = {9851},
+  pages   = {1419--1428},
+  year    = {2012},
+  doi     = {10.1016/S0140-6736(12)60071-3}
+}
+
+@article{campbell2014parental,
+  author  = {Campbell, Ian M. and Yuan, Bo and Robberecht, Caroline and Pfundt, Rolph and Szafranski, Przemyslaw and McEntagart, Meriel E. and Nagamani, Sandesh C. S. and Erez, Ayelet and Bartnik, Magdalena and Wi{\'s}niowiecka-Kowalnik, Barbara and Plunkett, Katie S. and Pursley, Amber N. and Kang, Sung-Hae L. and Bi, Weimin and Lalani, Seema R. and Bacino, Carlos A. and Vast, Mala and Marks, Karen and Patton, Michael and Olofsson, Peter and Patel, Ankita and Veltman, Joris A. and Cheung, Sau Wai and Shaw, Chad A. and Vissers, Lisenka E. L. M. and Vermeesch, Joris R. and Lupski, James R. and Stankiewicz, Pawe{\l}},
+  title   = {Parental Somatic Mosaicism Is Underrecognized and Influences Recurrence Risk of Genomic Disorders},
+  journal = {The American Journal of Human Genetics},
+  volume  = {95},
+  number  = {2},
+  pages   = {173--182},
+  year    = {2014},
+  doi     = {10.1016/j.ajhg.2014.07.003}
+}
