@@ -142,7 +142,7 @@ As condições de alerta e de citação obrigatória não reduziram o apagamento
 
 ### Efeito do esforço de raciocínio
 
-Na condição neutra do trecho, elevar o esforço de "low" para "high" zerou o apagamento no Gemini 3.8 Flash (de 6 de 24 para 0 de 24), reduziu-o pela metade no GPT-6.1 Sol (18 para 10) e no Grok 4.7 (12 para 6), e não o alterou de forma relevante no GPT-6.1 Sol Pro (18 para 16), no GPT-6 Luna (16 para 16), no Qwen 3.8 Max (6 para 6), no DeepSeek V4 Pro (5 para 6) e no DeepSeek V4.1 Flash (2 de 23 para 5 de 24) (Figura 6A; Tabela S1). Ligar o raciocínio ("off" para "low") zerou o apagamento no Claude Haiku 5.5 (7 para 0) e não o alterou no GPT-6 Luna (16 para 16) nem no DeepSeek V4 Pro (7 de 22 para 5 de 24). O esforço "high" multiplicou a média de tokens de saída por resposta por 1,1 (DeepSeek V4 Pro) a 21,5 (Gemini 3.8 Flash), com 1,7 no GPT-6.1 Sol e 4,0 no Grok 4.7 (Figura 6B; Tabela S1).
+Na condição neutra do trecho, elevar o esforço de "low" para "high" zerou o apagamento no Gemini 3.8 Flash (de 6 de 24 para 0 de 24), reduziu-o pela metade no GPT-6.1 Sol (18 para 10) e no Grok 4.7 (12 para 6), e não o alterou de forma relevante no GPT-6.1 Sol Pro (18 para 16), no GPT-6 Luna (16 para 16), no Qwen 3.8 Max (6 para 6), no DeepSeek V4 Pro (5 para 6) e no DeepSeek V4.1 Flash (2 de 23 para 5 de 24) (Figura 6A). Ligar o raciocínio ("off" para "low") zerou o apagamento no Claude Haiku 5.5 (7 para 0) e não o alterou no GPT-6 Luna (16 para 16) nem no DeepSeek V4 Pro (7 de 22 para 5 de 24). O esforço "high" multiplicou a média de tokens de saída por resposta por 1,1 (DeepSeek V4 Pro) a 21,5 (Gemini 3.8 Flash), com 1,7 no GPT-6.1 Sol e 4,0 no Grok 4.7 (Figura 6B).
 
 ![Figura 6](figures/fig6-reasoning-effort.png)
 
@@ -236,22 +236,4 @@ Em conclusão, com a prova no material, modelos de linguagem com raciocínio pre
 
 **Figura S1. Resumo das cinco métricas de disciplina do revisor.** Trecho com procedência declarada, condições neutra, alerta e citação. Troca: células corretas contraintuitivas sem prova trocadas por outro valor (%, n = 36). Apagamento e sinalização: células corretas sem prova apagadas, ou mantidas com nota (%, dois gêmeos, n = 72). Omissão: erros plantados verificáveis no trecho não corrigidos (%, n = 108; 104 para o DeepSeek V4.1 Flash). Colaterais: média de alterações em células não-alvo por resposta. Cada coluna tem a sua própria escala de cor (taxas de 0 a 100%; colaterais de 0 a 6 por resposta); a seta ao lado de cada métrica indica a direção desejável. Modelos na ordem da Figura 3.
 
-**Tabela S1. Apagamento e tokens de saída por nível de esforço de raciocínio.** Trecho com procedência declarada, condição neutra; 12 células corretas sem prova por gêmeo, dois gêmeos somados; 18 respostas por nível. Apagamento, células apagadas sobre células analisadas; n menor que 24 quando uma resposta não pôde ser interpretada. Tokens, média de tokens de saída por resposta nos logs brutos. "Off", raciocínio desligado onde a API permite; o Llama 4 Maverick não tem o parâmetro e consta apenas como "off". Mesmos dados da Figura 6.
-
-| Modelo | Apagamento, off | Apagamento, low | Apagamento, high | Tokens de saída por resposta: off / low / high | Razão high / low |
-| :--- | :---: | :---: | :---: | :---: | :---: |
-| Claude Opus 5.5 | — | 0 / 24 | 0 / 24 | — / 567 / 1.075 | 1,9× |
-| Gemini 4 Argon | — | 1 / 24 | 0 / 24 | — / 398 / 3.661 | 9,2× |
-| Claude Sonnet 5.5 | — | 0 / 24 | 1 / 24 | — / 461 / 816 | 1,8× |
-| DeepSeek V4.1 Flash | — | 2 / 23 | 5 / 24 | — / 6.010 / 10.698 | 1,8× |
-| Gemini 3.8 Flash | — | 6 / 24 | 0 / 24 | — / 437 / 9.374 | 21,5× |
-| DeepSeek V4 Pro | 7 / 22 | 5 / 24 | 6 / 24 | 593 / 3.401 / 3.632 | 1,1× |
-| Qwen 3.8 Max | — | 6 / 24 | 6 / 24 | — / 2.371 / 14.454 | 6,1× |
-| Llama 4 Maverick | 6 / 24 | — | — | 452 / — / — | — |
-| Claude Haiku 5.5 | 7 / 24 | 0 / 24 | 0 / 24 | 1.114 / 1.525 / 2.169 | 1,4× |
-| Grok 4.7 | — | 12 / 24 | 6 / 24 | — / 2.630 / 10.614 | 4,0× |
-| GPT-6 Luna | 16 / 24 | 16 / 24 | 16 / 24 | 612 / 898 / 2.157 | 2,4× |
-| GPT-6.1 Sol | — | 18 / 24 | 10 / 24 | — / 729 / 1.236 | 1,7× |
-| GPT-6.1 Sol Pro | — | 18 / 24 | 16 / 24 | — / 1.466 / 2.674 | 1,8× |
-
-**Dados de origem.** Todos os valores das Figuras 2 a 6 e S1, com numerador, denominador, taxa e intervalo de Wilson a 95%, estão em `docs/figures/results-figures-data.csv`, gerado por `docs/figures/make_results_figs.py` a partir dos logs corrigidos em `runs/`.
+**Dados de origem.** Todos os valores das Figuras 2 a 6 e S1, com numerador, denominador, taxa, intervalo de Wilson a 95% e, para a Figura 6, a média de tokens de saída por resposta, estão em `docs/figures/results-figures-data.csv`, gerado por `docs/figures/make_results_figs.py` a partir dos logs corrigidos em `runs/`.
