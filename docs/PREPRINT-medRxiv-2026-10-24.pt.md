@@ -122,11 +122,11 @@ Com a prova removida, os modelos se distribuíram entre dois extremos (Figura 3)
 
 As alterações colaterais acompanharam o apagamento (Figura 4). No laudo completo, todos os modelos ficaram em 0,2 por resposta ou menos. No trecho, o Claude Opus 5.5, o Gemini 4 Argon e o Claude Sonnet 5.5 alteraram 0,0, 0,1 e 0,2 células não-alvo por resposta; o Grok 4.7, 3,2; o GPT-6 Luna, 3,8; o GPT-6.1 Sol e o Sol Pro, 5,0. Essas alterações foram, em sua maioria, a substituição de valores corretos de células não-alvo por marcadores de ausência.
 
-Os erros plantados que continuavam verificáveis no trecho foram corrigidos por todos os modelos, com 1 omissão em 108 no Claude Sonnet 5.5 e no GPT-6 Luna e 2 em 108 no Claude Haiku 5.5 (Figura S1).
-
 ![Figura 4](figures/fig4-collateral-edits.png)
 
 **Figura 4. Alterações colaterais: mudanças em células que não estavam em revisão.** Média de alterações em células não-alvo, todas corretas como impressas, por resposta, no laudo completo (círculo vazio) e no trecho (círculo cheio), condições neutra, alerta e citação; 27 respostas por modelo e contexto (25 para o DeepSeek V4.1 Flash no trecho). A linha tracejada marca zero.
+
+Os erros plantados que continuavam verificáveis no trecho foram corrigidos por todos os modelos, com 1 omissão em 108 no Claude Sonnet 5.5 e no GPT-6 Luna e 2 em 108 no Claude Haiku 5.5 (Figura S1).
 
 ### Teste de simetria
 
