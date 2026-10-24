@@ -6,7 +6,7 @@
 
 ¹ Base by Base, Brasília, DF, Brasil. ORCID 0000-0002-2136-3471.
 
-**Correspondência:** Gustavo Barcelos Barra, gbbarra@gmail.com
+**Correspondência:** Gustavo Barcelos Barra, gustavo@basebybase.com
 
 **Palavras-chave:** modelos de linguagem de grande porte; extração de dados; revisão automatizada; genômica clínica; viés de plausibilidade; fidelidade ao contexto; engenharia de prompts; segurança de dados
 
