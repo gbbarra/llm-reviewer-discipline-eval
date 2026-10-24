@@ -178,9 +178,9 @@ Em conclusão, com a prova no material, modelos de linguagem com raciocínio pre
 
 **Financiamento.** O estudo não recebeu financiamento externo. O custo das chamadas de API foi coberto pelo autor.
 
-**Conflitos de interesse.** O autor declara não ter conflitos de interesse. Não há vínculo com os desenvolvedores dos modelos avaliados. O estudo é independente e não representa a posição de nenhuma instituição.
+**Conflitos de interesse.** O autor é coordenador do setor de genômica do Laboratório Sabin, laboratório clínico privado em Brasília. O estudo é independente, foi conduzido fora das atividades do laboratório e não representa a posição do Laboratório Sabin nem de nenhuma outra instituição. Não há vínculo com os desenvolvedores dos modelos avaliados.
 
-**Agradecimentos.** O autor agradece a Janete Ana Ribeiro Vaz e Sandra Santana Costa Soares, do Laboratório Sabin, Brasília, DF, pelo incentivo constante à sua atividade de pesquisa.
+**Agradecimentos.** O autor agradece ao Laboratório Sabin, Brasília, DF, e, em especial, a Janete Ana Ribeiro Vaz e Sandra Santana Costa Soares, pelo incentivo constante à sua atividade de pesquisa.
 
 **Aprovação ética e consentimento.** Não se aplicam. O estudo não envolveu seres humanos nem dados de pacientes; os laudos são sintéticos e as variantes, fictícias.
 
