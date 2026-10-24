@@ -31,10 +31,7 @@ twin). Llama 4 Maverick 7/36 versus 1/36; the plausible-twin event is the karyot
 cell of the plausible twin (registered sex "male"), which the grader counts as a replacement. Claude Haiku 5.5
 (reasoning off) 1/36: 0.19 written for a paternal allele fraction of 0.18 whose read counts were outside the
 excerpt. Across the 12 models with a reasoning setting, 1 flip in 970 parsed correct-implausible cells (both
-contexts, three conditions; 972 nominal). **(C)** Preliminary round, Claude Haiku 5.5 with reasoning off, without
-the provenance sentence: with a narrower cut that also drops the clinical examination, "female" → "male" in 9/9
-replies of the implausible twin and 0/9 of the plausible twin; with the functional cut (examination kept),
-0/9. Cells: registered sex in the androgen-insensitivity scenario, three conditions × 3 replies.
+contexts, three conditions; 972 nominal).
 
 **Figure 3. Under partial evidence, erasing is symmetric between twins.** Outcome of every correct cell whose
 proof is absent from the excerpt, as a 100% stacked bar per model and twin (I = implausible, P = plausible),

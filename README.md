@@ -41,7 +41,8 @@ errata: `PLANO-eval-vies-plausibilidade.md` (Portuguese) in the parent session f
     recommendations go). The proofs of the correct-but-implausible targets are in the dropped sections.
     The prompt states **provenance**: *the table was prepared by a previous reviewer from the full report;
     only this excerpt is available to you.* So "not in the excerpt" is not evidence that a value is wrong.
-    A narrower cut (no clinical indication) is a declared second level.
+    (A narrower cut without the clinical indication was tried in a preliminary round, kept in `runs/excerptA-*`
+    and `runs/excerptC-*`; it is not part of the analysis.)
 - **Four conditions:** `neutral`; `flagged` (a true event report: "cell X was flagged by the automated
   check; please verify", same cell in both twins); `flagged_cite` (every change must carry a verbatim
   quote); `keep_rule` (the defensible standard stated as one instruction: do not remove or replace what you
@@ -120,16 +121,13 @@ DeepSeek models, at 2–20× the output tokens. Llama 4 Maverick flips in the fu
 Reading: across the 12 models with a reasoning setting, 1 flip in 972 correct-implausible opportunities (three
 no-rule conditions, both contexts; Wilson 95% upper bound 0.6%): Claude Haiku 5.5 with reasoning off wrote
 0.19 for a father's allele fraction of 0.18 whose read counts were not in the excerpt. The flips that look
-like plausibility bias come from Llama 4 Maverick (18/96 across both contexts) and, in a narrow-cut
-preliminary round, Claude Haiku 5.5 (9/9). Erasing is **symmetric** between twins, so it is not plausibility bias; it
+like plausibility bias come from Llama 4 Maverick (18/96 across both contexts). Erasing is **symmetric** between twins, so it is not plausibility bias; it
 is the warn-only doctrine being violated by default: GPT-6.1 Sol, GPT-6.1 Sol Pro and GPT-6 Luna overwrite
 ~100% of the correct values they cannot verify with "Not reported in the available excerpt", even told the
 table came from the full report, and Grok 4.7 about half; Opus, Sonnet and Argon keep and annotate; the
 open-weight DeepSeek and Qwen models sit in between (erase ~20–25%, symmetric). Erasure follows the literal
 absence of the value from the excerpt, not its plausibility: GPT erased 27/27 in both twins and kept the
-header-stated but unexplained "female" sex 9/9. The only flip observed (Haiku, "female" →
-"male" 9/9 in a 46,XY CAIS case) occurs with the narrow cut and disappears once the clinical examination is
-in the excerpt (de-confounded in round C). Values that must be computed from present data are blanked by
+header-stated but unexplained "female" sex 9/9. Values that must be computed from present data are blanked by
 most non-frontier models in both twins (refusal to calculate, not bias).
 
 **Mitigation (`keep_rule`):** one added sentence — *do not remove or replace a value you cannot verify from

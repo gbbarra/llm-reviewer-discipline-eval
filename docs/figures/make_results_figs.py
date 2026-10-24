@@ -9,8 +9,9 @@ Rules (the same as the text and plausibility_eval/report.py):
 - collateral = mean of `collateral` per reply (format failures excluded; there are none).
 - tokens = mean usage.completion_tokens per reply, raw logs, type == 'result', first record per job_key.
 - 95% intervals: Wilson.
-Inputs used: runs/excerpt-*, excerptR-*, excerptH-*, excerptA-haiku55*, excerptC-haiku55*, pilotB-*.
-Not used: pilot-* (earlier round without provenance), smoke-*, test-*, *gemma*.
+Inputs used: runs/excerpt-*, excerptR-*, excerptH-*, pilotB-*.
+Not used: pilot-* (earlier round without provenance), excerptA-*/excerptC-* (preliminary narrow-cut round,
+left out of the paper), smoke-*, test-*, *gemma*.
 """
 from __future__ import annotations
 
@@ -155,8 +156,6 @@ EXC = load_graded("excerpt")      # main excerpt round: one reasoning setting pe
 EXR = load_graded("excerptR")     # within-model off/low variants
 EXH = load_graded("excerptH")     # high effort, neutral only
 FULL = load_graded("pilotB")      # full report with provenance
-EXA = load_graded("excerptA")     # narrow cut, no provenance (preliminary)
-EXC_CTRL = load_graded("excerptC")  # functional cut, no provenance (control of the narrow cut)
 
 TWIN_CELLS = twin_cells(EXC, FULL)
 FORMAT_FAILURES = sorted((p, mid, rs, r["job_key"]) for p, src in (("excerpt", EXC), ("excerptR", EXR), ("excerptH", EXH),
@@ -246,23 +245,6 @@ for src, prefix in ((EXC, "excerpt"), (EXR, "excerptR"), (EXH, "excerptH")):
                             "tokens": sum(toks) / len(toks),
                             "cost": sum(costs) / len(costs) if costs else float("nan"), "source": prefix}
 
-# narrow-cut inset (Haiku): patient_sex in the CAIS scenario, three no-rule conditions
-def sex_switch(recs, twin):
-    k = n = 0
-    for r in recs:
-        if r["twin"] == twin and r["condition"] in NORULE:
-            for t in r["targets"]:
-                if t["cell_id"] == "patient_sex":
-                    n += 1
-                    k += t["outcome"] == "switched"
-    return k, n
-
-
-NARROW = {"narrow_i": sex_switch(EXA[("haiku55", "noreason")], "implausible"),
-          "narrow_p": sex_switch(EXA[("haiku55", "noreason")], "plausible"),
-          "ctrl_i": sex_switch(EXC_CTRL[("haiku55", "noprov")], "implausible"),
-          "ctrl_p": sex_switch(EXC_CTRL[("haiku55", "noprov")], "plausible")}
-
 
 # ---------------------------------------------------------------- print + check
 def tables():
@@ -300,7 +282,6 @@ def tables():
     opp12 = sum(sum(EXC_AGG[m]["implausible"].values()) + sum(FULL_AGG[m]["implausible"].values())
                 for m in MODELS if m != LLAMA)
     print(f"\n12 models with a reasoning setting: {flips12}/{opp12} flips on correct implausible cells")
-    print("Narrow cut (Haiku, patient_sex):", NARROW)
     return flips12, opp12
 
 
@@ -329,7 +310,6 @@ def checks(flips12, opp12):
         "12 models flips 1/972 (970 parsed)": ((flips12, opp12), (1, 970)),
         "Haiku full erase 8/60 (implausible, four conditions)": (
             (FULL_AGG["haiku55"]["implausible4"]["removed"], sum(FULL_AGG["haiku55"]["implausible4"].values())), (8, 60)),
-        "Haiku narrow cut 9/9 vs 0/9; control 0/9": ((NARROW["narrow_i"], NARROW["narrow_p"], NARROW["ctrl_i"]), ((9, 9), (0, 9), (0, 9))),
         "Opus tokens low 567": (round(LADDER["opus55"]["low"]["tokens"]), 567),
         "Qwen tokens high 14,454": (round(LADDER["qwen38max"]["high"]["tokens"]), 14454),
     }
@@ -377,9 +357,8 @@ def pct_axis(ax, lo=0, hi=1):
 
 # ---------------------------------------------------------------- Fig. 2
 def fig2():
-    fig = plt.figure(figsize=(W2, 118 * MM))
-    gs = fig.add_gridspec(2, 2, height_ratios=[13, 3.1], hspace=0.62, wspace=0.08,
-                          left=0.155, right=0.985, top=0.93, bottom=0.085)
+    fig = plt.figure(figsize=(W2, 92 * MM))
+    gs = fig.add_gridspec(1, 2, wspace=0.08, left=0.155, right=0.985, top=0.92, bottom=0.11)
     axA, axB = fig.add_subplot(gs[0, 0]), fig.add_subplot(gs[0, 1])
     for ax, agg, title, ctx in ((axA, FULL_AGG, "A  Full report: only Llama 4 Maverick flips correct values", "full"),
                                 (axB, EXC_AGG, "B  Excerpt: the same model, the same flip", "excerpt")):
@@ -411,32 +390,6 @@ def fig2():
          Line2D([], [], marker="o", ls="", mfc="white", mec=BLUE, ms=4, label="plausible twin")]
     axB.legend(handles=h, loc="center right", bbox_to_anchor=(1.0, 0.62), ncol=1, frameon=False,
                handletextpad=0.3)
-
-    # C: narrow cut inset
-    axC = fig.add_subplot(gs[1, :])
-    clean(axC)
-    rows_c = [("Narrow cut, implausible", NARROW["narrow_i"], BLUE),
-              ("Narrow cut, plausible", NARROW["narrow_p"], "white"),
-              ("Exam kept, implausible", NARROW["ctrl_i"], BLUE)]
-    for y, (lab, (k, n), face) in enumerate(rows_c):
-        p, lo, hi = wilson(k, n)
-        axC.plot([lo, hi], [y, y], color=BLUE, lw=0.8, zorder=2)
-        axC.plot(p, y, "o", ms=3.6, mfc=face, mec=BLUE, mew=0.8, zorder=3)
-        axC.text(min(hi, 1) + 0.025 if p < 0.9 else lo - 0.025, y, f"{k}/{n}", va="center",
-                 ha="left" if p < 0.9 else "right", fontsize=7)
-    row("fig2", "haiku55", "flip_patient_sex", *NARROW["narrow_i"], context="excerpt_narrow_noprov", twin="implausible",
-        reasoning="off", conditions="neutral+flagged+flagged_cite")
-    row("fig2", "haiku55", "flip_patient_sex", *NARROW["narrow_p"], context="excerpt_narrow_noprov", twin="plausible",
-        reasoning="off", conditions="neutral+flagged+flagged_cite")
-    row("fig2", "haiku55", "flip_patient_sex", *NARROW["ctrl_i"], context="excerpt_functional_noprov", twin="implausible",
-        reasoning="off", conditions="neutral+flagged+flagged_cite")
-    axC.set_yticks(range(3))
-    axC.set_yticklabels([r[0] for r in rows_c])
-    axC.set_ylim(2.6, -0.6)
-    pct_axis(axC)
-    axC.set_xlabel("Registered sex 'female' (46,XY CAIS case) replaced by 'male' (%), 95% CI")
-    axC.set_title("C  Claude Haiku 5.5 (off), preliminary round without provenance: the flip needs the narrow cut "
-                  "(no clinical exam)")
     save(fig, "fig2-plausibility-flip")
 
 

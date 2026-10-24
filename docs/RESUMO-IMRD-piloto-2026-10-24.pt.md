@@ -46,8 +46,7 @@ regra fixa remove as seções de interpretação, confirmação, discussão, rec
 mantém identificação, indicação clínica com exame e laboratório, bloco de variantes com contagens de leituras
 e métodos. As provas dos valores corretos e implausíveis ficam fora do trecho; os erros plantados continuam
 verificáveis pelos dados brutos. O prompt declara a procedência da tabela: ela foi preparada por um revisor
-anterior a partir do laudo completo, e apenas o trecho está disponível. Um corte mais estreito, sem a indicação
-clínica, foi usado numa rodada preliminar.
+anterior a partir do laudo completo, e apenas o trecho está disponível.
 
 **Condições de instrução.** Quatro: neutra ("confira cada célula contra a fonte e corrija erros"); alerta
 verdadeiro ("a célula X foi marcada pela verificação automática; confira", na mesma célula dos dois gêmeos);
@@ -126,11 +125,7 @@ sem a regra explícita), ocorreu **1 troca** (0,1%; limite superior do IC 95% de
 estavam no trecho. Nos gêmeos plausíveis, 0 trocas. O único modelo que trocou de forma consistente foi o Llama 4
 Maverick, sem parâmetro de raciocínio: 11 de 60 no contexto completo, nas quatro condições, inclusive sob a regra
 explícita, e 7 de 36 no trecho, todas "female" → "male" no laudo de insensibilidade androgênica; no gêmeo
-plausível, 0 de 60 no completo e 1 de 36 no trecho (escreveu "46,XY" na célula do sexo registrado "male"). Numa rodada preliminar com um corte mais estreito do trecho (sem o
-exame clínico), o Claude Haiku 5.5 fez a mesma troca em 9 de 9 respostas, nas três condições, afirmando na
-justificativa que a fonte dizia "female" e invocando o cariótipo; não o fez em nenhuma das 9 respostas do gêmeo
-plausível, nem em 18 respostas quando o exame clínico foi reintroduzido no trecho, com ou sem a declaração de
-procedência.
+plausível, 0 de 60 no completo e 1 de 36 no trecho (escreveu "46,XY" na célula do sexo registrado "male").
 
 **Pergunta 2: manter e sinalizar versus apagar** (Figuras 3 e 4). No contexto completo (treze modelos, quatro condições, 72
 respostas por modelo), doze modelos não apagaram nem trocaram nenhum valor correto e corrigiram todos os erros
@@ -208,17 +203,16 @@ sinalizações para 0 e 9; DeepSeek de 6 e 0 para 0 e 8; Haiku de 3 para 0.
 Nas condições deste estudo, o viés de plausibilidade não se manifestou nos doze modelos com parâmetro de
 raciocínio: 1 troca em 972 oportunidades, com ou sem a prova no contexto, com ou sem alerta, e essa única troca
 foi uma reescrita numérica mínima (0,18 para 0,19) sem base no texto, não a substituição por um valor "mais
-plausível". Os
-dois episódios ocorreram em modelos sem raciocínio ativo: o Llama 4 Maverick trocou o sexo registrado mesmo
-com o laudo inteiro disponível, e o Claude Haiku 5.5 o fez apenas quando o trecho omitia o exame clínico que
-tornava o valor inteligível. A troca de um valor impresso por um valor plausível parece exigir prior forte e
-ausência de raciocínio deliberativo ou de pista explicativa. A comparação dentro do mesmo modelo sustenta o
-papel do raciocínio sem confundi-lo com porte: com o raciocínio desligado, Haiku e DeepSeek apagaram mais,
-DeepSeek deixou passar erros plantados, e os três modelos testados nas duas configurações ignoraram a regra
-explícita; com o raciocínio ligado, obedeceram-na. O flip em si, contudo, só foi observado no modelo sem
-qualquer raciocínio (Llama) e no Haiku sem raciocínio e sem o exame clínico; o DeepSeek sem raciocínio não
-trocou. O raciocínio parece, portanto, necessário para a disciplina de revisão sob evidência parcial e para o
-cumprimento de instruções de cautela, mas a sua ausência não é suficiente para produzir o flip.
+plausível". O
+único modelo que trocou de forma consistente foi o que não dispõe de raciocínio: o Llama 4 Maverick trocou o
+sexo registrado mesmo com o laudo inteiro disponível, em todas as condições. A troca de um valor impresso por um
+valor plausível parece exigir prior forte e ausência de raciocínio deliberativo. A comparação dentro do mesmo
+modelo sustenta o papel do raciocínio sem confundi-lo com porte: com o raciocínio desligado, Haiku e DeepSeek
+apagaram mais, DeepSeek deixou passar erros plantados, e os três modelos testados nas duas configurações
+ignoraram a regra explícita; com o raciocínio ligado, obedeceram-na. O flip em si, contudo, só foi observado no
+modelo sem qualquer raciocínio; Haiku e DeepSeek com o raciocínio desligado não trocaram. O raciocínio parece,
+portanto, necessário para a disciplina de revisão sob evidência parcial e para o cumprimento de instruções de
+cautela, mas a sua ausência não é suficiente para produzir o flip.
 
 O comportamento que distinguiu os modelos foi outro: o que fazem com um valor correto que não conseguem
 verificar. Os modelos da Anthropic e o Gemini 4 mantiveram e sinalizaram; os da OpenAI e, em menor grau, o Grok
@@ -236,18 +230,17 @@ o esforço não substitui a regra.
 Limitações. (1) Três laudos de um único domínio, com conteúdo clínico escrito para o estudo e não validado por
 especialista clínico; os valores contraintuitivos são plausíveis na literatura, mas cada laudo é um caso. (2)
 Três repetições por célula; os intervalos de confiança refletem isso. (3) O esforço "high" foi medido só na
-condição neutra (e, no GPT-6.1 Sol, também com a regra explícita). (4) A janela estreita (trecho sem o exame
-clínico), onde o Haiku trocou o sexo, foi testada apenas sem a declaração de procedência e em sete modelos. (5)
-O padrão "apagar é falha" é uma norma escolhida, defendida pela procedência declarada e pela simetria entre
+condição neutra (e, no GPT-6.1 Sol, também com a regra explícita). (4) O trecho foi definido por uma única regra
+de corte; cortes mais agressivos, que removam também o exame clínico, não foram avaliados neste estudo e podem
+alterar o comportamento dos modelos de menor porte. (5) O padrão "apagar é falha" é uma norma escolhida, defendida pela procedência declarada e pela simetria entre
 gêmeos; um leitor pode preferir chamá-lo de cautela, e a métrica de alterações colaterais mostra o seu custo.
 (6) A mensagem de sistema descreve o documento como "a trial report", redação herdada da versão inicial do
 instrumento e mantida quando os cenários passaram a ser laudos de genômica; vale igualmente para todos os
 modelos. (7) As regras de normalização do corretor foram ampliadas após a leitura de respostas (marcadores de
 ausência, aproximações, comentários colados a números); cada ampliação só pode converter uma troca aparente em
 manutenção ou apagamento, nunca o contrário, e todas as rodadas foram recorrigidas com a versão final. (8)
-Duas correções de análise constam do registro: uma assimetria inicial de apagamento (60% contra 26%) era
-artefato de denominador, pois o lado plausível incluía células com prova presente; e uma rodada mudou duas
-variáveis ao mesmo tempo, o que foi desfeito por uma rodada adicional. Não restam combinações de modelo,
+Uma correção de análise consta do registro: uma assimetria inicial de apagamento (60% contra 26%) era artefato
+de denominador, pois o lado plausível incluía células com prova presente. Não restam combinações de modelo,
 contexto e condição sem medida.
 
 ## Conclusão
