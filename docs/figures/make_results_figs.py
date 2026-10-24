@@ -358,10 +358,10 @@ def pct_axis(ax, lo=0, hi=1):
 # ---------------------------------------------------------------- Fig. 2
 def fig2():
     fig = plt.figure(figsize=(W2, 92 * MM))
-    gs = fig.add_gridspec(1, 2, wspace=0.08, left=0.155, right=0.985, top=0.92, bottom=0.11)
+    gs = fig.add_gridspec(1, 2, wspace=0.08, left=0.155, right=0.985, top=0.89, bottom=0.11)
     axA, axB = fig.add_subplot(gs[0, 0]), fig.add_subplot(gs[0, 1])
-    for ax, agg, title, ctx in ((axA, FULL_AGG, "A  Full report: only Llama 4 Maverick flips correct values", "full"),
-                                (axB, EXC_AGG, "B  Excerpt: the same model, the same flip", "excerpt")):
+    for ax, agg, title, ctx in ((axA, FULL_AGG, "A  Full report:\n    correct target values replaced by another value", "full"),
+                                (axB, EXC_AGG, "B  Excerpt (evidence-absent cells):\n    correct target values replaced by another value", "excerpt")):
         clean(ax)
         llama_y = ORDER.index(LLAMA)
         ax.add_patch(Rectangle((-0.04, llama_y - 0.5), 1.08, 1, color=HILITE, zorder=0, lw=0))
@@ -436,8 +436,7 @@ def fig3():
     ax.set_xticks([0, 0.25, 0.5, 0.75, 1])
     ax.set_xticklabels(["0", "25", "50", "75", "100"])
     ax.set_xlabel("Correct values whose proof is absent from the excerpt (%); I = implausible twin, P = plausible twin")
-    fig.text(0.015, 0.985, "Under partial evidence, erasing is symmetric between twins: it follows the absence of "
-             "the proof, not plausibility", ha="left", va="top", fontsize=7.5, fontweight="bold")
+    fig.text(0.015, 0.985, "Outcome of correct values whose proof is absent from the excerpt, by model and twin", ha="left", va="top", fontsize=7.5, fontweight="bold")
     h = [Patch(color=c, label=l) for _, l, c in CATS]
     fig.legend(handles=h, loc="lower left", bbox_to_anchor=(0.2, 0.905), ncol=4, frameon=False,
                handlelength=1.2, handletextpad=0.4, columnspacing=1.5)
@@ -465,7 +464,7 @@ def fig4():
     ylabels(ax, ORDER)
     ax.set_xlim(-0.15, 6)
     ax.set_xlabel("Changes to non-target cells per reply (mean)")
-    fig.text(0.02, 0.985, "Collateral edits appear only under partial evidence", ha="left", va="top",
+    fig.text(0.02, 0.985, "Edits to non-target cells per reply, full report versus excerpt", ha="left", va="top",
              fontsize=7.5, fontweight="bold")
     h = [Line2D([], [], marker="o", ls="", mfc="white", mec=INK, ms=4, label="full report"),
          Line2D([], [], marker="o", ls="", mfc=INK, mec=INK, ms=4, label="excerpt")]
@@ -501,7 +500,7 @@ def fig5():
     ylabels(ax, ORDER)
     for s in ax.spines.values():
         s.set_visible(False)
-    ax.set_title("One sentence (keep rule) stops erasure in 10 of 13 models", x=-0.42, pad=16)
+    ax.set_title("Erasure of unverifiable correct values by instruction condition", x=-0.42, pad=16)
     fig.text(0.97, 0.025, "Erased / evidence-absent correct cells, both twins, excerpt (9 replies per twin "
              "per condition)", ha="right", fontsize=7, color=MID)
     save(fig, "fig5-instruction-erasure")
@@ -546,16 +545,14 @@ def fig6():
     ylabels(axA, order)
     pct_axis(axA)
     axA.set_xlabel("Correct values erased, evidence-absent cells, both twins (%)")
-    axA.set_title("A  More effort lowers erasure in some models, not all")
+    axA.set_title("A  Correct values erased, by reasoning effort")
     axB.set_xscale("log")
     axB.set_xlim(250, 30000)
     axB.set_xticks([300, 1000, 3000, 10000])
     axB.set_xticklabels(["300", "1,000", "3,000", "10,000"])
     axB.minorticks_off()
-    axB.set_xlabel("Output tokens per reply (mean, log scale)")
-    ratios = [LADDER[m]["high"]["tokens"] / LADDER[m]["low"]["tokens"] for m in order
-              if "high" in LADDER[m] and "low" in LADDER[m]]
-    axB.set_title(f"B  …and costs ×{min(ratios):.1f} to ×{max(ratios):.0f} the output tokens (high / low)")
+    axB.set_xlabel("Output tokens per reply (mean, log scale); ×: high / low")
+    axB.set_title("B  Output tokens per reply, by reasoning effort")
     h = [Line2D([], [], marker="o", ls="", ms=4, mew=0.8, label=f"reasoning {l}", **LV_STYLE[l]) for l in LEVELS]
     fig.legend(handles=h, loc="upper left", bbox_to_anchor=(0.155, 0.965), ncol=3, frameon=False,
                handletextpad=0.3, columnspacing=1.4)
@@ -602,7 +599,7 @@ def figS1():
     ylabels(ax, ORDER)
     for s in ax.spines.values():
         s.set_visible(False)
-    ax.set_title("Under partial evidence the models differ in erasing and flagging, not in flipping",
+    ax.set_title("Five metrics under partial evidence, by model",
                  x=-0.36, pad=24)
     fig.text(0.98, 0.025, "Excerpt, three no-rule conditions; rates in %, collateral as mean per reply",
              ha="right", fontsize=7, color=MID)
