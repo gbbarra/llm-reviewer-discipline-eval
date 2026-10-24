@@ -105,26 +105,7 @@ Proporção de células corretas substituídas por outro valor com intervalos de
 ### Dicotomia sob Evidência Parcial: Retenção Prudente versus Apagamento Destrutivo
 No contexto de controle com laudo completo (72 respostas por modelo), onze dos doze modelos de raciocínio demonstraram acurácia perfeita: zero apagamentos de dados válidos, zero trocas e 100% de correção dos erros plantados. A exceção foi o Claude Haiku 5.5 com raciocínio desativado, que apagou 10 células corretas dependentes de cálculo numérico e omitiu 18 dos 144 erros plantados (sendo 4 corrigidos para valores incorretos).
 
-Sob o regime de excerto parcial, no qual a fundamentação dos alvos atípicos foi omitida, revelou-se uma cisão de linhagem categórica entre as famílias de modelos (Tabela 1 e Figura 3):
-
-**Tabela 1. Desfecho das células corretas sem prova documental no excerto**  
-*(Amostra consolidada das condições Neutra, Alerta e Citação; n = 36 células por gêmeo por modelo; ordenados da maior disciplina para o maior apagamento).*
-
-| Modelo | Configuração de Raciocínio | Trocas (*Flip*) | Apagamento (*Erase*): Implausível / Plausível | Mantidas e Sinalizadas (*Flag*) [Gêmeo Implausível] | Edições Colaterais por Resposta (Média) |
-| :--- | :---: | :---: | :---: | :---: | :---: |
-| **Claude Opus 5.5** | Low | 0 | **0 / 0** (0,0%) | 27 / 36 | 0,0 |
-| **Gemini 4 Argon** | Low | 0 | **0 / 0** (0,0%) | 20 / 36 | 0,1 |
-| **Claude Sonnet 5.5** | Low | 0 | **2 / 3** (6,9%) | 23 / 36 | 0,2 |
-| **DeepSeek V4.1 Flash** | Low | 0 | **7 / 3** (14,3%) | 17 / 36 | 0,8 |
-| **Gemini 3.8 Flash** | Low | 0 | **6 / 7** (18,1%) | 15 / 36 | 1,7 |
-| **DeepSeek V4 Pro** | Low | 0 | **8 / 9** (23,6%) | 16 / 36 | 1,7 |
-| **Qwen 3.8 Max** | Low | 0 | **9 / 8** (23,6%) | 12 / 36 | 1,2 |
-| **Claude Haiku 5.5** | Off | 0 | **9 / 10** (26,4%) | 19 / 36 | 1,1 |
-| **Llama 4 Maverick** | N/A | 7 | **9 / 9** (25,0%) | 11 / 36 | 2,4 |
-| **Grok 4.7** | Low | 0 | **17 / 17** (47,2%) | 12 / 36 | 3,2 |
-| **GPT-6 Luna** | Off | 0 | **27 / 21** (66,7%) | 6 / 36 | 3,8 |
-| **GPT-6.1 Sol** | Low | 0 | **27 / 27** (75,0%) | 9 / 36 | 5,0 |
-| **GPT-6.1 Sol Pro** | Low | 0 | **27 / 27** (75,0%) | 9 / 36 | 5,0 |
+Sob o regime de excerto parcial, no qual a fundamentação dos alvos atípicos foi omitida, revelou-se uma cisão de linhagem categórica entre as famílias de modelos (Figura 3; contagens por célula, modelo e gêmeo em `figures/results-figures-data.csv`).
 
 Os modelos da Anthropic (Opus 5.5 e Sonnet 5.5) e do Google (Gemini 4 Argon) adotaram a conduta de auditoria prudencial: preservaram integralmente os campos preenchidos e utilizaram as notas para assinalar a ausência de confirmação direta no trecho, com taxas residuais de edição colateral (0,0 a 0,2 por resposta). Em oposição, os modelos da OpenAI (GPT-6.1 Sol, GPT-6.1 Sol Pro e GPT-6 Luna) e Grok 4.7 promoveram o apagamento massivo de registros legítimos, substituindo-os por marcadores de nulidade (*"Not reported in the excerpt"*). No GPT-6.1 Sol e Sol Pro, o apagamento atingiu 27 de 36 células elegíveis (75,0%); as únicas 9 células poupadas foram as do campo de sexo registrado, preservadas exclusivamente porque o termo textual constava no cabeçalho. Simultaneamente, esses modelos estenderam o comportamento hiperativo a células corretas não solicitadas, provocando uma média de 5,0 edições colaterais espúrias por resposta (Figura 4). Em nenhuma das 3.019 interações foram detectados palpites infundados (*guesses*).
 
@@ -133,7 +114,7 @@ Os modelos da Anthropic (Opus 5.5 e Sonnet 5.5) e do Google (Gemini 4 Argon) ado
 ![Figura 3](figures/fig3-partial-evidence-outcomes.png)
 
 **Figura 3. Desfechos da revisão clínica sob evidência parcial: retenção, sinalização, apagamento e substituição.**  
-Distribuição percentual (barras empilhadas 100%) dos desfechos de células corretas cuja prova foi suprimida do excerto, sob as condições neutra, alerta e citação (n = 36 células por barra; 34 para DeepSeek V4.1 Flash no braço implausível). Rótulos à direita discriminam o gêmeo atípico (I) e o comum (P). Contagens numéricas no interior dos segmentos ($\ge 6\%$). Cinza = mantida sem nota; verde = mantida e sinalizada com nota (desfecho prudencial ideal); vermelho = apagamento destrutivo; azul = troca (*flip*). A equivalência quantitativa entre os braços I e P dentro de cada modelo comprova que o apagamento é disparado pela ausência literal de menção no texto, e não por estranhamento com a plausibilidade médica do dado.
+Distribuição percentual (barras empilhadas 100%) dos desfechos de células corretas cuja prova foi suprimida do excerto, sob as condições neutra, alerta e citação (n = 36 células por barra; 34 para DeepSeek V4.1 Flash no braço implausível). Rótulos à direita discriminam o gêmeo atípico (I) e o comum (P). Esforço de raciocínio baixo (*low*) em todos os modelos, exceto Claude Haiku 5.5 e GPT-6 Luna (desligado) e Llama 4 Maverick (sem parâmetro de raciocínio). Contagens numéricas no interior dos segmentos ($\ge 6\%$). Cinza = mantida sem nota; verde = mantida e sinalizada com nota (desfecho prudencial ideal); vermelho = apagamento destrutivo; azul = troca (*flip*). A equivalência quantitativa entre os braços I e P dentro de cada modelo comprova que o apagamento é disparado pela ausência literal de menção no texto, e não por estranhamento com a plausibilidade médica do dado.
 
 ---
 
@@ -154,24 +135,9 @@ A mecânica subjacente foi confirmada pelo exame qualitativo do GPT-6.1 Sol: o m
 ### Modulação por Salvaguardas de Prompt versus Custo Computacional de Raciocínio
 A introdução da Regra de Preservação (*Keep Rule*) neutralizou instantaneamente o comportamento destrutivo nos modelos avançados (Figura 5). Nos modelos GPT-6.1 Sol e Sol Pro, o apagamento desabou de 18/24 (75%) na condição neutra para zero apagamentos (0/24), enquanto as anotações prudentes em notas saltaram para 100% e as edições colaterais caíram para 0,0 por resposta. Reduções para zero foram igualmente observadas no Grok 4.7, DeepSeek V4 Pro e Qwen 3.8 Max. Modelos de menor porte ou com raciocínio desativado, contudo, exibiram insubordinação à regra: o GPT-6 Luna manteve 12 apagamentos em 24, e o Llama 4 Maverick persistiu apagando (6/24) e executando trocas indesejadas. A remediação no GPT-6.1 Sol atesta que a destruição de dados decorre de uma política de alinhamento padrão voltada ao expurgo, e não de incapacidade cognitiva de interpretação.
 
-Por outro lado, avaliar a escalada do esforço de raciocínio deliberativo (*reasoning effort*) na condição neutra evidenciou a ineficiência do aumento computacional bruto na ausência de diretivas explícitas (Tabela 2 e Figura 6):
+Por outro lado, avaliar a escalada do esforço de raciocínio deliberativo (*reasoning effort*) na condição neutra evidenciou a ineficiência do aumento computacional bruto na ausência de diretivas explícitas (Figura 6; valores exatos na Tabela S1):
 
-**Tabela 2. Resposta ao aumento do esforço de raciocínio e consumo de tokens de saída**  
-*(Condição neutra no excerto; 12 células-alvo por gêmeo; n = 24 células por nível).*
-
-| Modelo | Apagamento: Raciocínio Desligado (*Off*) | Apagamento: Raciocínio Baixo (*Low*) | Apagamento: Raciocínio Alto (*High*) | Multiplicador de Tokens de Saída (High / Low) |
-| :--- | :---: | :---: | :---: | :---: |
-| **Gemini 3.8 Flash** | — | 6 / 24 | **0 / 24** | 21,5× (437 → 9.374 tokens) |
-| **GPT-6.1 Sol** | — | 18 / 24 | **10 / 24** | 1,7× (729 → 1.236 tokens) |
-| **Grok 4.7** | — | 12 / 24 | **6 / 24** | 4,0× (2.630 → 10.614 tokens) |
-| **GPT-6.1 Sol Pro** | — | 18 / 24 | **16 / 24** | 1,8× (1.466 → 2.674 tokens) |
-| **GPT-6 Luna** | 16 / 24 | 16 / 24 | **16 / 24** | 2,4× (898 → 2.157 tokens) |
-| **Qwen 3.8 Max** | — | 6 / 24 | **6 / 24** | 6,1× (2.371 → 14.454 tokens) |
-| **DeepSeek V4 Pro** | 7 / 24 | 5 / 24 | **6 / 24** | 1,1× (3.401 → 3.632 tokens) |
-| **Claude Haiku 5.5** | 7 / 24 | **0 / 24** | **0 / 24** | 1,4× (1.525 → 2.169 tokens) |
-| **Claude Opus 5.5** | — | **0 / 24** | **0 / 24** | 1,9× (567 → 1.075 tokens) |
-
-A elevação para esforço alto produziu respostas inconsistentes: saneou os apagamentos no Gemini 3.8 Flash e atenuou a taxa no GPT-6.1 Sol e Grok 4.7, mas mostrou-se ineficaz no GPT-6.1 Sol Pro, GPT-6 Luna, Qwen 3.8 Max e DeepSeek V4 Pro. Essa resposta modesta demandou uma sobrecarga computacional de 1,1× a 21,5× no volume de tokens gerados, corroborando que o aumento indiscriminado de computação não substitui salvaguardas explícitas de governança.
+A elevação para esforço alto produziu respostas inconsistentes: saneou os apagamentos no Gemini 3.8 Flash e atenuou a taxa no GPT-6.1 Sol e Grok 4.7, mas mostrou-se ineficaz no GPT-6.1 Sol Pro, GPT-6 Luna, Qwen 3.8 Max e DeepSeek V4 Pro. Essa resposta modesta demandou uma sobrecarga computacional de 1,1× a 21,5× no volume de tokens gerados (Tabela S1), corroborando que o aumento indiscriminado de computação não substitui salvaguardas explícitas de governança.
 
 ---
 
@@ -213,6 +179,27 @@ Modelos de linguagem modernos com capacidade de raciocínio exibem elevada robus
 
 **Figura Suplementar S1. Painel consolidado (*scorecard*) das cinco métricas de disciplina de revisão.**  
 Avaliação conduzida no contexto de excerto parcial sob as condições neutra, alerta e citação (regra de preservação excluída). As setas no topo de cada coluna indicam a meta de otimização metodológica: `flip ↓` (troca de valores contraintuitivos; meta: 0%); `erase ↓` (apagamento de dados corretos sem prova; meta: 0%); `flag ↑` (retenção prudente com nota; meta: 100%); `miss ↓` (omissão de erros plantados verificáveis; meta: 0%); e `collateral ↓` (média de edições espúrias em campos corretos não-alvo; meta: 0,0). O painel discrimina com nitidez as linhagens: falhas de troca restringem-se ao Llama 4 Maverick (19%), enquanto a perda destrutiva de dados e o ruído colateral concentram-se na série GPT-6 e Grok 4.7.
+
+**Tabela Suplementar S1. Apagamento e tokens de saída por nível de esforço de raciocínio.**  
+*(Excerto com proveniência declarada, condição neutra; 12 células corretas sem prova por gêmeo, ambos os gêmeos somados; 18 respostas por nível. Apagamento = células apagadas / células analisadas; n menor que 24 quando uma resposta não pôde ser interpretada. Tokens = média de tokens de conclusão por resposta, extraída dos logs brutos. Desligado = raciocínio desativado onde a API permite; Llama 4 Maverick não possui o parâmetro e consta apenas como desligado. Mesmos dados da Figura 6.)*
+
+| Modelo | Apagamento, desligado | Apagamento, baixo | Apagamento, alto | Tokens de saída por resposta: desligado / baixo / alto | Razão alto / baixo |
+| :--- | :---: | :---: | :---: | :---: | :---: |
+| Claude Opus 5.5 | — | 0 / 24 | 0 / 24 | — / 567 / 1.075 | 1,9× |
+| Gemini 4 Argon | — | 1 / 24 | 0 / 24 | — / 398 / 3.661 | 9,2× |
+| Claude Sonnet 5.5 | — | 0 / 24 | 1 / 24 | — / 461 / 816 | 1,8× |
+| DeepSeek V4.1 Flash | — | 2 / 23 | 5 / 24 | — / 6.010 / 10.698 | 1,8× |
+| Gemini 3.8 Flash | — | 6 / 24 | 0 / 24 | — / 437 / 9.374 | 21,5× |
+| DeepSeek V4 Pro | 7 / 22 | 5 / 24 | 6 / 24 | 593 / 3.401 / 3.632 | 1,1× |
+| Qwen 3.8 Max | — | 6 / 24 | 6 / 24 | — / 2.371 / 14.454 | 6,1× |
+| Llama 4 Maverick | 6 / 24 | — | — | 452 / — / — | — |
+| Claude Haiku 5.5 | 7 / 24 | 0 / 24 | 0 / 24 | 1.114 / 1.525 / 2.169 | 1,4× |
+| Grok 4.7 | — | 12 / 24 | 6 / 24 | — / 2.630 / 10.614 | 4,0× |
+| GPT-6 Luna | 16 / 24 | 16 / 24 | 16 / 24 | 612 / 898 / 2.157 | 2,4× |
+| GPT-6.1 Sol | — | 18 / 24 | 10 / 24 | — / 729 / 1.236 | 1,7× |
+| GPT-6.1 Sol Pro | — | 18 / 24 | 16 / 24 | — / 1.466 / 2.674 | 1,8× |
+
+**Dados de origem.** Todos os valores plotados nas Figuras 2 a 6 e S1, com numerador, denominador, taxa e intervalo de confiança de Wilson a 95%, estão em `figures/results-figures-data.csv`, gerado por `figures/make_results_figs.py` a partir dos logs corrigidos em `runs/`.
 
 ---
 
