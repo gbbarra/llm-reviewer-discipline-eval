@@ -33,7 +33,7 @@ uma adolescente registrada como do sexo feminino com cariótipo 46,XY, por insen
 um pai assintomático com fração alélica de 0,18 para uma variante em KMT2D, por mosaicismo. Cada laudo foi
 acompanhado de uma tabela de extração de 33 a 40 células com definição precisa de cada campo.
 
-**Desenho.** Em cada laudo, células-alvo cobrem um fatorial 2×2: valor correto ou errado × aparência plausível ou
+**Desenho** (Figura 1, quadros A a D). Em cada laudo, células-alvo cobrem um fatorial 2×2: valor correto ou errado × aparência plausível ou
 implausível. As células corretas e implausíveis são o achado contraintuitivo; as erradas e plausíveis são erros
 plantados na tabela que parecem normais (zigosidade "heterozygous" no lugar de homozigota ou hemizigota; gene
 parálogo KMT2C no lugar de KMT2D); as erradas e implausíveis são valores impossíveis (fração alélica 1,40;
@@ -111,28 +111,33 @@ Maverick não dispõe do parâmetro. Para separar o efeito do raciocínio do efe
 GPT-6 Luna e DeepSeek V4 Pro foram executados no trecho com raciocínio desligado e "low", e os doze modelos
 com parâmetro de raciocínio foram executados com esforço "high" na condição neutra do trecho.
 Cada célula foi medida em 3 laudos × 2 gêmeos × 3 repetições por condição, em conversas independentes e ordem
-aleatória. Total: 3.022 respostas únicas, nenhuma fora do formato. As correções do instrumento
+aleatória. Total: 3.022 respostas únicas; 3 (0,1%, todas de modelos DeepSeek) não puderam ser interpretadas
+como JSON após um lembrete e foram excluídas de todas as taxas, o que explica alguns denominadores abaixo do
+nominal. As correções do instrumento
 feitas após a leitura das respostas limitaram-se a reconhecer formas de escrita (marcadores de ausência,
 aproximações, unidades) e foram aplicadas igualmente a todos os modelos e rodadas.
 
 ## Resultados
 
-**Pergunta 1: viés de plausibilidade.** Nos doze modelos com parâmetro de raciocínio, em 972 oportunidades
-de trocar um valor correto e implausível (contexto completo e trecho, três condições sem a regra explícita),
-ocorreu **1 troca** (0,1%; limite superior do IC 95% de Wilson: 0,6%): o Claude Haiku 5.5, com raciocínio
-desligado, escreveu 0,19 no lugar de uma fração alélica paterna de 0,18 cujas contagens não estavam no trecho.
-Nos gêmeos plausíveis, 0 trocas. O único modelo que trocou foi o Llama 4 Maverick, sem parâmetro de raciocínio: 11 de
-60 no contexto completo, nas quatro condições, inclusive sob a regra explícita, e 7 de 36 no trecho, todas
-"female" → "male" no laudo de insensibilidade androgênica, contra 0 nos gêmeos plausíveis. Numa rodada preliminar com um corte mais estreito do trecho (sem o
+**Pergunta 1: viés de plausibilidade** (Figura 2). Nos doze modelos com parâmetro de raciocínio, em 970
+oportunidades analisáveis de trocar um valor correto e implausível (contexto completo e trecho, três condições
+sem a regra explícita), ocorreu **1 troca** (0,1%; limite superior do IC 95% de Wilson: 0,6%): o Claude Haiku
+5.5, com raciocínio desligado, escreveu 0,19 no lugar de uma fração alélica paterna de 0,18 cujas contagens não
+estavam no trecho. Nos gêmeos plausíveis, 0 trocas. O único modelo que trocou de forma consistente foi o Llama 4
+Maverick, sem parâmetro de raciocínio: 11 de 60 no contexto completo, nas quatro condições, inclusive sob a regra
+explícita, e 7 de 36 no trecho, todas "female" → "male" no laudo de insensibilidade androgênica; no gêmeo
+plausível, 0 de 60 no completo e 1 de 36 no trecho (escreveu "46,XY" na célula do sexo registrado "male"). Numa rodada preliminar com um corte mais estreito do trecho (sem o
 exame clínico), o Claude Haiku 5.5 fez a mesma troca em 9 de 9 respostas, nas três condições, afirmando na
 justificativa que a fonte dizia "female" e invocando o cariótipo; não o fez em nenhuma das 9 respostas do gêmeo
 plausível, nem em 18 respostas quando o exame clínico foi reintroduzido no trecho, com ou sem a declaração de
 procedência.
 
-**Pergunta 2: manter e sinalizar versus apagar.** No contexto completo (treze modelos, quatro condições, 72
+**Pergunta 2: manter e sinalizar versus apagar** (Figuras 3 e 4). No contexto completo (treze modelos, quatro condições, 72
 respostas por modelo), doze modelos não apagaram nem trocaram nenhum valor correto e corrigiram todos os erros
 plantados; o Claude Haiku 5.5 apagou 8 de 60 valores corretos implausíveis que exigiam cálculo e deixou passar
-o erro plantado plausível em 14 de 72; o Llama 4 Maverick fez as 11 trocas já descritas. No contexto trecho, os modelos divergiram (células corretas sem prova, 36 por gêmeo, três
+o erro plantado plausível em 14 de 72; o Llama 4 Maverick fez as 11 trocas já descritas. Alterações em células
+que não eram alvo (Figura 4) ficaram em 0,2 por resposta ou menos no contexto completo em todos os modelos; no
+trecho, os modelos que apagam células-alvo também apagam células não-alvo (GPT-6.1 Sol e Sol Pro, 5,0 por resposta). No contexto trecho, os modelos divergiram (células corretas sem prova, 36 por gêmeo, três
 condições sem a regra; ordenados pelo apagamento):
 
 | Modelo (raciocínio) | *flip* | *erase* implausível / plausível | mantida e sinalizada | colaterais por resposta |
@@ -153,7 +158,7 @@ condições sem a regra; ordenados pelo apagamento):
 
 Chutes (valor novo escrito sem evidência) não ocorreram em nenhum modelo.
 
-**Pergunta 3: o apagamento depende da plausibilidade?** Não. Onde houve apagamento, ele foi simétrico entre os
+**Pergunta 3: o apagamento depende da plausibilidade?** (Figura 3.) Não. Onde houve apagamento, ele foi simétrico entre os
 gêmeos (GPT-6.1 Sol e Sol Pro 27 e 27; Grok 17 e 17; Llama 9 e 9; DeepSeek V4 Pro 8 e 9; Qwen 9 e 8; Flash 6 e
 7; Haiku 9 e 10); a única diferença acima de quatro células foi a do GPT-6 Luna (27 e 21), e a do DeepSeek V4.1
 Flash (7 e 3) é pequena. O GPT-6.1 Sol apagou todas as células cujo valor
@@ -164,17 +169,32 @@ material, não a sua verossimilhança, e ele opera mesmo quando o prompt afirma 
 completo. O mesmo modelo alterou, em média, 5 células não-alvo por resposta no trecho, contra 0 no contexto
 completo.
 
-**Pergunta 4: instrução e raciocínio.** Com a regra explícita (12 células por gêmeo), o GPT-6.1 Sol e o Sol Pro
+**Pergunta 4: instrução e raciocínio** (Figuras 5 e 6; síntese das métricas na Figura S1). Com a regra explícita (12 células por gêmeo), o GPT-6.1 Sol e o Sol Pro
 passaram de 9 apagamentos para 0 e de 3 para 9 sinalizações, com os colaterais de 5,0 para 0 por resposta; Grok
 de 6 para 0; Opus, Sonnet, Argon, Flash, Qwen e os dois DeepSeek: 0 apagamentos; Haiku: 3 apagamentos e 8
 sinalizações; Llama: 3 apagamentos, 3 sinalizações e as trocas persistiram; GPT-6 Luna manteve 9 apagamentos em
-12 e nenhuma sinalização. Com esforço "high" na condição neutra (12 células por gêmeo), o apagamento caiu a zero no Gemini 3.8 Flash (de
-3 e 3) e no Claude Haiku 5.5 (já zero em "low"), caiu em GPT-6.1 Sol (de 9 e 9 para 3 e 7) e Grok 4.7 (de 7 e 5
-para 3 e 3), e mudou pouco em GPT-6.1 Sol Pro (9 e 9 para 7 e 9), GPT-6 Luna (9 e 7 para 7 e 9), DeepSeek V4 Pro
-(2 e 3 para 3 e 3), DeepSeek V4.1 Flash (2 e 0 para 2 e 3) e Qwen 3.8 Max (3 e 3 para 3 e 3, com cerca de 14 mil tokens de
-raciocínio por resposta);
-Opus e Argon permaneceram em zero e Sonnet passou de zero a um apagamento. O custo em tokens de saída foi de 2 a
-20 vezes o do esforço "low".
+12 e nenhuma sinalização. O esforço de raciocínio foi variado dentro de cada modelo na condição neutra do trecho (12 células corretas
+sem prova por gêmeo; 18 respostas por nível):
+
+| Modelo | desligado: apagou impl./plaus. · sinalizou | "low": apagou · sinalizou | "high": apagou · sinalizou | tokens de saída, low → high |
+|---|---|---|---|---|
+| Claude Opus 5.5 | — | 0/0 · 8 | 0/0 · 6 | 567 → 1.075 |
+| Claude Sonnet 5.5 | — | 0/0 · 7 | 1/0 · 3 | 461 → 816 |
+| Claude Haiku 5.5 | 3/4 · 5 | 0/0 · 5 | 0/0 · 7 | 1.525 → 2.169 |
+| GPT-6.1 Sol Pro | — | 9/9 · 3 | 7/9 · 4 | 1.466 → 2.674 |
+| GPT-6.1 Sol | — | 9/9 · 3 | 3/7 · 7 | 729 → 1.236 |
+| GPT-6 Luna | 9/7 · 0 | 9/7 · 0 | 7/9 · 2 | 898 → 2.157 |
+| Gemini 4 Argon | — | 1/0 · 2 | 0/0 · 5 | 398 → 3.661 |
+| Gemini 3.8 Flash | — | 3/3 · 0 | 0/0 · 6 | 437 → 9.374 |
+| Grok 4.7 | — | 7/5 · 1 | 3/3 · 6 | 2.630 → 10.614 |
+| Qwen 3.8 Max | — | 3/3 · 0 | 3/3 · 2 | 2.371 → 14.454 |
+| DeepSeek V4 Pro | 4/3 · 3 | 2/3 · 4 | 3/3 · 4 | 3.401 → 3.632 |
+| DeepSeek V4.1 Flash | — | 2/0 · 5 | 2/3 · 3 | 6.010 → 10.698 |
+| Llama 4 Maverick | 3/3 · 5 (1 troca) | — | — | 452 |
+
+Com esforço "high", o apagamento caiu a zero no Gemini 3.8 Flash, caiu em GPT-6.1 Sol e Grok 4.7, e mudou pouco
+em GPT-6.1 Sol Pro, GPT-6 Luna, Qwen 3.8 Max e nos dois DeepSeek; Opus e Argon permaneceram em zero e Sonnet
+passou de zero a um apagamento. O custo em tokens de saída foi de 2 a 20 vezes o do esforço "low".
 
 Dentro do mesmo modelo, ligar o raciocínio alterou o comportamento sob evidência parcial (três condições sem a
 regra, 36 células por gêmeo): no Claude Haiku 5.5, apagamentos de 9 e 10 para 3 e 3, colaterais de 1,1 para 0,3

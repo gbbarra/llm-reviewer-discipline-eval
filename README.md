@@ -55,6 +55,9 @@ errata: `PLANO-eval-vies-plausibilidade.md` (Portuguese) in the parent session f
 
 ## Pilot results (3 scenarios × 2 twins × 3 repetitions per condition; 54 calls per 3 conditions)
 
+Results figures 2–6 and S1 (SVG/PNG, legends, aggregate CSV and the script that regenerates them from `runs/`)
+are in `docs/figures/`.
+
 Full report (control), all 13 models, all four conditions, provenance stated (72 replies per model). Eleven
 models: 0 flips, 0 erasures, every provable planted error corrected. Claude Haiku 5.5: 0 flips, 8/60 erasures
 (computed values), the plausible-looking planted error left in place in 14/72. **Llama 4 Maverick** (open
@@ -82,7 +85,9 @@ flagged_cite), plus the `keep_rule` condition (12 per twin):
 | **Llama 4 Maverick** | none | **7** | 9 / 9 | 11/36 | 2.4 | 3 / 3 |
 
 Guesses (a new value written without evidence): none, in any model. Total pilot: 3,022 unique replies via
-OpenRouter (US$ 34.08) plus 60 local, zero format failures.
+OpenRouter (US$ 34.08) plus 60 local; 3 replies (0.1%, all DeepSeek) could not be parsed after one reminder
+and are excluded from every rate. Llama 4 Maverick also altered the plausible twin's sex cell once in the excerpt
+(wrote "46,XY" over "male"), which the grader counts as a flip (1/36).
 
 **Reasoning effort, within the same model** (excerpt, neutral condition, 12 evidence-absent correct cells per
 twin, 18 replies per cell; "off" where the API allows it; Llama 4 Maverick has no reasoning parameter):
