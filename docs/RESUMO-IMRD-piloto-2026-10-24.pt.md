@@ -13,10 +13,10 @@
 * **Objetivo:** Investigar a existência de viés de plausibilidade (*plausibility bias*) e quantificar a perda de dados por apagamento (*destructive erasure*) em LLMs atuando como revisores sob evidência documental completa e truncada, avaliando o impacto modulador de instruções explícitas de preservação e de diferentes níveis de esforço de raciocínio (*reasoning effort*).
 * **Métodos:** Treze modelos de fronteira e de pesos abertos (sete desenvolvedores) avaliaram tabelas de extração associadas a laudos de exoma clínico sintéticos (1.300–1.750 palavras). O desenho experimental utilizou pares de cenários gêmeos (*twins*), idênticos em estrutura e diferindo unicamente pelo valor do alvo e sua prova documental (valor correto contraintuitivo *versus* controle comum), além de erros plantados plausíveis e implausíveis (fatorial 2×2). Os modelos foram testados em dois contextos de evidência: laudo completo (controle) e trecho funcional (*excerpt*, com omissão deliberada da interpretação e discussão onde residiam as provas dos alvos contraintuitivos, mantendo declaração formal de proveniência de que a tabela fora extraída do documento integral). Foram avaliadas quatro condições de instrução (Neutra, Alerta de Consistência, Citação Obrigatória e Regra de Preservação / *keep rule*) e três níveis de raciocínio (desligado, baixo e alto), totalizando 3.022 respostas corrigidas de modo estritamente mecânico e determinístico.
 * **Resultados:** 
-  1. *Viés de plausibilidade:* Nos doze modelos com suporte a raciocínio deliberativo, a substituição indevida de dados corretos e contraintuitivos por leituras convencionais (*flip*) foi virtualmente nula (1 troca em 970 oportunidades analisadas; 0,1%; IC 95% de Wilson: 0,02%–0,58%). Apenas o modelo sem suporte a raciocínio (Llama 4 Maverick) apresentou viés sistemático (11 trocas em 60 oportunidades com laudo completo; 7 em 36 no trecho).
-  2. *Apagamento destrutivo:* Sob evidência parcial, os modelos divergiram radicalmente por linhagem arquitetural: modelos Anthropic (Opus 5.5, Sonnet 5.5) e Google (Gemini 4 Argon) preservaram e sinalizaram em notas os dados corretos sem prova; em contrapartida, modelos da OpenAI (GPT-6.1 Sol, GPT-6.1 Sol Pro, GPT-6 Luna) apagaram massivamente valores legítimos (substituindo-os por marcadores de ausência como "não relatado" em até 100% dos casos), além de induzirem edições colaterais em células não-alvo corretas (média de 5,0 edições colaterais por resposta).
-  3. *Mecanismo do apagamento (Teste de Simetria):* O apagamento exibiu simetria estrita entre os gêmeos implausível e plausível (ex.: GPT-6.1 Sol apagou 27/27 em ambos os braços), demonstrando que essa atitude não reflete julgamento de plausibilidade clínica, mas sim uma heurística rígida e cega de ausência literal de menção textual no trecho imediato, desconsiderando o aviso de proveniência.
-  4. *Intervenção por instrução vs. esforço computacional:* Uma instrução explícita de preservação de uma única frase (*keep rule*: *"não altere o que não puder verificar; preserve e anote"*) reduziu os apagamentos a zero nos principais modelos de fronteira afetados, acompanhada da eliminação das edições colaterais. Por outro lado, elevar o esforço de raciocínio para "alto" sem a regra explícita demandou de 2 a 21 vezes mais tokens de saída, produzindo efeitos heterogêneos e insuficientes em múltiplos modelos.
+  1. *Viés de plausibilidade:* Nos doze modelos com suporte a raciocínio deliberativo, a substituição indevida de dados corretos e contraintuitivos por leituras convencionais (*flip*) foi virtualmente nula (1 troca em 970 oportunidades analisadas; 0,1%; IC 95% de Wilson: 0,02%–0,58%). Apenas o modelo sem suporte a raciocínio (Llama 4 Maverick) apresentou viés sistemático (11 trocas em 60 oportunidades com laudo completo nas quatro condições, 8 em 45 nas três sem regra de preservação da Figura 2A; 7 em 36 no trecho).
+  2. *Apagamento destrutivo:* Sob evidência parcial, os modelos divergiram radicalmente por linhagem arquitetural: modelos Anthropic (Opus 5.5, Sonnet 5.5) e Google (Gemini 4 Argon) preservaram e sinalizaram em notas os dados corretos sem prova; em contrapartida, modelos da OpenAI (GPT-6.1 Sol, GPT-6.1 Sol Pro, GPT-6 Luna) apagaram massivamente valores legítimos (substituindo-os por marcadores de ausência como "não relatado" em até 75% das células sem prova, 27/36 por gêmeo; as 9 restantes eram o sexo registrado, ainda impresso no cabeçalho do trecho), além de induzirem edições colaterais em células não-alvo corretas (média de 5,0 edições colaterais por resposta).
+  3. *Mecanismo do apagamento (Teste de Simetria):* O apagamento exibiu simetria estrita entre os gêmeos implausível e plausível (ex.: GPT-6.1 Sol apagou 27/36 em ambos os braços), demonstrando que essa atitude não reflete julgamento de plausibilidade clínica, mas sim uma heurística rígida e cega de ausência literal de menção textual no trecho imediato, desconsiderando o aviso de proveniência.
+  4. *Intervenção por instrução vs. esforço computacional:* Uma instrução explícita de preservação de uma única frase (*keep rule*: *"não altere o que não puder verificar; preserve e anote"*) reduziu os apagamentos a zero nos principais modelos de fronteira afetados, acompanhada da eliminação das edições colaterais. Por outro lado, elevar o esforço de raciocínio para "alto" sem a regra explícita demandou de 1,1 a 21,5 vezes mais tokens de saída, produzindo efeitos heterogêneos e insuficientes em múltiplos modelos.
 * **Conclusões:** Em tarefas de auditoria de dados, o risco operacional primário em LLMs modernos de raciocínio não reside na falsificação ativa de dados contraintuitivos (*plausibility bias*), mas sim na destruição silenciosa de dados verdadeiros quando o revisor opera com visibilidade documental assimétrica ou fragmentada. Esse comportamento-padrão de apagamento é um traço de calibragem e governança de instruções, plenamente contornável por salvaguardas de prompt bem desenhadas (*flag before fix*), cuja aplicação deve ser mandatória em pipelines automatizados de curadoria de dados.
 
 ---
@@ -62,7 +62,7 @@ As células das tabelas cobriram um fatorial 2×2 completo em cada cenário (Fig
 * **Correto e Plausível:** O alvo controle do gêmeo pareado (achado comum legítimo).
 * **Errado e Plausível:** Erro plantado intencionalmente na tabela que parece perfeitamente normal (ex.: classificação de zigosidade como heterozigota em vez de homozigota; atribuição ao gene parálogo *KMT2C* em vez de *KMT2D*).
 * **Errado e Implausível:** Erro plantado grotesco/impossível (ex.: fração alélica de 1,40; testosterona sérica feminina de 6.200 ng/dL).
-* **Células Não-Alvo:** 29 a 36 campos de preenchimento padrão fidedignos ao texto, cuja alteração inadvertida pelo revisor permitiu mensurar a taxa de **edições colaterais** (*collateral edits*).
+* **Células Não-Alvo:** 28 a 36 campos de preenchimento padrão (4 a 5 células-alvo por tabela) fidedignos ao texto, cuja alteração inadvertida pelo revisor permitiu mensurar a taxa de **edições colaterais** (*collateral edits*).
 
 ```
 Matriz Fatorial 2×2 de Validação de Células-Alvo:
@@ -103,7 +103,7 @@ Foram avaliadas quatro condições experimentais:
 
 As interações foram executadas sem retenção de estado (sessões independentes via API). Os modelos foram instruídos a responder exclusivamente em formato estruturado JSON com dois vetores: `"changes"` (alterações necessárias com justificativa) e `"notes"` (observações sobre células preservadas). Células não mencionadas foram computadas como preservadas intactas.
 
-A apuração foi realizada por um script de graduação determinístico desacoplado do LLM, regido por 32 testes de unidade. As respostas sofreram normalização prévia (tratamento de espaços, operadores matemáticos, zeros à direita, razões e aproximações numéricas com tolerâncias predefinidas para valores computados). A classificação dos desfechos obedeceu às seguintes categorias:
+A apuração foi realizada por um script de graduação determinístico desacoplado do LLM, regido por 33 testes de unidade. As respostas sofreram normalização prévia (tratamento de espaços, operadores matemáticos, zeros à direita, razões e aproximações numéricas com tolerâncias predefinidas para valores computados). A classificação dos desfechos obedeceu às seguintes categorias:
 
 * **Em Células Corretas:**
   * **Mantida (*Kept*):** Célula mantida sem alterações nem notas.
@@ -140,7 +140,7 @@ O parâmetro de esforço de raciocínio (*reasoning effort*) foi padronizado em 
 Nos doze modelos equipados com arquiteturas ou parâmetros de raciocínio deliberativo, em um total de **970 oportunidades analisáveis de adulteração** de dados corretos e contraintuitivos (considerando contextos completo e trecho, sob as três condições sem regra explícita), observou-se apenas **1 único evento de troca (*flip*)** (taxa de 0,10%; limite superior do IC 95% de Wilson: 0,58%). Esse único caso decorreu do modelo Claude Haiku 5.5 executado com raciocínio desativado, o qual alterou a fração alélica paterna de 0,18 para 0,19 (ajuste numérico espúrio, sem conotação clínica). Nos cenários gêmeos plausíveis, ocorreram 0 trocas.
 
 Em nítido contraste, o **Llama 4 Maverick** — único modelo da coorte desprovido de camada de raciocínio — apresentou viés de plausibilidade acentuado e sistemático:
-* No laudo completo: adulterou a célula-alvo em **11 de 60 oportunidades** (18,3%), substituindo invariavelmente o sexo registrado de *"female"* para *"male"* ao confrontar a anotação clínica com o cariótipo 46,XY da paciente com CAIS, falha observada mesmo sob a condição de regra explícita de preservação. No gêmeo plausível correspondente (46,XX), cometeu zero trocas (0/60).
+* No laudo completo: adulterou a célula-alvo em **11 de 60 oportunidades** (18,3%; quatro condições; 8 de 45 nas três condições sem regra, como na Figura 2A), substituindo invariavelmente o sexo registrado de *"female"* para *"male"* ao confrontar a anotação clínica com o cariótipo 46,XY da paciente com CAIS, falha observada mesmo sob a condição de regra explícita de preservação. No gêmeo plausível correspondente (46,XX), cometeu zero trocas (0/60).
 * No excerto parcial: repetiu a troca em **7 de 36 oportunidades** (19,4%), contra apenas 1 troca na condição plausível (onde inseriu o cariótipo no campo de sexo).
 
 > **Síntese:** O viés de plausibilidade clássico encontra-se amplamente superado em modelos modernos com capacidade de raciocínio deliberativo, restringindo-se a modelos de geração direta com priors lexicais estáticos e sem encadeamento de checagem.
@@ -149,14 +149,14 @@ Em nítido contraste, o **Llama 4 Maverick** — único modelo da coorte desprov
 
 ### 3.2 Questão 2: A Verdadeira Assimetria — Retenção Responsável versus Apagamento Destrutivo (Figuras 3 e 4)
 
-No contexto completo (72 respostas por modelo), todos os doze modelos de raciocínio atingiram desempenho perfeito (zero apagamentos de dados válidos, zero trocas indevidas e 100% de correção dos erros plantados). 
+No contexto completo (72 respostas por modelo, quatro condições), onze dos doze modelos com parâmetro de raciocínio atingiram desempenho perfeito (zero apagamentos de dados válidos, zero trocas indevidas e 100% de correção dos erros plantados). A exceção foi o Claude Haiku 5.5 com raciocínio desligado, que apagou 10 células corretas (8 delas no gêmeo implausível, 8/60) e deixou passar 18 dos 144 erros plantados (4 deles corrigidos para outro valor errado), sem nenhuma troca. 
 
 Contudo, ao confrontarem o **trecho parcial** com ausência de provas imediatas, revelou-se uma profunda divergência comportamental entre as famílias de modelos (Tabela 1):
 
 **Tabela 1. Desfecho das células corretas sem prova no trecho documental**  
 *(Amostra agregada das condições Neutra, Alerta e Citação; n = 36 células por gêmeo por modelo; ordenados da maior disciplina para o maior apagamento).*
 
-| Modelo | Configuração de Raciocínio | Trocas (*Flip*) | Apagamentos (*Erase*) Implausível / Plausível | Mantidas e Sinalizadas (*Flag*) [Ideal] | Edições Colaterais por Resposta |
+| Modelo | Configuração de Raciocínio | Trocas (*Flip*) | Apagamentos (*Erase*) Implausível / Plausível | Mantidas e Sinalizadas (*Flag*) [Ideal], gêmeo implausível | Edições Colaterais por Resposta |
 | :--- | :---: | :---: | :---: | :---: | :---: |
 | **Claude Opus 5.5** | Low | 0 | **0 / 0** (0%) | 27 / 36 | 0,0 |
 | **Gemini 4 Argon** | Low | 0 | **0 / 0** (0%) | 20 / 36 | 0,1 |
@@ -199,7 +199,7 @@ Uma inspeção qualitativa detalhada elucida a mecânica desse comportamento: o 
 
 #### Impacto das Condições de Instrução (Figura 5)
 A introdução da **Regra de Preservação (*Keep Rule*)** produziu uma reversão drástica do comportamento destrutivo:
-* **GPT-6.1 Sol e GPT-6.1 Sol Pro:** O apagamento despencou de 100% das células elegíveis sem regra para **zero apagamentos** (0/24), enquanto as anotações prudentes em notas saltaram para 100%, e a taxa de edições colaterais caiu instantaneamente de 5,0 para **0,0 por resposta**.
+* **GPT-6.1 Sol e GPT-6.1 Sol Pro:** O apagamento despencou de 18/24 (75%) em cada condição sem regra para **zero apagamentos** (0/24), enquanto as anotações prudentes em notas saltaram para 100%, e a taxa de edições colaterais caiu instantaneamente de 5,0 para **0,0 por resposta**.
 * **Grok 4.7, DeepSeek V4 Pro e Qwen 3.8 Max:** Reduziram seus índices de apagamento a zero.
 * Em contraste, modelos menores ou sem raciocínio deliberativo ativo mantiveram resistência à instrução: o GPT-6 Luna (com raciocínio desativado) persistiu apagando 12 das 24 células; o Llama 4 Maverick manteve 6 apagamentos e persistiu nas trocas indesejadas.
 
@@ -222,7 +222,7 @@ Para verificar se o simples aumento do poder computacional em inferência resolv
 | **Claude Haiku 5.5** | 7 / 24 | **0 / 24** | **0 / 24** | 1,4× (1.525 → 2.169 tokens) |
 | **Claude Opus 5.5** | — | **0 / 24** | **0 / 24** | 1,9× (567 → 1.075 tokens) |
 
-A elevação do esforço gerou benefícios erráticos: embora tenha saneado os apagamentos no Gemini 3.8 Flash e atenuado a taxa no GPT-6.1 Sol, teve impacto nulo no GPT-6.1 Sol Pro, GPT-6 Luna, Qwen 3.8 Max e nos modelos DeepSeek, demandando em contrapartida um aumento brutal no consumo de tokens que oscilou entre **1,7× e 21,5×**.
+A elevação do esforço gerou benefícios erráticos: embora tenha saneado os apagamentos no Gemini 3.8 Flash e atenuado a taxa no GPT-6.1 Sol, teve impacto nulo no GPT-6.1 Sol Pro, GPT-6 Luna, Qwen 3.8 Max e nos modelos DeepSeek, demandando em contrapartida um aumento brutal no consumo de tokens que oscilou entre **1,1× e 21,5×** (1,1× no DeepSeek V4 Pro; 21,5× no Gemini 3.8 Flash).
 
 > **Síntese:** Ampliar cegamente o esforço de raciocínio não sana o apagamento de dados e multiplica exponencialmente os custos de inferência. Uma instrução explícita de salvaguarda (*keep rule*) demonstra-se incomparavelmente superior em eficácia, determinismo e eficiência de custos.
 
@@ -270,5 +270,5 @@ O risco estrutural mensurável reside na propensão de certas famílias de model
 
 ---
 
-*Figuras do estudo, scripts reprodutíveis e matrizes de dados estão disponíveis em:* [`docs/figures/`](file:///C:/Users/gbbarra/llm-reviewer-discipline-eval/docs/figures)  
-*Referencial metodológico e código:* [`plausibility_eval/`](file:///C:/Users/gbbarra/llm-reviewer-discipline-eval/plausibility_eval)
+*Figuras do estudo, scripts reprodutíveis e matrizes de dados estão disponíveis em:* [`docs/figures/`](figures/)  
+*Referencial metodológico e código:* [`plausibility_eval/`](../plausibility_eval/)

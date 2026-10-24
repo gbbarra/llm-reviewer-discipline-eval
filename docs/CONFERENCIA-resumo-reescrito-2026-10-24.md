@@ -17,3 +17,6 @@ Conferido em 24/10/2026 contra `docs/figures/results-figures-data.csv`, `runs/*.
 Confirmados: zero palpites (guess) em 3.019 respostas analisadas; edições colaterais do GPT-6.1 Sol e Sol Pro
 sob keep rule = 0,0 por resposta; Tabela 2 (apagamento off/low/high e tokens) bate com a Fig. 6; 1 flip em
 970 células nos 12 modelos com raciocínio (Haiku off, 0,18 → 0,19); laudos de 1.318 a 1.718 palavras.
+
+**Atualização (24/10, mesmo dia):** os oito ajustes acima foram aplicados no resumo (commit seguinte a d351fc4).
+Faixa de células não-alvo conferida: 28 a 36 (tabelas de 33 a 40 células com 4 a 5 alvos).
