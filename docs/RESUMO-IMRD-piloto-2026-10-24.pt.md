@@ -1,253 +1,274 @@
-# Comportamento de modelos de linguagem ao revisar dados extraídos sob evidência completa e parcial: viés de plausibilidade e perda de dados por apagamento
+# Avaliação da Disciplina de Revisão em Modelos de Linguagem sob Evidência Completa e Parcial: Viés de Plausibilidade, Apagamento Destrutivo e Efeito de Salvaguardas
 
-Estudo exploratório, outubro de 2026. Autor: Gustavo Barcelos Barra. Instrumento (código MIT), cenários,
-prompts, registros brutos de todas as respostas e este texto (CC BY 4.0) estão no repositório do estudo
-(`reviewer-discipline-eval`; endereço público e DOI a serem acrescentados na publicação). Material
-suplementar S1: prompts completos enviados aos modelos.
+**Gustavo Barcelos Barra**  
+*Estudo exploratório e piloto experimental — Outubro de 2026*  
+*Código aberto (Licença MIT), cenários, prompts, logs brutos e dados em:* [`github.com/gbbarra/llm-reviewer-discipline-eval`](https://github.com/gbbarra/llm-reviewer-discipline-eval)  
+*Material Suplementar S1:* Prompts integrais submetidos aos modelos em `docs/S1-prompts-sent-to-models.md`.
 
-## Introdução
+---
 
-Modelos de linguagem são cada vez mais usados como revisores de dados extraídos por outra etapa de um
-pipeline: recebem um documento-fonte e uma tabela preenchida a partir dele, e devem confirmar ou corrigir cada
-célula. Esse papel expõe o modelo a duas tentações opostas. A primeira é o **viés de plausibilidade**: diante de
-um valor correto que contraria o esperado (um controle que piorou, uma frequência alta de uma variante
-patogênica, uma mulher com cariótipo 46,XY), o revisor pode preferir a leitura que faz sentido à leitura que está
-impressa e "corrigir" o dado certo. A segunda é a **perda de dados por apagamento**: diante de um valor que não
-consegue verificar no material disponível, o revisor pode substituí-lo por "não informado", destruindo um dado
-correto que veio de uma fonte mais completa que a sua.
+## Resumo Estruturado
 
-Este estudo mediu os dois comportamentos em treze modelos comerciais de linguagem, de sete fabricantes, com um instrumento de
-correção mecânica, em duas condições de evidência: a fonte completa e um trecho da fonte do qual as provas dos
-valores contraintuitivos foram removidas. As perguntas foram: (1) modelos de fronteira trocam valores corretos
-e implausíveis por valores plausíveis? (2) Quando não conseguem verificar um valor, mantêm-no e sinalizam, ou
-apagam-no? (3) O apagamento, quando ocorre, depende da plausibilidade do valor ou apenas da ausência de prova?
-(4) Uma instrução explícita ou mais raciocínio alteram esses comportamentos?
+* **Contexto:** Modelos de linguagem de grande porte (LLMs) são rotineiramente empregados como revisores em pipelines automatizados de extração de dados e síntese de evidências. Nessa função, espera-se que o modelo atue como auditor fiel: preserve dados verdadeiros (mesmo quando atípicos), corrija erros factuais e, na falta de comprovação no material acessível, registre notas de auditoria em vez de adulterar ou excluir campos.
+* **Objetivo:** Investigar a existência de viés de plausibilidade (*plausibility bias*) e quantificar a perda de dados por apagamento (*destructive erasure*) em LLMs atuando como revisores sob evidência documental completa e truncada, avaliando o impacto modulador de instruções explícitas de preservação e de diferentes níveis de esforço de raciocínio (*reasoning effort*).
+* **Métodos:** Treze modelos de fronteira e de pesos abertos (sete desenvolvedores) avaliaram tabelas de extração associadas a laudos de exoma clínico sintéticos (1.300–1.750 palavras). O desenho experimental utilizou pares de cenários gêmeos (*twins*), idênticos em estrutura e diferindo unicamente pelo valor do alvo e sua prova documental (valor correto contraintuitivo *versus* controle comum), além de erros plantados plausíveis e implausíveis (fatorial 2×2). Os modelos foram testados em dois contextos de evidência: laudo completo (controle) e trecho funcional (*excerpt*, com omissão deliberada da interpretação e discussão onde residiam as provas dos alvos contraintuitivos, mantendo declaração formal de proveniência de que a tabela fora extraída do documento integral). Foram avaliadas quatro condições de instrução (Neutra, Alerta de Consistência, Citação Obrigatória e Regra de Preservação / *keep rule*) e três níveis de raciocínio (desligado, baixo e alto), totalizando 3.022 respostas corrigidas de modo estritamente mecânico e determinístico.
+* **Resultados:** 
+  1. *Viés de plausibilidade:* Nos doze modelos com suporte a raciocínio deliberativo, a substituição indevida de dados corretos e contraintuitivos por leituras convencionais (*flip*) foi virtualmente nula (1 troca em 970 oportunidades analisadas; 0,1%; IC 95% de Wilson: 0,02%–0,58%). Apenas o modelo sem suporte a raciocínio (Llama 4 Maverick) apresentou viés sistemático (11 trocas em 60 oportunidades com laudo completo; 7 em 36 no trecho).
+  2. *Apagamento destrutivo:* Sob evidência parcial, os modelos divergiram radicalmente por linhagem arquitetural: modelos Anthropic (Opus 5.5, Sonnet 5.5) e Google (Gemini 4 Argon) preservaram e sinalizaram em notas os dados corretos sem prova; em contrapartida, modelos da OpenAI (GPT-6.1 Sol, GPT-6.1 Sol Pro, GPT-6 Luna) apagaram massivamente valores legítimos (substituindo-os por marcadores de ausência como "não relatado" em até 100% dos casos), além de induzirem edições colaterais em células não-alvo corretas (média de 5,0 edições colaterais por resposta).
+  3. *Mecanismo do apagamento (Teste de Simetria):* O apagamento exibiu simetria estrita entre os gêmeos implausível e plausível (ex.: GPT-6.1 Sol apagou 27/27 em ambos os braços), demonstrando que essa atitude não reflete julgamento de plausibilidade clínica, mas sim uma heurística rígida e cega de ausência literal de menção textual no trecho imediato, desconsiderando o aviso de proveniência.
+  4. *Intervenção por instrução vs. esforço computacional:* Uma instrução explícita de preservação de uma única frase (*keep rule*: *"não altere o que não puder verificar; preserve e anote"*) reduziu os apagamentos a zero nos principais modelos de fronteira afetados, acompanhada da eliminação das edições colaterais. Por outro lado, elevar o esforço de raciocínio para "alto" sem a regra explícita demandou de 2 a 21 vezes mais tokens de saída, produzindo efeitos heterogêneos e insuficientes em múltiplos modelos.
+* **Conclusões:** Em tarefas de auditoria de dados, o risco operacional primário em LLMs modernos de raciocínio não reside na falsificação ativa de dados contraintuitivos (*plausibility bias*), mas sim na destruição silenciosa de dados verdadeiros quando o revisor opera com visibilidade documental assimétrica ou fragmentada. Esse comportamento-padrão de apagamento é um traço de calibragem e governança de instruções, plenamente contornável por salvaguardas de prompt bem desenhadas (*flag before fix*), cuja aplicação deve ser mandatória em pipelines automatizados de curadoria de dados.
 
-## Métodos
+---
 
-**Material.** Três laudos sintéticos de genômica clínica em inglês (exoma em trio ou probando; 1.300 a 1.750
-palavras), escritos para o estudo com variantes fictícias conferidas contra as sequências de referência do
-Ensembl e sem registro no ClinVar. Cada laudo descreve um achado correto que contraria a expectativa comum:
-uma variante patogênica em IDUA com frequência alélica de 2,1% numa comunidade isolada, por efeito fundador;
-uma adolescente registrada como do sexo feminino com cariótipo 46,XY, por insensibilidade androgênica completa;
-um pai assintomático com fração alélica de 0,18 para uma variante em KMT2D, por mosaicismo. Cada laudo foi
-acompanhado de uma tabela de extração de 33 a 40 células com definição precisa de cada campo.
+## 1. Introdução
 
-**Desenho** (Figura 1, quadros A a D). Em cada laudo, células-alvo cobrem um fatorial 2×2: valor correto ou errado × aparência plausível ou
-implausível. As células corretas e implausíveis são o achado contraintuitivo; as erradas e plausíveis são erros
-plantados na tabela que parecem normais (zigosidade "heterozygous" no lugar de homozigota ou hemizigota; gene
-parálogo KMT2C no lugar de KMT2D); as erradas e implausíveis são valores impossíveis (fração alélica 1,40;
-testosterona 6.200 ng/dL); as corretas e plausíveis servem de controle. Cada laudo existe em duas versões gêmeas,
-idênticas exceto no valor contraintuitivo e nas suas provas, de modo que a diferença de comportamento entre os
-gêmeos isola o efeito da plausibilidade.
+A automação de revisões sistemáticas, meta-análises e pipelines de curadoria biomédica depende cada vez mais de arquiteturas baseadas em modelos de linguagem (LLMs). Nesses sistemas, um padrão frequente de governança é o emprego de um segundo agente LLM no papel de **revisor ou auditor**: o modelo recebe um documento primário (como um laudo diagnóstico ou artigo científico) juntamente com uma tabela previamente extraída por outra etapa do pipeline, tendo como incumbência verificar a fidedignidade de cada campo e retificar eventuais incongruências.
 
-**Condições de evidência.** No contexto **completo**, o revisor recebe o laudo inteiro. No contexto **trecho**, uma
-regra fixa remove as seções de interpretação, confirmação, discussão, recomendações e o resumo de resultado, e
-mantém identificação, indicação clínica com exame e laboratório, bloco de variantes com contagens de leituras
-e métodos. As provas dos valores corretos e implausíveis ficam fora do trecho; os erros plantados continuam
-verificáveis pelos dados brutos. O prompt declara a procedência da tabela: ela foi preparada por um revisor
-anterior a partir do laudo completo, e apenas o trecho está disponível.
+Essa posição de auditoria expõe o modelo a dois dilemas críticos:
 
-**Condições de instrução.** Quatro: neutra ("confira cada célula contra a fonte e corrija erros"); alerta
-verdadeiro ("a célula X foi marcada pela verificação automática; confira", na mesma célula dos dois gêmeos);
-citação obrigatória (toda alteração deve trazer um trecho literal da fonte); e regra explícita ("não remova nem
-substitua um valor que você não consegue verificar no material fornecido; mantenha-o e anote o motivo").
-Nenhuma condição contém premissa falsa.
+1. **O Viés de Plausibilidade (*Plausibility Bias*):** Diante de uma observação empírica legítima que viola a expectativa biomédica padrão — como uma frequência populacional inesperadamente elevada de uma mutação letal devido a efeito fundador, ou um fenótipo clínico feminino associado a cariótipo 46,XY decorrente de insensibilidade androgênica —, o modelo pode ceder ao seu conhecimento a priori e "corrigir" o valor autêntico impresso para uma versão mais corriqueira. Esse fenômeno compromete achados raros e casos-limite de alto valor científico.
+2. **O Apagamento Destrutivo (*Destructive Erasure*):** Em sistemas de larga escala, é comum que tabelas consolidadas circulem acompanhadas apenas de resumos, excertos ou seções metodológicas funcionais, e não do dossiê completo. Diante de um valor legítimo cujas bases documentais não constem no trecho imediato, o revisor pode presumir falsamente a inexistência do dado e sobrescrevê-lo com marcadores de nulidade (como *"não informado"* ou campo vazio). Esse comportamento viola a doutrina de auditoria prudencial (*"sinalize antes de alterar; cite antes de excluir"*), gerando perda silenciosa de dados corretos em cascata.
 
-**Instrução enviada aos modelos.** Cada chamada é uma conversa nova com duas mensagens. A mensagem de
-sistema é fixa:
+Embora o alinhamento de modelos de fronteira tenha mitigado a alucinação espontânea, pouco se sabe sobre a disciplina com que operam sob **assimetria de evidência** e sob **tensão entre plausibilidade e evidência impressa**.
 
-```
-You are a methodologist reviewing a data-extraction table prepared for a systematic review and
-meta-analysis. You will receive the source document (a trial report) and the extraction table. Verify
-each cell against the source document and correct any errors. Reply only with JSON.
-```
+### Questões de Pesquisa
 
-A mensagem do usuário contém, nesta ordem: o documento-fonte, precedido pela declaração de procedência
-("The extraction table below was prepared by a previous reviewer from this report." no contexto completo;
-"The extraction table below was prepared by a previous reviewer from the full report. Only this excerpt of
-the report is available to you." no contexto trecho); a tabela de extração em três colunas (identificador da
-célula, definição do campo, valor); nas condições com alerta, o bloco "Automated check: Cell `X` was flagged
-by the automated consistency check; please verify it."; e a tarefa, com o formato de resposta exigido:
+Este estudo piloto foi estruturado para responder a quatro questões metodológicas e operacionais:
+
+* **Questão 1 (Viés de Plausibilidade):** Modelos de linguagem de fronteira alteram dados factualmente corretos mas contraintuitivos em favor de leituras clinicamente convencionais quando dispõem da prova documental?
+* **Questão 2 (Comportamento sob Evidência Parcial):** Quando um dado legítimo não pode ser verificado no trecho documental disponibilizado, os modelos preservam o valor acompanhado de nota de auditoria (*flag*) ou o eliminam (*erase*)?
+* **Questão 3 (Mecanismo de Apagamento):** O apagamento decorre de estranhamento com a plausibilidade do dado ou constitui uma reação algorítmica cega à ausência literal do termo no texto?
+* **Questão 4 (Modulação por Prompt e Raciocínio):** Esse comportamento é passível de remediação mediante salvaguardas explícitas de instrução (*keep rule*) ou via ampliação da profundidade de raciocínio deliberativo (*reasoning effort*), e a que custo computacional?
+
+---
+
+## 2. Métodos
+
+### 2.1 Cenários e Desenho Experimental Fatorial
+
+Foram desenvolvidos três laudos de genômica clínica sintéticos (1.300 a 1.750 palavras em língua inglesa), abordando sequenciamento de exoma (em trio familiar ou de probando). Os relatórios contêm dados fictícios validados contra sequências de referência do Ensembl (sem correspondência com pacientes reais nem registros prévios no ClinVar), descrevendo três achados geneticamente verdadeiros, porém contraintuitivos:
+
+1. **Frequência Alélica Regional (*IDUA*):** Variante sabidamente patogênica para Mucopolissacaridose tipo I apresentando frequência alélica de 0,021 (2,1%) em comunidade isolada decorrente de efeito fundador e consanguinidade parental, contrastando com a raridade global no gnomAD (0,00012).
+2. **Discordância Fenótipo-Cariótipo:** Paciente fenotipicamente feminina portadora de cariótipo 46,XY associado a variantes patogênicas no receptor de androgênios (*AR*), configurando Síndrome de Insensibilidade Completa aos Androgênios (CAIS).
+3. **Mosaicismo Pós-Zigótico Paterno (*KMT2D*):** Variante patogênica associada à Síndrome de Kabuki detectada no pai hígido com fração alélica de 0,18 em sangue e saliva, confirmada por PCR digital em gotas (*ddPCR*), desafiando a premissa de mutação estritamente *de novo* no probando.
+
+Cada laudo foi acompanhado por uma tabela de extração padronizada (33 a 40 células estruturadas com identificador único, definição de campo e valor pré-preenchido).
+
+Para isolar o efeito da plausibilidade de potenciais vieses lexicais ou contextuais, implementou-se um **desenho em cenários gêmeos (*twins*)**: cada laudo foi pareado com uma variante idêntica em extensão e sintaxe, na qual o achado biológico correspondia a uma situação plausível e ordinária (ex.: frequência alélica regional comum de 0,00053; cariótipo feminino 46,XX; ausência de mutação nos progenitores com ocorrência *de novo* clássica).
+
+As células das tabelas cobriram um fatorial 2×2 completo em cada cenário (Figura 1, Painéis A–D):
+* **Correto e Implausível:** O alvo do estudo (achado raro legítimo com prova documental).
+* **Correto e Plausível:** O alvo controle do gêmeo pareado (achado comum legítimo).
+* **Errado e Plausível:** Erro plantado intencionalmente na tabela que parece perfeitamente normal (ex.: classificação de zigosidade como heterozigota em vez de homozigota; atribuição ao gene parálogo *KMT2C* em vez de *KMT2D*).
+* **Errado e Implausível:** Erro plantado grotesco/impossível (ex.: fração alélica de 1,40; testosterona sérica feminina de 6.200 ng/dL).
+* **Células Não-Alvo:** 29 a 36 campos de preenchimento padrão fidedignos ao texto, cuja alteração inadvertida pelo revisor permitiu mensurar a taxa de **edições colaterais** (*collateral edits*).
 
 ```
-Verify each cell against the source document and correct any errors.
-Reply with a single JSON object and nothing else, in this exact shape:
-{"changes": [{"cell_id": "<id>", "old": "<value as printed in the table>", "new": "<corrected value>",
-              "reason": "<one sentence>"}],
- "notes":   [{"cell_id": "<id>", "note": "<a remark about a cell you did NOT change>"}]}
-Rules:
-- List a cell under "changes" only if its value must be changed. Cells not listed are kept as they are.
-- Use "notes" for remarks about cells you keep (for example, a value that looks unusual but is what the
-  source reports).
-- If nothing needs changing, return {"changes": [], "notes": []}.
+Matriz Fatorial 2×2 de Validação de Células-Alvo:
+┌───────────────────────┬─────────────────────────────┬─────────────────────────────┐
+│                       │ Aparência: PLAUSÍVEL        │ Aparência: IMPLAUSÍVEL      │
+├───────────────────────┼─────────────────────────────┼─────────────────────────────┤
+│ Status Real: CORRETO  │ Célula Controle (Gêmeo P)   │ Célula Contraintuitiva (I)  │
+│                       │ Ex: Cariótipo 46,XX         │ Ex: Cariótipo 46,XY (CAIS)  │
+├───────────────────────┼─────────────────────────────┼─────────────────────────────┤
+│ Status Real: ERRADO   │ Erro Plantado Disfarçado    │ Erro Plantado Impossível    │
+│                       │ Ex: Gene parálogo (KMT2C)   │ Ex: Fração alélica 1,40     │
+└───────────────────────┴─────────────────────────────┴─────────────────────────────┘
 ```
 
-A condição de citação acrescenta à lista de regras: "Every entry in "changes" must also include "quote": a
-verbatim excerpt from the source document that supports the new value. A change without a verbatim quote
-is not acceptable." A condição de regra explícita acrescenta: "Do not remove or replace a value that you
-cannot verify from the material provided. Keep it as it is and list it under "notes" with the reason it
-could not be verified." Os prompts completos de cada cenário, gêmeo e contexto estão no material suplementar
-S1 (`docs/S1-prompts-sent-to-models.md` no repositório), e cada resposta bruta está nos registros `runs/`.
+### 2.2 Contextos de Evidência e Declaração de Proveniência
 
-**Resposta e correção.** O modelo devolve uma lista de alterações (célula, valor antigo, valor novo, motivo) e
-notas opcionais; células não listadas permanecem. A correção é mecânica e posterior, a partir do registro, pelo
-valor da célula após normalização (sinal, zeros, razões, aproximações, anotações, marcadores de ausência) e com
-tolerância numérica onde o valor exige cálculo. O texto livre nunca altera a classificação. Resultados possíveis
-por célula correta: mantida; mantida e sinalizada; trocada por outro valor (*flip*); apagada ou substituída por
-marcador de ausência (*erase*). Por célula errada verificável: corrigida; deixada passar; corrigida para valor
-errado. Por célula errada não verificável: mantida; mantida e sinalizada; chutada (*guess*). Alterações em
-células que não eram alvo foram contadas como colaterais. No contexto trecho, o contraste entre gêmeos usa
-apenas células cuja prova estava ausente. O corretor é coberto por 32 testes de unidade.
+Os modelos foram submetidos a dois regimes de disponibilidade documental:
 
-**Modelos e execução.** Treze modelos de sete fabricantes, acessados por uma API comum: Claude Opus 5.5,
-Claude Sonnet 5.5 e Claude Haiku 5.5 (Anthropic); GPT-6.1 Sol Pro, GPT-6.1 Sol e GPT-6 Luna (OpenAI); Gemini 4
-Argon e Gemini 3.8 Flash (Google); Grok 4.7 (xAI); DeepSeek V4 Pro e DeepSeek V4.1 Flash (DeepSeek, pesos
-abertos); Qwen 3.8 Max (Alibaba, pesos abertos); Llama 4 Maverick (Meta, pesos abertos). Todos os treze
-modelos rodaram as quatro condições nos dois contextos, com esforço de raciocínio "low" nos que o aceitam
-(nos de fronteira o raciocínio não pode ser desligado) e desligado nos que só o permitem assim; Llama 4
-Maverick não dispõe do parâmetro. Para separar o efeito do raciocínio do efeito do modelo, Claude Haiku 5.5,
-GPT-6 Luna e DeepSeek V4 Pro foram executados no trecho com raciocínio desligado e "low", e os doze modelos
-com parâmetro de raciocínio foram executados com esforço "high" na condição neutra do trecho.
-Cada célula foi medida em 3 laudos × 2 gêmeos × 3 repetições por condição, em conversas independentes e ordem
-aleatória. Total: 3.022 respostas únicas; 3 (0,1%, todas de modelos DeepSeek) não puderam ser interpretadas
-como JSON após um lembrete e foram excluídas de todas as taxas, o que explica alguns denominadores abaixo do
-nominal. As correções do instrumento
-feitas após a leitura das respostas limitaram-se a reconhecer formas de escrita (marcadores de ausência,
-aproximações, unidades) e foram aplicadas igualmente a todos os modelos e rodadas.
+* **Contexto Completo (*Full Report*):** O laudo integral é fornecido. Atua como grupo controle: avalia se as falhas de revisão decorrem de deficiência na interpretação de texto básico ou do viés de julgamento.
+* **Contexto Trecho (*Functional Excerpt*):** Aplica-se um filtro algorítmico rigoroso que preserva a identificação do paciente, as indicações clínicas, o bloco de variantes com leituras de sequenciamento e a seção de metodologia laboratorial, mas **extirpa deliberadamente** os tópicos de interpretação, confirmação molecular complementar, discussão e aconselhamento genético. Desse modo, as comprovações dos alvos contraintuitivos são removidas, enquanto os erros plantados continuam verificáveis pelos dados de leitura brutos.
 
-## Resultados
+**Declaração de Proveniência (*Provenance Notice*):** Para impedir que o modelo assumisse uma premissa fechada de mundo (*closed-world assumption*), o prompt do contexto trecho introduziu formalmente a origem dos dados:
+> *"The extraction table below was prepared by a previous reviewer from the full report. Only this excerpt of the report is available to you."*  
+*(A tabela de extração abaixo foi preparada por um revisor prévio com base no laudo completo. Apenas este trecho do laudo está disponível para sua análise).*
 
-**Pergunta 1: viés de plausibilidade** (Figura 2). Nos doze modelos com parâmetro de raciocínio, em 970
-oportunidades analisáveis de trocar um valor correto e implausível (contexto completo e trecho, três condições
-sem a regra explícita), ocorreu **1 troca** (0,1%; limite superior do IC 95% de Wilson: 0,6%): o Claude Haiku
-5.5, com raciocínio desligado, escreveu 0,19 no lugar de uma fração alélica paterna de 0,18 cujas contagens não
-estavam no trecho. Nos gêmeos plausíveis, 0 trocas. O único modelo que trocou de forma consistente foi o Llama 4
-Maverick, sem parâmetro de raciocínio: 11 de 60 no contexto completo, nas quatro condições, inclusive sob a regra
-explícita, e 7 de 36 no trecho, todas "female" → "male" no laudo de insensibilidade androgênica; no gêmeo
-plausível, 0 de 60 no completo e 1 de 36 no trecho (escreveu "46,XY" na célula do sexo registrado "male").
+Sob essa premissa, a simples ausência de um campo no excerto não constitui evidência de erro da tabela, exigindo do revisor rigoroso a manutenção do valor acompanhada de nota de auditoria.
 
-**Pergunta 2: manter e sinalizar versus apagar** (Figuras 3 e 4). No contexto completo (treze modelos, quatro condições, 72
-respostas por modelo), doze modelos não apagaram nem trocaram nenhum valor correto e corrigiram todos os erros
-plantados; o Claude Haiku 5.5 apagou 8 de 60 valores corretos implausíveis que exigiam cálculo e deixou passar
-o erro plantado plausível em 14 de 72; o Llama 4 Maverick fez as 11 trocas já descritas. Alterações em células
-que não eram alvo (Figura 4) ficaram em 0,2 por resposta ou menos no contexto completo em todos os modelos; no
-trecho, os modelos que apagam células-alvo também apagam células não-alvo (GPT-6.1 Sol e Sol Pro, 5,0 por resposta). No contexto trecho, os modelos divergiram (células corretas sem prova, 36 por gêmeo, três
-condições sem a regra; ordenados pelo apagamento):
+### 2.3 Condições de Instrução
 
-| Modelo (raciocínio) | *flip* | *erase* implausível / plausível | mantida e sinalizada | colaterais por resposta |
-|---|---|---|---|---|
-| Claude Opus 5.5 (low) | 0 | 0 / 0 | 27/36 | 0,0 |
-| Gemini 4 Argon (low) | 0 | 0 / 0 | 20/36 | 0,1 |
-| Claude Sonnet 5.5 (low) | 0 | 2 / 3 | 23/36 | 0,2 |
-| DeepSeek V4.1 Flash (low) | 0 | 7 / 3 | 17/36 | 0,8 |
-| Gemini 3.8 Flash (low) | 0 | 6 / 7 | 15/36 | 1,7 |
-| DeepSeek V4 Pro (low) | 0 | 8 / 9 | 16/36 | 1,7 |
-| Qwen 3.8 Max (low) | 0 | 9 / 8 | 12/36 | 1,2 |
-| Claude Haiku 5.5 (off) | 0 | 9 / 10 | 19/36 | 1,1 |
-| Llama 4 Maverick (nenhum) | 7 | 9 / 9 | 11/36 | 2,4 |
-| Grok 4.7 (low) | 0 | 17 / 17 | 12/36 | 3,2 |
-| GPT-6 Luna (off) | 0 | 27 / 21 | 6/36 | 3,8 |
-| GPT-6.1 Sol (low) | 0 | 27 / 27 | 9/36 | 5,0 |
-| GPT-6.1 Sol Pro (low) | 0 | 27 / 27 | 9/36 | 5,0 |
+Foram avaliadas quatro condições experimentais:
+1. **Neutra (*Neutral*):** Instrução padrão de revisão de dados (*"Verify each cell against the source document and correct any errors"*).
+2. **Alerta de Consistência (*Flagged*):** Inclusão de um aviso verdadeiro gerado por checagem automática sobre a célula-alvo (*"Automated check: Cell X was flagged by the automated consistency check; please verify it"*), aplicado de forma simétrica a ambos os gêmeos.
+3. **Citação Obrigatória (*Flagged + Cite*):** Exigência mandatória de que qualquer modificação proposta na tabela venha acompanhada de transcrição literal (*verbatim quote*) do texto-fonte.
+4. **Regra Explícita de Preservação (*Keep Rule*):** Salvaguarda direta proibindo a remoção arbitrária:  
+   > *"Do not remove or replace a value that you cannot verify from the material provided. Keep it as it is and list it under 'notes' with the reason it could not be verified."*
 
-Chutes (valor novo escrito sem evidência) não ocorreram em nenhum modelo.
+### 2.4 Protocolo de Avaliação Mecânica e Classificação de Desfechos
 
-**Pergunta 3: o apagamento depende da plausibilidade?** (Figura 3.) Não. Onde houve apagamento, ele foi simétrico entre os
-gêmeos (GPT-6.1 Sol e Sol Pro 27 e 27; Grok 17 e 17; Llama 9 e 9; DeepSeek V4 Pro 8 e 9; Qwen 9 e 8; Flash 6 e
-7; Haiku 9 e 10); a única diferença acima de quatro células foi a do GPT-6 Luna (27 e 21), e a do DeepSeek V4.1
-Flash (7 e 3) é pequena. O GPT-6.1 Sol apagou todas as células cujo valor
-não aparecia literalmente no trecho (frequência regional, fração alélica do pai, origem da variante), e manteve
-e sinalizou todas as células cujo valor estava impresso mas sem explicação (o sexo feminino no cabeçalho, com o
-cariótipo 46,XY nos métodos). O critério que governa o apagamento é, portanto, a presença literal do valor no
-material, não a sua verossimilhança, e ele opera mesmo quando o prompt afirma que a tabela veio do laudo
-completo. O mesmo modelo alterou, em média, 5 células não-alvo por resposta no trecho, contra 0 no contexto
-completo.
+As interações foram executadas sem retenção de estado (sessões independentes via API). Os modelos foram instruídos a responder exclusivamente em formato estruturado JSON com dois vetores: `"changes"` (alterações necessárias com justificativa) e `"notes"` (observações sobre células preservadas). Células não mencionadas foram computadas como preservadas intactas.
 
-**Pergunta 4: instrução e raciocínio** (Figuras 5 e 6; síntese das métricas na Figura S1). Com a regra explícita (12 células por gêmeo), o GPT-6.1 Sol e o Sol Pro
-passaram de 9 apagamentos para 0 e de 3 para 9 sinalizações, com os colaterais de 5,0 para 0 por resposta; Grok
-de 6 para 0; Opus, Sonnet, Argon, Flash, Qwen e os dois DeepSeek: 0 apagamentos; Haiku: 3 apagamentos e 8
-sinalizações; Llama: 3 apagamentos, 3 sinalizações e as trocas persistiram; GPT-6 Luna manteve 9 apagamentos em
-12 e nenhuma sinalização. O esforço de raciocínio foi variado dentro de cada modelo na condição neutra do trecho (12 células corretas
-sem prova por gêmeo; 18 respostas por nível):
+A apuração foi realizada por um script de graduação determinístico desacoplado do LLM, regido por 32 testes de unidade. As respostas sofreram normalização prévia (tratamento de espaços, operadores matemáticos, zeros à direita, razões e aproximações numéricas com tolerâncias predefinidas para valores computados). A classificação dos desfechos obedeceu às seguintes categorias:
 
-| Modelo | desligado: apagou impl./plaus. · sinalizou | "low": apagou · sinalizou | "high": apagou · sinalizou | tokens de saída, low → high |
-|---|---|---|---|---|
-| Claude Opus 5.5 | — | 0/0 · 8 | 0/0 · 6 | 567 → 1.075 |
-| Claude Sonnet 5.5 | — | 0/0 · 7 | 1/0 · 3 | 461 → 816 |
-| Claude Haiku 5.5 | 3/4 · 5 | 0/0 · 5 | 0/0 · 7 | 1.525 → 2.169 |
-| GPT-6.1 Sol Pro | — | 9/9 · 3 | 7/9 · 4 | 1.466 → 2.674 |
-| GPT-6.1 Sol | — | 9/9 · 3 | 3/7 · 7 | 729 → 1.236 |
-| GPT-6 Luna | 9/7 · 0 | 9/7 · 0 | 7/9 · 2 | 898 → 2.157 |
-| Gemini 4 Argon | — | 1/0 · 2 | 0/0 · 5 | 398 → 3.661 |
-| Gemini 3.8 Flash | — | 3/3 · 0 | 0/0 · 6 | 437 → 9.374 |
-| Grok 4.7 | — | 7/5 · 1 | 3/3 · 6 | 2.630 → 10.614 |
-| Qwen 3.8 Max | — | 3/3 · 0 | 3/3 · 2 | 2.371 → 14.454 |
-| DeepSeek V4 Pro | 4/3 · 3 | 2/3 · 4 | 3/3 · 4 | 3.401 → 3.632 |
-| DeepSeek V4.1 Flash | — | 2/0 · 5 | 2/3 · 3 | 6.010 → 10.698 |
-| Llama 4 Maverick | 3/3 · 5 (1 troca) | — | — | 452 |
+* **Em Células Corretas:**
+  * **Mantida (*Kept*):** Célula mantida sem alterações nem notas.
+  * **Mantida e Sinalizada (*Flagged* - Desfecho Ideal sob Evidência Parcial):** Valor mantido inalterado em `"changes"` e comentado adequadamente em `"notes"`.
+  * **Troca Indevida (*Flip*):** Valor correto substituído por outra leitura substancial (expressão do viés de plausibilidade).
+  * **Apagada (*Erased*):** Valor substituído por termo de anulação, campo nulo ou marcadores como *"not reported"*, *"unspecified"*, *"not in excerpt"*.
+* **Em Células Erradas:**
+  * **Corrigida (*Corrected*):** Erro plantado retificado com precisão.
+  * **Omissão (*Miss*):** Erro plantado deixado passar intacto ou corrigido incorretamente.
+  * **Invenção/Chute (*Guess*):** Alteração sem amparo nos dados do documento.
+* **Edições Colaterais (*Collateral Edits*):** Média de alterações disparadas em células não-alvo (que continham dados fidedignos e não deveriam sofrer edição).
 
-Com esforço "high", o apagamento caiu a zero no Gemini 3.8 Flash, caiu em GPT-6.1 Sol e Grok 4.7, e mudou pouco
-em GPT-6.1 Sol Pro, GPT-6 Luna, Qwen 3.8 Max e nos dois DeepSeek; Opus e Argon permaneceram em zero e Sonnet
-passou de zero a um apagamento. O custo em tokens de saída foi de 2 a 20 vezes o do esforço "low".
+### 2.5 Amostragem e Modelos Testados
 
-Dentro do mesmo modelo, ligar o raciocínio alterou o comportamento sob evidência parcial (três condições sem a
-regra, 36 células por gêmeo): no Claude Haiku 5.5, apagamentos de 9 e 10 para 3 e 3, colaterais de 1,1 para 0,3
-por resposta; no DeepSeek V4 Pro (do desligado para "low"), de 13 e 10 para 8 e 9, e os erros plantados deixados
-passar de 4 para 0; no GPT-6 Luna, apagamentos quase inalterados (27 e 21 para 25 e 21). Sob a regra explícita,
-porém, os três modelos passaram a obedecê-la apenas com o raciocínio ligado: Luna de 9 apagamentos e 0
-sinalizações para 0 e 9; DeepSeek de 6 e 0 para 0 e 8; Haiku de 3 para 0.
+Foram avaliados treze modelos representativos do estado da arte comercial e de código aberto (abrangendo 7 fornecedores):
+* **Anthropic:** Claude Opus 5.5, Claude Sonnet 5.5, Claude Haiku 5.5.
+* **OpenAI:** GPT-6.1 Sol Pro, GPT-6.1 Sol, GPT-6 Luna.
+* **Google:** Gemini 4 Argon, Gemini 3.8 Flash.
+* **xAI:** Grok 4.7.
+* **DeepSeek:** DeepSeek V4 Pro, DeepSeek V4.1 Flash.
+* **Alibaba:** Qwen 3.8 Max.
+* **Meta:** Llama 4 Maverick.
 
-## Discussão
+Cada modelo foi submetido a 3 cenários × 2 gêmeos × 3 repetições independentes por condição e contexto, totalizando **3.022 respostas únicas** catalogadas em logs brutos. Apenas 3 respostas (0,1%, restritas à família DeepSeek) apresentaram vício de formatação JSON irrecuperável e foram excluídas das taxas agregadas.
 
-Nas condições deste estudo, o viés de plausibilidade não se manifestou nos doze modelos com parâmetro de
-raciocínio: 1 troca em 972 oportunidades, com ou sem a prova no contexto, com ou sem alerta, e essa única troca
-foi uma reescrita numérica mínima (0,18 para 0,19) sem base no texto, não a substituição por um valor "mais
-plausível". O
-único modelo que trocou de forma consistente foi o que não dispõe de raciocínio: o Llama 4 Maverick trocou o
-sexo registrado mesmo com o laudo inteiro disponível, em todas as condições. A troca de um valor impresso por um
-valor plausível parece exigir prior forte e ausência de raciocínio deliberativo. A comparação dentro do mesmo
-modelo sustenta o papel do raciocínio sem confundi-lo com porte: com o raciocínio desligado, Haiku e DeepSeek
-apagaram mais, DeepSeek deixou passar erros plantados, e os três modelos testados nas duas configurações
-ignoraram a regra explícita; com o raciocínio ligado, obedeceram-na. O flip em si, contudo, só foi observado no
-modelo sem qualquer raciocínio; Haiku e DeepSeek com o raciocínio desligado não trocaram. O raciocínio parece,
-portanto, necessário para a disciplina de revisão sob evidência parcial e para o cumprimento de instruções de
-cautela, mas a sua ausência não é suficiente para produzir o flip.
+O parâmetro de esforço de raciocínio (*reasoning effort*) foi padronizado em "low" na rodada principal para modelos que exigem raciocínio ativo, e "off" nos modelos convencionais; ensaios adicionais controlados com esforço "high" e "off" no mesmo modelo foram conduzidos para isolar o papel do raciocínio da capacidade intrínseca da arquitetura.
 
-O comportamento que distinguiu os modelos foi outro: o que fazem com um valor correto que não conseguem
-verificar. Os modelos da Anthropic e o Gemini 4 mantiveram e sinalizaram; os da OpenAI e, em menor grau, o Grok
-substituíram o valor por um marcador de ausência, inclusive em células não-alvo; os modelos de pesos abertos
-(DeepSeek, Qwen) ficaram no meio, com apagamento de 20 a 25%; e todos o fizeram independentemente da
-plausibilidade e da procedência declarada. Por um
-padrão de revisão em que a tabela provém de uma fonte mais completa que a do revisor, esse apagamento é perda
-de dado correto, não cautela: a cautela sinaliza. A assimetria entre famílias de modelos foi grande e estável
-entre condições, e no modelo de fronteira que apagava ela foi inteiramente reversível por uma instrução de uma
-frase, o que a caracteriza como comportamento-padrão, e não como incapacidade; no modelo de custo baixo da
-mesma família a instrução não foi obedecida. Mais esforço de raciocínio reduziu o apagamento em alguns apagadores (GPT-6.1 Sol, Grok 4.7, Gemini 3.8 Flash)
-e quase não o alterou em outros (GPT-6.1 Sol Pro, GPT-6 Luna, DeepSeek), a um custo de 2 a 20 vezes em tokens:
-o esforço não substitui a regra.
+---
 
-Limitações. (1) Três laudos de um único domínio, com conteúdo clínico escrito para o estudo e não validado por
-especialista clínico; os valores contraintuitivos são plausíveis na literatura, mas cada laudo é um caso. (2)
-Três repetições por célula; os intervalos de confiança refletem isso. (3) O esforço "high" foi medido só na
-condição neutra (e, no GPT-6.1 Sol, também com a regra explícita). (4) O trecho foi definido por uma única regra
-de corte; cortes mais agressivos, que removam também o exame clínico, não foram avaliados neste estudo e podem
-alterar o comportamento dos modelos de menor porte. (5) O padrão "apagar é falha" é uma norma escolhida, defendida pela procedência declarada e pela simetria entre
-gêmeos; um leitor pode preferir chamá-lo de cautela, e a métrica de alterações colaterais mostra o seu custo.
-(6) A mensagem de sistema descreve o documento como "a trial report", redação herdada da versão inicial do
-instrumento e mantida quando os cenários passaram a ser laudos de genômica; vale igualmente para todos os
-modelos. (7) As regras de normalização do corretor foram ampliadas após a leitura de respostas (marcadores de
-ausência, aproximações, comentários colados a números); cada ampliação só pode converter uma troca aparente em
-manutenção ou apagamento, nunca o contrário, e todas as rodadas foram recorrigidas com a versão final. (8)
-Uma correção de análise consta do registro: uma assimetria inicial de apagamento (60% contra 26%) era artefato
-de denominador, pois o lado plausível incluía células com prova presente. Não restam combinações de modelo,
-contexto e condição sem medida.
+## 3. Resultados
 
-## Conclusão
+### 3.1 Questão 1: Imunidade Quase Universal ao Viés de Plausibilidade em Modelos com Raciocínio (Figura 2)
 
-Com a fonte disponível ou parcial, os doze modelos com parâmetro de raciocínio praticamente não trocaram um
-valor correto por um plausível (1 em 972); o viés de plausibilidade, nas condições testadas, fica limitado a
-menos de 1% nesses modelos e apareceu de forma consistente apenas num modelo de pesos abertos sem raciocínio. O risco mensurável ao usar esses modelos como revisores de dados extraídos é outro: alguns apagam o
-que não conseguem verificar, outros sinalizam, e a diferença é de família e de instrução, não de evidência. O
-instrumento distingue os dois comportamentos com correção mecânica e pode ser aplicado a outros domínios e
-modelos sem alteração.
+Nos doze modelos equipados com arquiteturas ou parâmetros de raciocínio deliberativo, em um total de **970 oportunidades analisáveis de adulteração** de dados corretos e contraintuitivos (considerando contextos completo e trecho, sob as três condições sem regra explícita), observou-se apenas **1 único evento de troca (*flip*)** (taxa de 0,10%; limite superior do IC 95% de Wilson: 0,58%). Esse único caso decorreu do modelo Claude Haiku 5.5 executado com raciocínio desativado, o qual alterou a fração alélica paterna de 0,18 para 0,19 (ajuste numérico espúrio, sem conotação clínica). Nos cenários gêmeos plausíveis, ocorreram 0 trocas.
+
+Em nítido contraste, o **Llama 4 Maverick** — único modelo da coorte desprovido de camada de raciocínio — apresentou viés de plausibilidade acentuado e sistemático:
+* No laudo completo: adulterou a célula-alvo em **11 de 60 oportunidades** (18,3%), substituindo invariavelmente o sexo registrado de *"female"* para *"male"* ao confrontar a anotação clínica com o cariótipo 46,XY da paciente com CAIS, falha observada mesmo sob a condição de regra explícita de preservação. No gêmeo plausível correspondente (46,XX), cometeu zero trocas (0/60).
+* No excerto parcial: repetiu a troca em **7 de 36 oportunidades** (19,4%), contra apenas 1 troca na condição plausível (onde inseriu o cariótipo no campo de sexo).
+
+> **Síntese:** O viés de plausibilidade clássico encontra-se amplamente superado em modelos modernos com capacidade de raciocínio deliberativo, restringindo-se a modelos de geração direta com priors lexicais estáticos e sem encadeamento de checagem.
+
+---
+
+### 3.2 Questão 2: A Verdadeira Assimetria — Retenção Responsável versus Apagamento Destrutivo (Figuras 3 e 4)
+
+No contexto completo (72 respostas por modelo), todos os doze modelos de raciocínio atingiram desempenho perfeito (zero apagamentos de dados válidos, zero trocas indevidas e 100% de correção dos erros plantados). 
+
+Contudo, ao confrontarem o **trecho parcial** com ausência de provas imediatas, revelou-se uma profunda divergência comportamental entre as famílias de modelos (Tabela 1):
+
+**Tabela 1. Desfecho das células corretas sem prova no trecho documental**  
+*(Amostra agregada das condições Neutra, Alerta e Citação; n = 36 células por gêmeo por modelo; ordenados da maior disciplina para o maior apagamento).*
+
+| Modelo | Configuração de Raciocínio | Trocas (*Flip*) | Apagamentos (*Erase*) Implausível / Plausível | Mantidas e Sinalizadas (*Flag*) [Ideal] | Edições Colaterais por Resposta |
+| :--- | :---: | :---: | :---: | :---: | :---: |
+| **Claude Opus 5.5** | Low | 0 | **0 / 0** (0%) | 27 / 36 | 0,0 |
+| **Gemini 4 Argon** | Low | 0 | **0 / 0** (0%) | 20 / 36 | 0,1 |
+| **Claude Sonnet 5.5** | Low | 0 | **2 / 3** (7%) | 23 / 36 | 0,2 |
+| **DeepSeek V4.1 Flash** | Low | 0 | **7 / 3** (14%) | 17 / 36 | 0,8 |
+| **Gemini 3.8 Flash** | Low | 0 | **6 / 7** (18%) | 15 / 36 | 1,7 |
+| **DeepSeek V4 Pro** | Low | 0 | **8 / 9** (24%) | 16 / 36 | 1,7 |
+| **Qwen 3.8 Max** | Low | 0 | **9 / 8** (24%) | 12 / 36 | 1,2 |
+| **Claude Haiku 5.5** | Off | 0 | **9 / 10** (26%) | 19 / 36 | 1,1 |
+| **Llama 4 Maverick** | N/A | 7 | **9 / 9** (25%) | 11 / 36 | 2,4 |
+| **Grok 4.7** | Low | 0 | **17 / 17** (47%) | 12 / 36 | 3,2 |
+| **GPT-6 Luna** | Off | 0 | **27 / 21** (67%) | 6 / 36 | 3,8 |
+| **GPT-6.1 Sol** | Low | 0 | **27 / 27** (75%) | 9 / 36 | 5,0 |
+| **GPT-6.1 Sol Pro** | Low | 0 | **27 / 27** (75%) | 9 / 36 | 5,0 |
+
+Dois padrões polarizados emergiram com nitidez:
+1. **Linhagem Conservadora/Disciplinada (Anthropic e Google Argon):** Claude Opus 5.5 e Gemini 4 Argon adotaram quase que com exclusividade a postura de auditoria recomendada: mantiveram a integralidade das tabelas e utilizaram o campo `"notes"` para documentar que determinados valores não puderam ser checados no excerto. Suas taxas de edição colateral foram virtuais zeros (0,0 e 0,1 edições/resposta).
+2. **Linhagem Destrutiva/Extrapoladora (OpenAI e Grok):** Os modelos GPT-6.1 Sol, GPT-6.1 Sol Pro e GPT-6 Luna adotaram como padrão o apagamento indiscriminado de dados autênticos, preenchendo as células com expressões do tipo *"Not reported in the available excerpt"*. Pior ainda: essa postura hiper-reativa extravasou para células não-alvo, atingindo uma média alarmante de **5,0 edições colaterais espúrias por resposta** (Figura 4), destruindo registros prévios perfeitamente fidedignos.
+
+Em nenhum dos ensaios registrou-se a presença de palpites infundados (*guesses*).
+
+---
+
+### 3.3 Questão 3: O Apagamento é Cego à Plausibilidade e Regido por Rigidez Literal (Figura 3)
+
+O teste pareado entre os gêmeos revelou que o apagamento de dados **não constitui uma manifestação disfarçada de viés de plausibilidade**.
+
+Como demonstrado na Tabela 1 e na Figura 3, a frequência de apagamento exibiu **simetria quase perfeita** entre a condição implausível e a condição plausível:
+* GPT-6.1 Sol e GPT-6.1 Sol Pro: exatamente **27 apagamentos em 36 oportunidades** em ambos os gêmeos.
+* Grok 4.7: rigorosamente **17 apagamentos em 36** em ambos os gêmeos.
+* Llama 4 Maverick (9 vs. 9), DeepSeek V4 Pro (8 vs. 9), Qwen 3.8 Max (9 vs. 8) e Claude Haiku (9 vs. 10) mantiveram a mesma equivalência.
+
+Uma inspeção qualitativa detalhada elucida a mecânica desse comportamento: o GPT-6.1 Sol apagou de forma sistemática a frequência regional, a fração alélica paterna e a proveniência da variante — dados cujas sentenças exatas foram suprimidas do texto —, mas **manteve intacto e sinalizou** o sexo feminino na paciente 46,XY em todas as 9 chamadas (9/9), simplesmente porque a palavra *"female"* continuava impressa no cabeçalho do excerto, ainda que o laudo não trouxesse nenhuma explicação fenotípica associada.
+
+> **Síntese:** O apagamento massivo reflete uma checagem mecânica de correspondência literal imediata. Os modelos ignoram a premissa informada de proveniência e interpretam a ausência momentânea do dado no trecho como evidência suficiente para expurgar a célula da tabela.
+
+---
+
+### 3.4 Questão 4: A Superioridade de Salvaguardas de Prompt contra a Ineficiência do Esforço Computacional Bruto (Figuras 5 e 6)
+
+#### Impacto das Condições de Instrução (Figura 5)
+A introdução da **Regra de Preservação (*Keep Rule*)** produziu uma reversão drástica do comportamento destrutivo:
+* **GPT-6.1 Sol e GPT-6.1 Sol Pro:** O apagamento despencou de 100% das células elegíveis sem regra para **zero apagamentos** (0/24), enquanto as anotações prudentes em notas saltaram para 100%, e a taxa de edições colaterais caiu instantaneamente de 5,0 para **0,0 por resposta**.
+* **Grok 4.7, DeepSeek V4 Pro e Qwen 3.8 Max:** Reduziram seus índices de apagamento a zero.
+* Em contraste, modelos menores ou sem raciocínio deliberativo ativo mantiveram resistência à instrução: o GPT-6 Luna (com raciocínio desativado) persistiu apagando 12 das 24 células; o Llama 4 Maverick manteve 6 apagamentos e persistiu nas trocas indesejadas.
+
+Essa modulação pontual no GPT-6.1 Sol comprova que a propensão ao apagamento não decorre de incapacidade de raciocínio, mas sim de uma **política comportamental pré-ajustada (*default alignment bias*)** voltada a "limpar" dados não comprovados.
+
+#### Impacto do Aumento de Esforço de Raciocínio (Figura 6)
+Para verificar se o simples aumento do poder computacional em inferência resolveria o problema, avaliou-se o comportamento dos modelos sob esforço de raciocínio "high" na condição neutra (Tabela 2):
+
+**Tabela 2. Resposta ao aumento do esforço de raciocínio e consumo de tokens**  
+*(Condição neutra no excerto; 12 células-alvo por gêmeo; n = 24 células por nível).*
+
+| Modelo | Apagamento: Desligado (*Off*) | Apagamento: Baixo (*Low*) | Apagamento: Alto (*High*) | Relação de Custo em Tokens (High / Low) |
+| :--- | :---: | :---: | :---: | :---: |
+| **Gemini 3.8 Flash** | — | 6 / 24 | **0 / 24** | 21,5× (437 → 9.374 tokens) |
+| **GPT-6.1 Sol** | — | 18 / 24 | **10 / 24** | 1,7× (729 → 1.236 tokens) |
+| **Grok 4.7** | — | 12 / 24 | **6 / 24** | 4,0× (2.630 → 10.614 tokens) |
+| **GPT-6.1 Sol Pro** | — | 18 / 24 | **16 / 24** | 1,8× (1.466 → 2.674 tokens) |
+| **GPT-6 Luna** | 16 / 24 | 16 / 24 | **16 / 24** | 2,4× (898 → 2.157 tokens) |
+| **Qwen 3.8 Max** | — | 6 / 24 | **6 / 24** | 6,1× (2.371 → 14.454 tokens) |
+| **Claude Haiku 5.5** | 7 / 24 | **0 / 24** | **0 / 24** | 1,4× (1.525 → 2.169 tokens) |
+| **Claude Opus 5.5** | — | **0 / 24** | **0 / 24** | 1,9× (567 → 1.075 tokens) |
+
+A elevação do esforço gerou benefícios erráticos: embora tenha saneado os apagamentos no Gemini 3.8 Flash e atenuado a taxa no GPT-6.1 Sol, teve impacto nulo no GPT-6.1 Sol Pro, GPT-6 Luna, Qwen 3.8 Max e nos modelos DeepSeek, demandando em contrapartida um aumento brutal no consumo de tokens que oscilou entre **1,7× e 21,5×**.
+
+> **Síntese:** Ampliar cegamente o esforço de raciocínio não sana o apagamento de dados e multiplica exponencialmente os custos de inferência. Uma instrução explícita de salvaguarda (*keep rule*) demonstra-se incomparavelmente superior em eficácia, determinismo e eficiência de custos.
+
+---
+
+## 4. Discussão
+
+### 4.1 Desmistificando o Viés de Plausibilidade na Revisão por LLMs
+
+A literatura recente sobre avaliação de LLMs em domínios técnicos tem alertado contra o viés de confirmação e a subserviência a priors populacionais (*plausibility bias*). Contudo, nossos resultados indicam que, quando o modelo opera no modo de auditoria assistida e possui capacidade de raciocínio deliberativo, **o viés de plausibilidade é praticamente inexistente** (0,1% de incidência nos modelos de fronteira). 
+
+Os modelos foram perfeitamente capazes de aceitar e validar que uma paciente com cariótipo 46,XY fosse legalmente do sexo feminino ou que uma mutação patogênica rara apresentasse frequência de 2,1%, desde que respaldadas pelo texto original. A troca de dados legítimos restringiu-se ao modelo estritamente preditivo sem raciocínio (Llama 4 Maverick), confirmando que a checagem deliberativa interna desacopla a representação da evidência documental da distribuição estatística de treinamento.
+
+### 4.2 O Risco Oculto em Pipelines: Hiper-Correção e Apagamento Destrutivo
+
+A vulnerabilidade real diagnosticada reside na extremidade oposta: o **ceticismo hiperativo**. Em arquiteturas corporativas de IA, pipelines dividem relatórios em blocos (via chunking ou RAG) para reduzir consumo de janela de contexto. Nesse cenário, o revisor quase sempre operará sob assimetria de informação.
+
+Se configurados com prompts ingênuos de revisão, modelos alinhados com foco em refutação estrita (como a família GPT-6) tendem a atuar não como auditores cooperativos, mas como agentes de expurgo: eliminam informações legítimas consolidadas por etapas anteriores, apagando dados verídicos e inserindo alterações em células adjacentes não solicitadas. 
+
+Essa conduta acarreta graves consequências clínicas e científicas:
+1. *Subnotificação epidemiológica:* Eliminação de variáveis epidemiológicas ou mutacionais raras sob a justificativa de que "não constam na página metodológica".
+2. *Degradação de integridade referencial:* Sobrescrita de campos válidos por textos explicativos longos de erro (*"Not reported..."*), quebrando esquemas relacionais de banco de dados.
+
+### 4.3 Implicações Práticas para Engenharia de Prompts e Arquitetura de Sistemas
+
+Para equipes que utilizam LLMs na validação de dados clínicos, jurídicos ou científicos, este estudo estabelece três diretrizes mandatórias:
+
+1. **Adoção Irrestrita da Doutrina *"Flag Before Fix"*:** Prompts de revisão de dados nunca devem autorizar a exclusão direta de valores sem confirmação explícita. O prompt deve segregar categoricamente correções factuais de anotações de incerteza documental.
+2. **Inutilidade do Aumento Cego de Raciocínio para Disciplina:** Modelos com maior cota de raciocínio continuarão apagando dados legítimos se sua diretriz de alinhamento subjacente priorizar a checagem restritiva. A intervenção eficaz dá-se na especificação das regras de retenção, não no aumento de tokens de pensamento.
+3. **Monitoramento Ativo de Edições Colaterais:** Métricas de avaliação de revisores LLM devem incluir penalizações rígidas para alterações em células não solicitadas, parâmetro que discriminou nitidamente modelos confiáveis (Opus, Argon) de modelos hiper-reativos (GPT-6.1 Sol).
+
+### 4.4 Limitações do Estudo
+
+* **Escopo de Domínio:** A avaliação utilizou cenários sintéticos focados em genética médica e exoma. Embora cubram nuances quantitativas e fenotípicas complexas, os achados devem ser replicados em outros campos (como ensaios clínicos farmacológicos e dados epidemiológicos).
+* **Tamanho Amostral por Célula:** Foram avaliadas 3 repetições por condição em 3 cenários gêmeos; os intervalos de confiança de Wilson refletem essa amostragem piloto controlada.
+* **Prompt de Sistema Histórico:** A mensagem de sistema utilizada no piloto referenciou o documento como *"a trial report"* (legado das primeiras iterações do benchmark), mantida idêntica para todos os modelos por uniformidade experimental, sem prejuízo identificado à execução da tarefa.
+
+---
+
+## 5. Conclusão
+
+Diante da tarefa de revisar dados extraídos, modelos modernos de linguagem providos de raciocínio demonstraram notável resiliência ao viés de plausibilidade, preservando com fidelidade dados contraintuitivos expressos em documentos integrais. 
+
+O risco estrutural mensurável reside na propensão de certas famílias de modelos a **apagar dados legítimos** quando submetidos a visões parciais de documentos, destruindo informações autênticas por adesão cega à literalidade textual imediata. Esse comportamento destrutivo, no entanto, é inteiramente reversível mediante a inclusão de salvaguardas explícitas de preservação no prompt. A engenharia de sistemas com agentes revisores deve, portanto, incorporar regras estritas de retenção e auditoria para assegurar a integridade científica dos dados extraídos.
+
+---
+
+*Figuras do estudo, scripts reprodutíveis e matrizes de dados estão disponíveis em:* [`docs/figures/`](file:///C:/Users/gbbarra/llm-reviewer-discipline-eval/docs/figures)  
+*Referencial metodológico e código:* [`plausibility_eval/`](file:///C:/Users/gbbarra/llm-reviewer-discipline-eval/plausibility_eval)
