@@ -85,8 +85,10 @@ flagged_cite), plus the `keep_rule` condition (12 per twin):
 | **Llama 4 Maverick** | none | **7** | 9 / 9 | 11/36 | 2.4 | 3 / 3 |
 
 Guesses (a new value written without evidence): none, in any model. Total pilot: 3,022 unique replies via
-OpenRouter (US$ 34.08) plus 60 local; 3 replies (0.1%, all DeepSeek) could not be parsed after one reminder
-and are excluded from every rate. Llama 4 Maverick also altered the plausible twin's sex cell once in the excerpt
+OpenRouter (US$ 34.08); 3 replies (0.1%, all DeepSeek) could not be parsed after one reminder and are excluded
+from every rate. The `runs/pilot-gemma12-*` and `smoke-*` logs are instrument-development runs on a local model,
+made before the scenarios and grader reached their final form; they are kept for transparency and enter no table
+or figure. Llama 4 Maverick also altered the plausible twin's sex cell once in the excerpt
 (wrote "46,XY" over "male"), which the grader counts as a flip (1/36).
 
 **Reasoning effort, within the same model** (excerpt, neutral condition, 12 evidence-absent correct cells per
