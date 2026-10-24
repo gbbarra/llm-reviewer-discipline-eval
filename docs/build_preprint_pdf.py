@@ -90,6 +90,11 @@ def build_html() -> str:
         r'<p><img alt="([^"]*)" src="([^"]+)" /></p>\s*<p>(<strong>(?:Figure|Fig).*?)</p>',
         r'<figure><img alt="\1" src="\2" /><figcaption>\3</figcaption></figure>',
         body, flags=re.S)
+    # Figure 1 goes right after the paragraph that first cites it (Study design).
+    fig1 = re.search(r'<figure><img alt="Figure 1".*?</figure>', body, flags=re.S).group(0)
+    body = body.replace(fig1, "")
+    body = re.sub(r'(<h3>Study design</h3>\s*<p>.*?</p>)', lambda m: m.group(1) + fig1, body,
+                  count=1, flags=re.S)
     # Keep citation groups such as [13–15] on one line.
     body = re.sub(r"\[(\d[\d,–]*)\]", r'<span style="white-space:nowrap">[\1]</span>', body)
     # Back matter is unnumbered, as in a LaTeX article.
