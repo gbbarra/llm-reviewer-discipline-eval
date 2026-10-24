@@ -109,8 +109,7 @@ modelos rodaram as quatro condições nos dois contextos, com esforço de racioc
 (nos de fronteira o raciocínio não pode ser desligado) e desligado nos que só o permitem assim; Llama 4
 Maverick não dispõe do parâmetro. Para separar o efeito do raciocínio do efeito do modelo, Claude Haiku 5.5,
 GPT-6 Luna e DeepSeek V4 Pro foram executados no trecho com raciocínio desligado e "low", e os doze modelos
-com parâmetro de raciocínio foram executados com esforço "high" na condição neutra do trecho (Qwen 3.8 Max de
-forma incompleta, 7 de 18 respostas, por tempo e custo: cerca de 16 mil tokens de raciocínio por resposta).
+com parâmetro de raciocínio foram executados com esforço "high" na condição neutra do trecho.
 Cada célula foi medida em 3 laudos × 2 gêmeos × 3 repetições por condição, em conversas independentes e ordem
 aleatória. Total: 3.011 respostas únicas, nenhuma fora do formato. As correções do instrumento
 feitas após a leitura das respostas limitaram-se a reconhecer formas de escrita (marcadores de ausência,
@@ -172,7 +171,8 @@ sinalizações; Llama: 3 apagamentos, 3 sinalizações e as trocas persistiram; 
 12 e nenhuma sinalização. Com esforço "high" na condição neutra (12 células por gêmeo), o apagamento caiu a zero no Gemini 3.8 Flash (de
 3 e 3) e no Claude Haiku 5.5 (já zero em "low"), caiu em GPT-6.1 Sol (de 9 e 9 para 3 e 7) e Grok 4.7 (de 7 e 5
 para 3 e 3), e mudou pouco em GPT-6.1 Sol Pro (9 e 9 para 7 e 9), GPT-6 Luna (9 e 7 para 7 e 9), DeepSeek V4 Pro
-(2 e 3 para 3 e 3), DeepSeek V4.1 Flash (2 e 0 para 2 e 3) e Qwen 3.8 Max (3 e 3 para 2 e 2, em 7 respostas);
+(2 e 3 para 3 e 3), DeepSeek V4.1 Flash (2 e 0 para 2 e 3) e Qwen 3.8 Max (3 e 3 para 3 e 3, com cerca de 14 mil tokens de
+raciocínio por resposta);
 Opus e Argon permaneceram em zero e Sonnet passou de zero a um apagamento. O custo em tokens de saída foi de 2 a
 20 vezes o do esforço "low".
 
@@ -216,7 +216,7 @@ o esforço não substitui a regra.
 Limitações. (1) Três laudos de um único domínio, com conteúdo clínico escrito para o estudo e não validado por
 especialista clínico; os valores contraintuitivos são plausíveis na literatura, mas cada laudo é um caso. (2)
 Três repetições por célula; os intervalos de confiança refletem isso. (3) O esforço "high" foi medido só na
-condição neutra, e o Qwen 3.8 Max ficou incompleto nele (7 de 18). (4) A janela estreita (trecho sem o exame
+condição neutra (e, no GPT-6.1 Sol, também com a regra explícita). (4) A janela estreita (trecho sem o exame
 clínico), onde o Haiku trocou o sexo, foi testada apenas sem a declaração de procedência e em sete modelos. (5)
 O padrão "apagar é falha" é uma norma escolhida, defendida pela procedência declarada e pela simetria entre
 gêmeos; um leitor pode preferir chamá-lo de cautela, e a métrica de alterações colaterais mostra o seu custo.

@@ -81,8 +81,8 @@ flagged_cite), plus the `keep_rule` condition (12 per twin):
 | GPT-6 Luna | off | 0 | 27 / 21 | 6/36 | 3.8 | **9 / 0** |
 | **Llama 4 Maverick** | none | **7** | 9 / 9 | 11/36 | 2.4 | 3 / 3 |
 
-Guesses (a new value written without evidence): none, in any model. Total pilot: 3,011 unique replies via
-OpenRouter (US$ 33.15) plus 60 local, zero format failures.
+Guesses (a new value written without evidence): none, in any model. Total pilot: 3,022 unique replies via
+OpenRouter (US$ 34.08) plus 60 local, zero format failures.
 
 **Reasoning effort, within the same model** (excerpt, neutral condition, 12 evidence-absent correct cells per
 twin, 18 replies per cell; "off" where the API allows it; Llama 4 Maverick has no reasoning parameter):
@@ -98,7 +98,7 @@ twin, 18 replies per cell; "off" where the API allows it; Llama 4 Maverick has n
 | Gemini 4 Argon | – | 1/0 · 2 · 0.2 | 0/0 · 5 · 0.0 | 398 → 3,661 |
 | Gemini 3.8 Flash | – | 3/3 · 0 · 2.2 | 0/0 · 6 · 0.0 | 437 → 9,374 |
 | Grok 4.7 | – | 7/5 · 1 · 3.4 | 3/3 · 6 · 2.1 | 2,630 → 10,614 |
-| Qwen 3.8 Max | – | 3/3 · 0 · 1.4 | 2/2 · 0 · 1.6 (7 replies, partial) | 2,371 → 16,313 |
+| Qwen 3.8 Max | – | 3/3 · 0 · 1.4 | 3/3 · 2 · 1.7 | 2,371 → 14,454 |
 | DeepSeek V4 Pro | 4/3 · 3 · 2.4 | 2/3 · 4 · 1.6 | 3/3 · 4 · 2.1 | 3,401 → 3,632 |
 | DeepSeek V4.1 Flash | – | 2/0 · 5 · 1.1 | 2/3 · 3 · 1.4 | 6,010 → 10,698 |
 | Llama 4 Maverick | 3/3 · 5 · 2.8 (1 flip) | – | – | 452 |
