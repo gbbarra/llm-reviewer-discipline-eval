@@ -55,12 +55,11 @@ errata: `PLANO-eval-vies-plausibilidade.md` (Portuguese) in the parent session f
 
 ## Pilot results (3 scenarios × 2 twins × 3 repetitions per condition; 54 calls per 3 conditions)
 
-Full report (control). Twelve of thirteen models: 0 flips and 0 erasures of correct values in every condition
-run, and every provable planted error corrected (Claude Haiku 5.5: the plausible-looking planted error left in
-place in 20/90). The exception is **Llama 4 Maverick** (open weights, no reasoning): 11 flips in 60 correct
-implausible cells with the whole report available, under all four conditions ("female" → "male" in the 46,XY
-androgen-insensitivity case). Grok 4.7, Qwen 3.8 Max, GPT-6.1 Sol Pro and DeepSeek V4.1 Flash ran the
-full-report control in the neutral condition only; the other nine models in all four conditions.
+Full report (control), all 13 models, all four conditions, provenance stated (72 replies per model). Eleven
+models: 0 flips, 0 erasures, every provable planted error corrected. Claude Haiku 5.5: 0 flips, 8/60 erasures
+(computed values), the plausible-looking planted error left in place in 14/72. **Llama 4 Maverick** (open
+weights, no reasoning): 11 flips in 60 correct implausible cells with the whole report available, under all four
+conditions ("female" → "male" in the 46,XY androgen-insensitivity case), 0 in the plausible twin.
 
 Excerpt with provenance stated, **evidence-absent correct cells, 36 per twin** (neutral + flagged +
 flagged_cite), plus the `keep_rule` condition (12 per twin):
@@ -82,32 +81,40 @@ flagged_cite), plus the `keep_rule` condition (12 per twin):
 | GPT-6 Luna | off | 0 | 27 / 21 | 6/36 | 3.8 | **9 / 0** |
 | **Llama 4 Maverick** | none | **7** | 9 / 9 | 11/36 | 2.4 | 3 / 3 |
 
-Guesses (a new value written without evidence): none, in any model. Total pilot: 2,554 unique replies via
-OpenRouter (US$ 24.76) plus 60 local, zero format failures.
+Guesses (a new value written without evidence): none, in any model. Total pilot: 3,011 unique replies via
+OpenRouter (US$ 33.15) plus 60 local, zero format failures.
 
-**Reasoning, within the same model** (excerpt; evidence-absent correct cells; "off/low" over three conditions,
-36 per twin; "high" in the neutral condition only, 12 per twin):
+**Reasoning effort, within the same model** (excerpt, neutral condition, 12 evidence-absent correct cells per
+twin, 18 replies per cell; "off" where the API allows it; Llama 4 Maverick has no reasoning parameter):
 
-| model | reasoning | flip | erase (implausible / plausible) | flag | collateral / reply | keep_rule: erase / flag |
-|---|---|---|---|---|---|---|
-| Claude Haiku 5.5 | off | 0 | 9 / 10 | 19/36 | 1.1 | 3 / 8 |
-| Claude Haiku 5.5 | low | 0 | 3 / 3 | 22/36 | 0.3 | 0 / 7 |
-| GPT-6 Luna | off | 0 | 27 / 21 | 6/36 | 3.8 | 9 / 0 |
-| GPT-6 Luna | low | 0 | 25 / 21 | 8/36 | 4.1 | 0 / 9 |
-| DeepSeek V4 Pro | off | 0 | 11 / 10 | 12/36 | 2.4 | 6 / 0 |
-| DeepSeek V4 Pro | low | 0 | 8 / 9 | 16/36 | 1.7 | 0 / 8 |
-| GPT-6.1 Sol (neutral) | low → high | 0 → 0 | 9/9 → 3/7 | 3 → 7 (of 12) | 5.0 → 3.2 | – |
-| Grok 4.7 (neutral, high partial: 6 replies) | low → high | 0 → 0 | 7/5 → 2/2 | 0 → 2 | 3.4 → 2.3 | – |
-| Gemini 4 Argon (neutral, high partial: 12 replies) | low → high | 0 → 0 | 0/0 → 0/0 | 2 → 4 | 0.2 → 0.0 | – |
+| model | off: erase I/P · flag · coll | low: erase I/P · flag · coll | high: erase I/P · flag · coll | output tokens low → high |
+|---|---|---|---|---|
+| Claude Opus 5.5 | – | 0/0 · 8 · 0.0 | 0/0 · 6 · 0.0 | 567 → 1,075 |
+| Claude Sonnet 5.5 | – | 0/0 · 7 · 0.0 | 1/0 · 3 · 0.2 | 461 → 816 |
+| Claude Haiku 5.5 | 3/4 · 5 · 1.2 | 0/0 · 5 · 0.3 | 0/0 · 7 · 0.3 | 1,525 → 2,169 |
+| GPT-6.1 Sol Pro | – | 9/9 · 3 · 5.0 | 7/9 · 4 · 4.6 | 1,466 → 2,674 |
+| GPT-6.1 Sol | – | 9/9 · 3 · 5.0 | 3/7 · 7 · 3.2 | 729 → 1,236 |
+| GPT-6 Luna | 9/7 · 0 · 4.2 | 9/7 · 0 · 4.5 | 7/9 · 2 · 4.4 | 898 → 2,157 |
+| Gemini 4 Argon | – | 1/0 · 2 · 0.2 | 0/0 · 5 · 0.0 | 398 → 3,661 |
+| Gemini 3.8 Flash | – | 3/3 · 0 · 2.2 | 0/0 · 6 · 0.0 | 437 → 9,374 |
+| Grok 4.7 | – | 7/5 · 1 · 3.4 | 3/3 · 6 · 2.1 | 2,630 → 10,614 |
+| Qwen 3.8 Max | – | 3/3 · 0 · 1.4 | 2/2 · 0 · 1.6 (7 replies, partial) | 2,371 → 16,313 |
+| DeepSeek V4 Pro | 4/3 · 3 · 2.4 | 2/3 · 4 · 1.6 | 3/3 · 4 · 2.1 | 3,401 → 3,632 |
+| DeepSeek V4.1 Flash | – | 2/0 · 5 · 1.1 | 2/3 · 3 · 1.4 | 6,010 → 10,698 |
+| Llama 4 Maverick | 3/3 · 5 · 2.8 (1 flip) | – | – | 452 |
 
-Turning reasoning on reduces erasure and collateral edits in Haiku and DeepSeek, barely changes Luna's
-erasure but makes all three obey the explicit rule (Luna 9 → 0 erasures; DeepSeek 6 → 0); higher effort
-reduces GPT-6.1 Sol's erasure from 9 to 3 of 12 without removing it. Llama 4 Maverick, the one model with no
-reasoning parameter, flips in the full report under every condition (11/60), including the explicit rule.
+Over the three no-rule conditions (36 cells per twin), off → low: Haiku erase 9/10 → 3/3 and collateral 1.1 →
+0.3; DeepSeek V4 Pro 13/10 → 8/9; GPT-6 Luna 27/21 → 25/21. Under the explicit rule, the three models obey it
+only with reasoning on (Luna 9 → 0 erasures; DeepSeek 6 → 0; Haiku 3 → 0). Higher effort removes erasure in
+Gemini 3.8 Flash and halves it in GPT-6.1 Sol and Grok 4.7, but barely moves GPT-6.1 Sol Pro, GPT-6 Luna or the
+DeepSeek models, at 2–20× the output tokens. Llama 4 Maverick flips in the full report under every condition
+(11/60), including the explicit rule.
 
-Reading: no model with reasoning active flips (0 in 1,032 correct-implausible opportunities across 12 models;
-Wilson 95% upper bound 0.4%); the only flips come from Llama 4 Maverick (9/51) and, in a narrow-cut
-preliminary round, Claude Haiku 5.5. Erasing is **symmetric** between twins, so it is not plausibility bias; it
+Reading: across the 12 models with a reasoning setting, 1 flip in 972 correct-implausible opportunities (three
+no-rule conditions, both contexts; Wilson 95% upper bound 0.6%): Claude Haiku 5.5 with reasoning off wrote
+0.19 for a father's allele fraction of 0.18 whose read counts were not in the excerpt. The flips that look
+like plausibility bias come from Llama 4 Maverick (18/96 across both contexts) and, in a narrow-cut
+preliminary round, Claude Haiku 5.5 (9/9). Erasing is **symmetric** between twins, so it is not plausibility bias; it
 is the warn-only doctrine being violated by default: GPT-6.1 Sol, GPT-6.1 Sol Pro and GPT-6 Luna overwrite
 ~100% of the correct values they cannot verify with "Not reported in the available excerpt", even told the
 table came from the full report, and Grok 4.7 about half; Opus, Sonnet and Argon keep and annotate; the

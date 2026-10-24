@@ -231,11 +231,12 @@ def panel_d():
         p += [c, text(4.4, y + 3.3, h1, FX, "bold", box=cid),
               text(4.4, y + 6.4, body, FX, fill=MID, box=cid, lh=1.2)]
     # toggles
-    for y, lab, a, b in [(66.0, "Reasoning effort", "low", "high"),
-                         (78.0, "Evidence context", "full report", "excerpt")]:
+    for y, lab, opts in [(66.0, "Reasoning effort", ["off", "low", "high"]),
+                         (78.0, "Evidence context", ["full report", "excerpt"])]:
         p.append(text(3.0, y + 2.6, lab, FS, "bold", box=fid))
-        p += boxed(3, y + 4.0, 20.5, 5.0, a, "#FFFFFF", MID, 0.3, FX)
-        p += boxed(23.5, y + 4.0, 20.5, 5.0, b, "#FFFFFF", MID, 0.3, FX)
+        bw = 41.0 / len(opts)
+        for k, o in enumerate(opts):
+            p += boxed(3 + k * bw, y + 4.0, bw, 5.0, o, "#FFFFFF", MID, 0.3, FX)
     p.append(text(3.0, 95.3, "× 3 reports × 2 twins × 3 replicates", FX, fill=MID, box=fid))
     # bracket into pipeline
     p.append(f'<path d="M45.6 18.3 H47.2 V91.0 H45.6" fill="none" stroke="{MID}" stroke-width="0.35"/>')

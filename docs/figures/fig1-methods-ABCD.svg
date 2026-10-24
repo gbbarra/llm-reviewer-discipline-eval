@@ -197,41 +197,43 @@
 <text x="4.40" y="56.40" font-size="2.5" font-weight="bold" font-style="normal" text-anchor="start" fill="#1A1A1A" data-in="r67"><tspan x="4.40" dy="0.00">4  Explicit rule</tspan></text>
 <text x="4.40" y="59.50" font-size="2.5" font-weight="normal" font-style="normal" text-anchor="start" fill="#555555" data-in="r67"><tspan x="4.40" dy="0.00">Do not remove or replace what you</tspan><tspan x="4.40" dy="3.00">cannot verify; keep it and note why.</tspan></text>
 <text x="3.00" y="68.60" font-size="2.6" font-weight="bold" font-style="normal" text-anchor="start" fill="#1A1A1A" data-in="r63"><tspan x="3.00" dy="0.00">Reasoning effort</tspan></text>
-<rect id="r68" x="3.00" y="70.00" width="20.50" height="5.00" rx="0.6" fill="#FFFFFF" stroke="#555555" stroke-width="0.3" />
-<text x="13.25" y="73.38" font-size="2.5" font-weight="normal" font-style="normal" text-anchor="middle" fill="#1A1A1A" data-in="r68"><tspan x="13.25" dy="0.00">low</tspan></text>
-<rect id="r69" x="23.50" y="70.00" width="20.50" height="5.00" rx="0.6" fill="#FFFFFF" stroke="#555555" stroke-width="0.3" />
-<text x="33.75" y="73.38" font-size="2.5" font-weight="normal" font-style="normal" text-anchor="middle" fill="#1A1A1A" data-in="r69"><tspan x="33.75" dy="0.00">high</tspan></text>
+<rect id="r68" x="3.00" y="70.00" width="13.67" height="5.00" rx="0.6" fill="#FFFFFF" stroke="#555555" stroke-width="0.3" />
+<text x="9.83" y="73.38" font-size="2.5" font-weight="normal" font-style="normal" text-anchor="middle" fill="#1A1A1A" data-in="r68"><tspan x="9.83" dy="0.00">off</tspan></text>
+<rect id="r69" x="16.67" y="70.00" width="13.67" height="5.00" rx="0.6" fill="#FFFFFF" stroke="#555555" stroke-width="0.3" />
+<text x="23.50" y="73.38" font-size="2.5" font-weight="normal" font-style="normal" text-anchor="middle" fill="#1A1A1A" data-in="r69"><tspan x="23.50" dy="0.00">low</tspan></text>
+<rect id="r70" x="30.33" y="70.00" width="13.67" height="5.00" rx="0.6" fill="#FFFFFF" stroke="#555555" stroke-width="0.3" />
+<text x="37.17" y="73.38" font-size="2.5" font-weight="normal" font-style="normal" text-anchor="middle" fill="#1A1A1A" data-in="r70"><tspan x="37.17" dy="0.00">high</tspan></text>
 <text x="3.00" y="80.60" font-size="2.6" font-weight="bold" font-style="normal" text-anchor="start" fill="#1A1A1A" data-in="r63"><tspan x="3.00" dy="0.00">Evidence context</tspan></text>
-<rect id="r70" x="3.00" y="82.00" width="20.50" height="5.00" rx="0.6" fill="#FFFFFF" stroke="#555555" stroke-width="0.3" />
-<text x="13.25" y="85.38" font-size="2.5" font-weight="normal" font-style="normal" text-anchor="middle" fill="#1A1A1A" data-in="r70"><tspan x="13.25" dy="0.00">full report</tspan></text>
-<rect id="r71" x="23.50" y="82.00" width="20.50" height="5.00" rx="0.6" fill="#FFFFFF" stroke="#555555" stroke-width="0.3" />
-<text x="33.75" y="85.38" font-size="2.5" font-weight="normal" font-style="normal" text-anchor="middle" fill="#1A1A1A" data-in="r71"><tspan x="33.75" dy="0.00">excerpt</tspan></text>
+<rect id="r71" x="3.00" y="82.00" width="20.50" height="5.00" rx="0.6" fill="#FFFFFF" stroke="#555555" stroke-width="0.3" />
+<text x="13.25" y="85.38" font-size="2.5" font-weight="normal" font-style="normal" text-anchor="middle" fill="#1A1A1A" data-in="r71"><tspan x="13.25" dy="0.00">full report</tspan></text>
+<rect id="r72" x="23.50" y="82.00" width="20.50" height="5.00" rx="0.6" fill="#FFFFFF" stroke="#555555" stroke-width="0.3" />
+<text x="33.75" y="85.38" font-size="2.5" font-weight="normal" font-style="normal" text-anchor="middle" fill="#1A1A1A" data-in="r72"><tspan x="33.75" dy="0.00">excerpt</tspan></text>
 <text x="3.00" y="95.30" font-size="2.5" font-weight="normal" font-style="normal" text-anchor="start" fill="#555555" data-in="r63"><tspan x="3.00" dy="0.00">× 3 reports × 2 twins × 3 replicates</tspan></text>
 <path d="M45.6 18.3 H47.2 V91.0 H45.6" fill="none" stroke="#555555" stroke-width="0.35"/>
 <line x1="47.20" y1="22.50" x2="50.60" y2="22.50" stroke="#555555" stroke-width="0.35" marker-end="url(#ah)"/>
-<rect id="r72" x="51.00" y="18.30" width="34.00" height="8.40" rx="0.6" fill="#F2F2F2" stroke="#555555" stroke-width="0.3" />
-<text x="68.00" y="21.85" font-size="2.5" font-weight="bold" font-style="normal" text-anchor="middle" fill="#1A1A1A" data-in="r72"><tspan x="68.00" dy="0.00">LLM reviewer</tspan></text>
-<text x="68.00" y="24.90" font-size="2.5" font-weight="normal" font-style="normal" text-anchor="middle" fill="#1A1A1A" data-in="r72"><tspan x="68.00" dy="0.00">new conversation per call</tspan></text>
+<rect id="r73" x="51.00" y="18.30" width="34.00" height="8.40" rx="0.6" fill="#F2F2F2" stroke="#555555" stroke-width="0.3" />
+<text x="68.00" y="21.85" font-size="2.5" font-weight="bold" font-style="normal" text-anchor="middle" fill="#1A1A1A" data-in="r73"><tspan x="68.00" dy="0.00">LLM reviewer</tspan></text>
+<text x="68.00" y="24.90" font-size="2.5" font-weight="normal" font-style="normal" text-anchor="middle" fill="#1A1A1A" data-in="r73"><tspan x="68.00" dy="0.00">new conversation per call</tspan></text>
 <line x1="68.00" y1="26.90" x2="68.00" y2="30.00" stroke="#555555" stroke-width="0.35" marker-end="url(#ah)"/>
-<rect id="r73" x="51.00" y="30.30" width="34.00" height="8.40" rx="0.6" fill="#FFFFFF" stroke="#555555" stroke-width="0.3" />
-<text x="68.00" y="33.85" font-size="2.5" font-weight="bold" font-style="normal" text-anchor="middle" fill="#1A1A1A" data-in="r73"><tspan x="68.00" dy="0.00">Reply: list of changes</tspan></text>
-<text x="68.00" y="36.90" font-size="2.5" font-weight="normal" font-style="normal" text-anchor="middle" fill="#1A1A1A" data-in="r73"><tspan x="68.00" dy="0.00">(cell, old, new) + notes</tspan></text>
+<rect id="r74" x="51.00" y="30.30" width="34.00" height="8.40" rx="0.6" fill="#FFFFFF" stroke="#555555" stroke-width="0.3" />
+<text x="68.00" y="33.85" font-size="2.5" font-weight="bold" font-style="normal" text-anchor="middle" fill="#1A1A1A" data-in="r74"><tspan x="68.00" dy="0.00">Reply: list of changes</tspan></text>
+<text x="68.00" y="36.90" font-size="2.5" font-weight="normal" font-style="normal" text-anchor="middle" fill="#1A1A1A" data-in="r74"><tspan x="68.00" dy="0.00">(cell, old, new) + notes</tspan></text>
 <line x1="68.00" y1="38.90" x2="68.00" y2="42.00" stroke="#555555" stroke-width="0.35" marker-end="url(#ah)"/>
-<rect id="r74" x="51.00" y="42.30" width="34.00" height="11.60" rx="0.6" fill="#FFFFFF" stroke="#1A1A1A" stroke-width="0.4" />
-<text x="68.00" y="45.92" font-size="2.5" font-weight="bold" font-style="normal" text-anchor="middle" fill="#1A1A1A" data-in="r74"><tspan x="68.00" dy="0.00">Mechanical scorer</tspan></text>
-<text x="68.00" y="48.97" font-size="2.5" font-weight="normal" font-style="normal" text-anchor="middle" fill="#1A1A1A" data-in="r74"><tspan x="68.00" dy="0.00">cell value after normalization;</tspan></text>
-<text x="68.00" y="52.02" font-size="2.5" font-weight="normal" font-style="normal" text-anchor="middle" fill="#1A1A1A" data-in="r74"><tspan x="68.00" dy="0.00">free text never scores</tspan></text>
+<rect id="r75" x="51.00" y="42.30" width="34.00" height="11.60" rx="0.6" fill="#FFFFFF" stroke="#1A1A1A" stroke-width="0.4" />
+<text x="68.00" y="45.92" font-size="2.5" font-weight="bold" font-style="normal" text-anchor="middle" fill="#1A1A1A" data-in="r75"><tspan x="68.00" dy="0.00">Mechanical scorer</tspan></text>
+<text x="68.00" y="48.97" font-size="2.5" font-weight="normal" font-style="normal" text-anchor="middle" fill="#1A1A1A" data-in="r75"><tspan x="68.00" dy="0.00">cell value after normalization;</tspan></text>
+<text x="68.00" y="52.02" font-size="2.5" font-weight="normal" font-style="normal" text-anchor="middle" fill="#1A1A1A" data-in="r75"><tspan x="68.00" dy="0.00">free text never scores</tspan></text>
 <line x1="68.00" y1="54.10" x2="68.00" y2="57.20" stroke="#555555" stroke-width="0.35" marker-end="url(#ah)"/>
-<rect id="r75" x="51.00" y="57.50" width="34.00" height="39.00" rx="0.6" fill="#FFFFFF" stroke="#9A9A9A" stroke-width="0.3" />
-<text x="52.50" y="61.00" font-size="2.5" font-weight="bold" font-style="normal" text-anchor="start" fill="#1A1A1A" data-in="r75"><tspan x="52.50" dy="0.00">Correct cell</tspan></text>
-<rect id="r76" x="52.50" y="62.50" width="31.00" height="4.30" rx="0.6" fill="#FFFFFF" stroke="#009E73" stroke-width="0.45" />
-<text x="68.00" y="65.53" font-size="2.5" font-weight="bold" font-style="normal" text-anchor="middle" fill="#009E73" data-in="r76"><tspan x="68.00" dy="0.00">kept</tspan></text>
-<rect id="r77" x="52.50" y="67.60" width="31.00" height="4.30" rx="0.6" fill="#D9F0E8" stroke="#009E73" stroke-width="0.45" />
-<text x="68.00" y="70.62" font-size="2.5" font-weight="bold" font-style="normal" text-anchor="middle" fill="#009E73" data-in="r77"><tspan x="68.00" dy="0.00">kept + flagged</tspan></text>
-<rect id="r78" x="52.50" y="72.70" width="31.00" height="4.30" rx="0.6" fill="#D6E6F2" stroke="#0072B2" stroke-width="0.45" />
-<text x="68.00" y="75.73" font-size="2.5" font-weight="bold" font-style="normal" text-anchor="middle" fill="#0072B2" data-in="r78"><tspan x="68.00" dy="0.00">flipped</tspan></text>
-<rect id="r79" x="52.50" y="77.80" width="31.00" height="4.30" rx="0.6" fill="#F8E0CF" stroke="#D55E00" stroke-width="0.45" />
-<text x="68.00" y="80.83" font-size="2.5" font-weight="bold" font-style="normal" text-anchor="middle" fill="#D55E00" data-in="r79"><tspan x="68.00" dy="0.00">erased</tspan></text>
-<text x="52.50" y="87.30" font-size="2.5" font-weight="bold" font-style="normal" text-anchor="start" fill="#1A1A1A" data-in="r75"><tspan x="52.50" dy="0.00">Wrong cell</tspan></text>
-<text x="52.50" y="90.80" font-size="2.5" font-weight="normal" font-style="normal" text-anchor="start" fill="#555555" data-in="r75"><tspan x="52.50" dy="0.00">corrected · missed ·</tspan><tspan x="52.50" dy="3.00">guessed (value invented)</tspan></text></g>
+<rect id="r76" x="51.00" y="57.50" width="34.00" height="39.00" rx="0.6" fill="#FFFFFF" stroke="#9A9A9A" stroke-width="0.3" />
+<text x="52.50" y="61.00" font-size="2.5" font-weight="bold" font-style="normal" text-anchor="start" fill="#1A1A1A" data-in="r76"><tspan x="52.50" dy="0.00">Correct cell</tspan></text>
+<rect id="r77" x="52.50" y="62.50" width="31.00" height="4.30" rx="0.6" fill="#FFFFFF" stroke="#009E73" stroke-width="0.45" />
+<text x="68.00" y="65.53" font-size="2.5" font-weight="bold" font-style="normal" text-anchor="middle" fill="#009E73" data-in="r77"><tspan x="68.00" dy="0.00">kept</tspan></text>
+<rect id="r78" x="52.50" y="67.60" width="31.00" height="4.30" rx="0.6" fill="#D9F0E8" stroke="#009E73" stroke-width="0.45" />
+<text x="68.00" y="70.62" font-size="2.5" font-weight="bold" font-style="normal" text-anchor="middle" fill="#009E73" data-in="r78"><tspan x="68.00" dy="0.00">kept + flagged</tspan></text>
+<rect id="r79" x="52.50" y="72.70" width="31.00" height="4.30" rx="0.6" fill="#D6E6F2" stroke="#0072B2" stroke-width="0.45" />
+<text x="68.00" y="75.73" font-size="2.5" font-weight="bold" font-style="normal" text-anchor="middle" fill="#0072B2" data-in="r79"><tspan x="68.00" dy="0.00">flipped</tspan></text>
+<rect id="r80" x="52.50" y="77.80" width="31.00" height="4.30" rx="0.6" fill="#F8E0CF" stroke="#D55E00" stroke-width="0.45" />
+<text x="68.00" y="80.83" font-size="2.5" font-weight="bold" font-style="normal" text-anchor="middle" fill="#D55E00" data-in="r80"><tspan x="68.00" dy="0.00">erased</tspan></text>
+<text x="52.50" y="87.30" font-size="2.5" font-weight="bold" font-style="normal" text-anchor="start" fill="#1A1A1A" data-in="r76"><tspan x="52.50" dy="0.00">Wrong cell</tspan></text>
+<text x="52.50" y="90.80" font-size="2.5" font-weight="normal" font-style="normal" text-anchor="start" fill="#555555" data-in="r76"><tspan x="52.50" dy="0.00">corrected · missed ·</tspan><tspan x="52.50" dy="3.00">guessed (value invented)</tspan></text></g>
 </svg>
