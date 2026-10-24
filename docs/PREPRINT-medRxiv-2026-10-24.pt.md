@@ -184,7 +184,7 @@ Em conclusão, com a prova no material, modelos de linguagem com raciocínio pre
 
 **Disponibilidade de dados e código.** O código do instrumento e do corretor, os cenários, os prompts enviados, os logs brutos e corrigidos de todas as 3.022 respostas, os scripts das figuras e o arquivo com todos os números plotados estão em https://github.com/gbbarra/llm-reviewer-discipline-eval (código sob licença MIT; texto, cenários e figuras sob CC BY 4.0).
 
-**Uso de inteligência artificial.** Assistentes baseados em modelos de linguagem (Claude, Anthropic; e um segundo modelo para a revisão de estilo) foram usados na escrita do código, na geração das figuras e na redação e revisão do texto. O autor conferiu cada número do manuscrito contra os dados e assume a responsabilidade pelo conteúdo. Os modelos usados como assistentes incluem versões da família avaliada; a execução e a correção das rodadas foram feitas por código determinístico, e a classificação dos desfechos não envolveu modelo de linguagem.
+**Uso de inteligência artificial.** Assistentes baseados em modelos de linguagem foram usados na escrita do código, na geração das figuras e na redação e revisão do texto: Claude (Anthropic) e, na revisão de estilo e de estrutura do texto, Gemini 3.8 Flash (Google). O autor conferiu cada número do manuscrito contra os dados e assume a responsabilidade pelo conteúdo. Os modelos usados como assistentes incluem versões da família avaliada; a execução e a correção das rodadas foram feitas por código determinístico, e a classificação dos desfechos não envolveu modelo de linguagem.
 
 ---
 
