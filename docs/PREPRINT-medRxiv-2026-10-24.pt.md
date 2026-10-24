@@ -116,13 +116,13 @@ Com o laudo completo, 11 dos 12 modelos com parâmetro de raciocínio não apaga
 
 Com a prova removida, os modelos se distribuíram entre dois extremos (Figura 3). O Claude Opus 5.5 apagou 0 de 36 células em cada gêmeo e manteve com nota 27 e 26 delas. O Gemini 4 Argon apagou 1 de 36 no gêmeo implausível e 0 de 36 no plausível, com 20 e 21 células mantidas com nota. O Claude Sonnet 5.5 apagou 2 e 3. No outro extremo, o GPT-6.1 Sol e o GPT-6.1 Sol Pro apagaram 27 de 36 em cada gêmeo (75,0%; IC 95% 58,9% a 86,3%), o GPT-6 Luna 27 e 21, e o Grok 4.7 17 e 17. Os demais ficaram entre 3 e 10 por gêmeo: DeepSeek V4.1 Flash 7 de 34 e 3 de 36, Gemini 3.8 Flash 6 e 7, DeepSeek V4 Pro 8 e 9, Qwen 3.8 Max 9 e 8, Llama 4 Maverick 9 e 9, Claude Haiku 5.5 9 e 10. As 9 células que o GPT-6.1 Sol e o Sol Pro não apagaram em cada gêmeo foram as de sexo registrado, cujo valor permanece no cabeçalho do trecho; o modelo as manteve com nota em 9 de 9 respostas.
 
-As alterações colaterais acompanharam o apagamento (Figura 4). No laudo completo, todos os modelos ficaram em 0,2 por resposta ou menos. No trecho, o Claude Opus 5.5, o Gemini 4 Argon e o Claude Sonnet 5.5 alteraram 0,0, 0,1 e 0,2 células não-alvo por resposta; o Grok 4.7, 3,2; o GPT-6 Luna, 3,8; o GPT-6.1 Sol e o Sol Pro, 5,0. Essas alterações foram, em sua maioria, a substituição de valores corretos de células não-alvo por marcadores de ausência.
-
-Os erros plantados que continuavam verificáveis no trecho foram corrigidos por todos os modelos, com 1 omissão em 108 no Claude Sonnet 5.5 e no GPT-6 Luna e 2 em 108 no Claude Haiku 5.5 (Figura S1).
-
 ![Figura 3](figures/fig3-partial-evidence-outcomes.png)
 
 **Figura 3. Comportamento do revisor sob evidência parcial: manter, sinalizar, apagar ou trocar.** Desfecho de cada célula correta cuja prova está ausente do trecho, em barra de 100% por modelo e gêmeo (I, implausível; P, plausível), somadas as condições neutra, alerta e citação (n = 36 células por barra; 34 para o DeepSeek V4.1 Flash no gêmeo implausível). Os números nas barras são contagens de células (omitidos abaixo de 6%). Modelos ordenados pela proporção apagada nos dois gêmeos. Esforço de raciocínio "low" em todos, exceto Claude Haiku 5.5 e GPT-6 Luna ("off") e Llama 4 Maverick (sem parâmetro). Cinza, mantida sem nota; verde, mantida com nota; vermelho, apagada; azul, trocada.
+
+As alterações colaterais acompanharam o apagamento (Figura 4). No laudo completo, todos os modelos ficaram em 0,2 por resposta ou menos. No trecho, o Claude Opus 5.5, o Gemini 4 Argon e o Claude Sonnet 5.5 alteraram 0,0, 0,1 e 0,2 células não-alvo por resposta; o Grok 4.7, 3,2; o GPT-6 Luna, 3,8; o GPT-6.1 Sol e o Sol Pro, 5,0. Essas alterações foram, em sua maioria, a substituição de valores corretos de células não-alvo por marcadores de ausência.
+
+Os erros plantados que continuavam verificáveis no trecho foram corrigidos por todos os modelos, com 1 omissão em 108 no Claude Sonnet 5.5 e no GPT-6 Luna e 2 em 108 no Claude Haiku 5.5 (Figura S1).
 
 ![Figura 4](figures/fig4-collateral-edits.png)
 
