@@ -35,7 +35,7 @@ h2 + p, h3 + p, figure + p, .abstract p, li p, figcaption, .meta p { text-indent
 a { color: #000; text-decoration: none; }
 code { font-family: 'Consolas', monospace; font-size: 9pt; }
 
-.titleblock { text-align: center; margin: 0.4cm 0 0.7cm; }
+.titleblock { text-align: center; margin: 0 0 0.6cm; }
 .titleblock h1 { font-size: 17pt; line-height: 1.25; font-weight: bold; margin: 0 0 14pt; }
 .titleblock .author { font-size: 12pt; margin-bottom: 4pt; }
 .titleblock .affil, .titleblock .corr, .titleblock .date { font-size: 10pt; margin-bottom: 2pt; }
@@ -45,7 +45,7 @@ code { font-family: 'Consolas', monospace; font-size: 9pt; }
 .abstract h2 { text-align: center; font-size: 10.5pt; margin: 0 0 6pt; counter-increment: none; }
 .abstract h2::before { content: none; }
 .abstract p { margin-bottom: 4pt; }
-.meta { margin: 0 1.2cm; font-size: 9.5pt; }
+.meta { margin: 0 1.2cm 0.6cm; font-size: 9.5pt; }
 .meta p { margin-bottom: 2pt; text-align: left; }
 
 body { counter-reset: sec; }
@@ -79,8 +79,6 @@ def build_html() -> str:
     short = field(front, "Short title")
     corr = field(front, "Correspondence")
     keywords = field(front, "Keywords")
-    category = field(front, "Category (medRxiv)")
-    code = field(front, "Code, scenarios, prompts, logs, and data")
 
     abstract_md, _, main_md = rest.partition("---")
     conv = lambda s: markdown.markdown(s, extensions=["extra", "smarty"])
@@ -109,9 +107,7 @@ def build_html() -> str:
         f'<div class="corr">Correspondence: {corr}</div>'
         f'<div class="date">{DATE}</div></div>'
         f'<div class="abstract"><h2>Abstract</h2>{abstract}</div>'
-        f'<div class="meta"><p><strong>Keywords:</strong> {keywords}</p>'
-        f'<p><strong>Category (medRxiv):</strong> {category}</p>'
-        f'<p><strong>Code, scenarios, prompts, logs, and data:</strong> {code}</p></div>'
+        f'<div class="meta"><p><strong>Keywords:</strong> {keywords}</p></div>'
     )
     css = CSS % {"short": short}
     return (f'<!doctype html><html lang="en"><head><meta charset="utf-8">'
