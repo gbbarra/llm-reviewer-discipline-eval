@@ -20,7 +20,7 @@ Llama 4 Maverick, the only model without a reasoning parameter, is marked in bol
 
 ---
 
-**Figure 2. Correct target values replaced by another value, by model, twin and context.** Only Llama 4
+**Figure 2. Plausibility bias: replacement of correct values that look wrong.** Only Llama 4
 Maverick, the model without a reasoning parameter, replaces correct implausible values at a visible rate.
 Proportion of correct target cells replaced by another value, implausible twin (filled) versus plausible twin
 (open), with Wilson 95% intervals; one row per model, in the order of Fig. 3. Conditions neutral, flagged and
@@ -34,7 +34,7 @@ cell of the plausible twin (registered sex "male"), which the grader counts as a
 excerpt. Across the 12 models with a reasoning setting, 1 flip in 970 parsed correct-implausible cells (both
 contexts, three conditions; 972 nominal).
 
-**Figure 3. Outcome of correct values whose proof is absent from the excerpt, by model and twin.** Outcome of every correct cell whose
+**Figure 3. Reviewer behaviour under partial evidence: keep, flag, erase or replace.** Outcome of every correct cell whose
 proof is absent from the excerpt, as a 100% stacked bar per model and twin (I = implausible, P = plausible),
 pooled over the neutral, flagged and flagged + cite conditions (n = 36 cells per bar; 34 for DeepSeek V4.1 Flash,
 implausible twin). Numbers inside the bars are cell counts (omitted for segments under 6%). Models are ordered by
@@ -44,13 +44,13 @@ model, so it follows the literal absence of the value's proof, not its plausibil
 both; Claude Opus 5.5 and Gemini 4 Argon keep almost everything and flag most of it. Flips (blue) appear only in
 Llama 4 Maverick and in one Claude Haiku 5.5 reply (see Fig. 2).
 
-**Figure 4. Edits to non-target cells per reply, full report versus excerpt.** Mean number of changes to non-target cells
+**Figure 4. Collateral editing: changes to cells that were not under review.** Mean number of changes to non-target cells
 (cells that are correct as printed) per reply, full report (open) versus excerpt (filled), conditions neutral,
 flagged and flagged + cite; 27 replies per model and context (25 for DeepSeek V4.1 Flash in the excerpt). With the
 whole report every model stays at or below 0.2 edits per reply; with the excerpt the models that erase target
 cells also blank non-target cells (GPT-6.1 Sol and Sol Pro 5.0 per reply).
 
-**Figure 5. Erasure of unverifiable correct values by instruction condition.** Erased evidence-absent correct cells over all
+**Figure 5. Effect of the instruction on erasure.** Erased evidence-absent correct cells over all
 evidence-absent correct cells (both twins pooled; n = 24 per cell: 12 per twin, 9 replies per twin; 23 for DeepSeek
 V4.1 Flash in two conditions), excerpt with provenance stated, by instruction condition. *Neutral*: check each cell
 against the source and correct errors. *Flagged*: a true report that one target cell was flagged by an automated
@@ -59,7 +59,7 @@ that cannot be verified from the material provided; keep it and say why. Shading
 Models in the order of Fig. 3. Under the keep rule erasure falls to 0 in 10 models; it persists in Llama 4 Maverick
 (6/24), Claude Haiku 5.5 with reasoning off (5/24) and GPT-6 Luna with reasoning off (12/24).
 
-**Figure 6. Correct values erased and output tokens per reply, by reasoning effort within model.** Excerpt with provenance stated, neutral condition only, 12
+**Figure 6. Effect of reasoning effort on erasure and on its cost.** Excerpt with provenance stated, neutral condition only, 12
 evidence-absent correct cells per twin and 18 replies per level (DeepSeek V4 Pro off: 10 cells in the implausible
 twin after one unparsed reply). Off = reasoning disabled where the API allows it (Claude Haiku 5.5, GPT-6 Luna,
 DeepSeek V4 Pro; Llama 4 Maverick has no reasoning parameter and appears only as "off"); low = the setting of the
@@ -72,7 +72,7 @@ below) so that equal values remain visible. **(A)** Proportion of correct values
 labels give the high / low ratio. High effort costs ×1.1 (DeepSeek V4 Pro) to ×21.5 (Gemini 3.8 Flash)
 the output tokens of low effort.
 
-**Figure S1. Five metrics under partial evidence, by model.** Excerpt with provenance stated, conditions
+**Figure S1. Summary of the five reviewer-discipline metrics.** Excerpt with provenance stated, conditions
 neutral, flagged and flagged + cite. *Flip*: correct implausible evidence-absent cells replaced by another value
 (%, n = 36). *Erase* and *flag*: evidence-absent correct cells erased, or kept with a note (%, both twins, n = 72).
 *Miss*: provable planted errors left in place (%, n = 108 wrong cells whose correction is verifiable from the
