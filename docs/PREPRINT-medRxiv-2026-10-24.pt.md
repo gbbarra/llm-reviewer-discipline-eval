@@ -2,9 +2,12 @@
 
 **Título curto:** Revisores baseados em modelos de linguagem sob evidência parcial
 
-**Gustavo Barcelos Barra**¹
+**Gustavo Barcelos Barra**^1,2^
 
-¹ Base by Base, Brasília, DF, Brasil. ORCID 0000-0002-2136-3471.
+¹ Base by Base, Brasília, DF, Brasil.
+² Laboratório Sabin, Brasília, DF, Brasil.
+
+ORCID 0000-0002-2136-3471.
 
 **Correspondência:** Gustavo Barcelos Barra, gustavo@basebybase.com
 
@@ -176,9 +179,11 @@ Em conclusão, com a prova no material, modelos de linguagem com raciocínio pre
 
 **Contribuições do autor.** G.B.B. concebeu o estudo, escreveu os cenários, executou as rodadas, analisou os dados e escreveu o manuscrito.
 
-**Financiamento.** O estudo não recebeu financiamento externo. O custo das chamadas de API foi coberto pelo autor.
+**Financiamento.** O estudo não recebeu financiamento externo. O custo das chamadas de API foi coberto pelo autor. Nenhum recurso, equipamento ou dado do Laboratório Sabin foi usado.
 
-**Conflitos de interesse.** O autor declara não ter conflitos de interesse. Não há vínculo com os desenvolvedores dos modelos avaliados.
+**Conflitos de interesse.** O autor é funcionário do Laboratório Sabin, laboratório clínico privado. O estudo foi concebido e conduzido de forma independente, fora das atividades do laboratório, e as opiniões expressas são do autor e não representam a posição do Laboratório Sabin. Não há vínculo com os desenvolvedores dos modelos avaliados.
+
+**Agradecimentos.** O autor agradece a Janete Ana Ribeiro Vaz e Sandra Santana Costa Soares, do Laboratório Sabin, Brasília, DF, pelo incentivo constante à sua atividade de pesquisa.
 
 **Aprovação ética e consentimento.** Não se aplicam. O estudo não envolveu seres humanos nem dados de pacientes; os laudos são sintéticos e as variantes, fictícias.
 
