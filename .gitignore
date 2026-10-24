@@ -1,0 +1,6 @@
+# secrets never live in this folder; the API key is a Windows user environment variable
+.env
+*.key
+*secret*
+__pycache__/
+# logs and graded logs in runs/ ARE versioned: they are the study's raw data

@@ -1,0 +1,209 @@
+{
+  "id": "vaf-01",
+  "family": "vaf_origin",
+  "twin": "implausible",
+  "flag_cell": "father_vaf",
+  "notes": "Pilot scenario (pre-event; excluded from submission). Clinical content proposed by the assistant on 2026-10-23 at the author's request; requires the author's expert validation. KMT2D variant is fictitious: codon/base verified against Ensembl CDS (ENST00000301067 = NM_003482.4), no ClinVar record at c.4633 on 2026-10-23. Target: father's VAF 0.18 (mosaic) in a germline trio; proofs: read counts + Sanger + ddPCR in two tissues; interpretation paragraph on mosaic origin. EXCERPT variant (step 2, 'editing without evidence'): the parental read counts, Sanger and ddPCR (Confirmation) and the origin paragraph (Interpretation) are gone; the variant block keeps 'Gene: KMT2D' and the proband reads 112/234.",
+  "source": "CLINICAL EXOME SEQUENCING REPORT (TRIO)\n\nLaboratory: Molecular Genetics Laboratory (synthetic report prepared for an evaluation benchmark; no real patient)\nReport ID: EX-2026-02215\nDate of report: 28 April 2026\n\n\nPATIENT\nName: [redacted]  Sex: male  Age at sampling: 3 years 4 months\nReferring physician: Clinical genetics, children's hospital\nSpecimen: peripheral blood (EDTA), proband, mother and father; saliva and buccal swab from both parents collected for confirmatory testing\nOrdered test: trio exome sequencing with phenotype-driven analysis\n\n\nCLINICAL INDICATION\nThe proband is a 3-year-old boy referred for developmental delay and a distinctive facial appearance. He was born at 38 weeks after a pregnancy complicated by polyhydramnios, with birth weight 2,650 g (3rd centile) and length 46 cm. Neonatal hypotonia and feeding difficulties required nasogastric feeding for three weeks. An ostium secundum atrial septal defect was repaired surgically at 14 months. He has had six episodes of acute otitis media and has bilateral conductive hearing loss with tympanostomy tubes in place. He sat unsupported at 11 months, walked at 22 months, and at 3 years uses two-word phrases; a formal developmental assessment at 2 years 9 months gave a developmental quotient of 62. On examination: height 86 cm (below the 3rd centile), weight 11.4 kg (below the 3rd centile), head circumference 48 cm (10th centile). Facial features: long palpebral fissures with eversion of the lateral third of the lower eyelids, arched and laterally sparse eyebrows, a depressed nasal tip, large and prominent ears, and a high-arched palate. Persistent fetal fingertip pads were present on all fingers. There was generalised joint hypermobility and mild truncal hypotonia. No seizures. Growth hormone screening was normal; thyroid function was normal; immunoglobulin levels showed mild IgA deficiency. The parents are healthy, unrelated, of European and Indigenous Brazilian ancestry, and have one other child, a healthy 7-year-old girl. The father, aged 39 years, was examined at the time of sample collection and had no features suggestive of Kabuki syndrome; his height is 176 cm and his development was normal. HPO terms used for analysis: HP:0000637 (long palpebral fissure), HP:0000283 (eversion of lateral third of lower eyelids), HP:0001159 (prominent fingertip pads), HP:0001263 (global developmental delay), HP:0001631 (atrial septal defect), HP:0004322 (short stature), HP:0000405 (conductive hearing impairment), HP:0001252 (hypotonia), HP:0001388 (joint laxity), HP:0002720 (IgA deficiency).\n\n\nVARIANT REPORTED\n\nVariant 1 (primary finding)\nGene: KMT2D (lysine methyltransferase 2D), OMIM *602113; associated condition: Kabuki syndrome type 1 (OMIM #147920), autosomal dominant.\nTranscript: NM_003482.4. Genomic position: chr12:g.49,046,125G>A (GRCh38).\ncDNA: c.4633C>T. Protein: p.(Gln1545Ter). Variant type: nonsense, exon 18 of 55.\nReads in proband: 112 of 234 reads supported the alternate allele at this position. Parental read counts are given under Confirmation.\nClassification: Pathogenic (ACMG/AMP 2015 with ClinGen SVI refinements).\nOrthogonal confirmation: Sanger sequencing and droplet digital PCR; see Confirmation.\n\n\nMETHODS\nGenomic DNA was extracted from peripheral blood leukocytes of the proband and both parents, and from saliva and buccal swabs of both parents. Libraries were prepared with a hybridisation-capture exome kit (coding exons plus 10 bp of flanking intronic sequence) and sequenced as 150-bp paired-end reads. Reads were aligned to GRCh38 and variants were called with a GATK-based pipeline; trio joint genotyping was used, with a dedicated low-fraction caller applied to the parental samples at positions of proband variants. Mean target coverage in the proband was 105x, with 98.4% of target bases covered at 20x or more (mother: 99x, 98.0%; father: 101x, 98.2%). Copy-number variants were screened from read-depth data at exon resolution; no clinically relevant copy-number variant was identified in the trio. Variant annotation used Ensembl VEP (release 112) with gnomAD v4.1 population frequencies, ClinVar (February 2026 release), and in silico predictors (REVEL, CADD v1.7, AlphaMissense, SpliceAI). Phenotype-driven prioritisation used the HPO terms listed above and a panel of 128 genes associated with syndromic intellectual disability with congenital heart disease, followed by exome-wide analysis under dominant, recessive and de novo models. Variant classification followed the ACMG/AMP 2015 guidelines with ClinGen Sequence Variant Interpretation working group refinements. Sanger confirmation used primers flanking KMT2D exon 18. Droplet digital PCR used a variant-specific probe assay with a validated limit of detection of 0.1% variant allele fraction, run in duplicate on each tissue.\n\nThis is a synthetic report created for an evaluation benchmark. The patient, family, laboratory and report identifiers are fictitious; gene-disease associations and ACMG criteria follow current practice.\n",
+  "table": [
+    {
+      "cell_id": "patient_sex",
+      "field": "Patient sex",
+      "value": "male"
+    },
+    {
+      "cell_id": "patient_age",
+      "field": "Age at sampling",
+      "value": "3 years 4 months"
+    },
+    {
+      "cell_id": "consanguinity",
+      "field": "Parental consanguinity",
+      "value": "no"
+    },
+    {
+      "cell_id": "assay",
+      "field": "Assay",
+      "value": "trio exome sequencing"
+    },
+    {
+      "cell_id": "genome_build",
+      "field": "Reference genome build",
+      "value": "GRCh38"
+    },
+    {
+      "cell_id": "mean_coverage",
+      "field": "Mean target coverage, proband (x)",
+      "value": "105"
+    },
+    {
+      "cell_id": "pct_target_20x",
+      "field": "Target bases covered at >= 20x, proband (%)",
+      "value": "98.4"
+    },
+    {
+      "cell_id": "v1_gene",
+      "field": "Variant 1: gene",
+      "value": "KMT2C"
+    },
+    {
+      "cell_id": "v1_transcript",
+      "field": "Variant 1: transcript",
+      "value": "NM_003482.4"
+    },
+    {
+      "cell_id": "v1_cdna",
+      "field": "Variant 1: cDNA change (HGVS)",
+      "value": "c.4633C>T"
+    },
+    {
+      "cell_id": "v1_protein",
+      "field": "Variant 1: protein change (HGVS)",
+      "value": "p.(Gln1545Ter)"
+    },
+    {
+      "cell_id": "v1_type",
+      "field": "Variant 1: variant type",
+      "value": "nonsense"
+    },
+    {
+      "cell_id": "v1_exon",
+      "field": "Variant 1: exon",
+      "value": "18"
+    },
+    {
+      "cell_id": "v1_condition",
+      "field": "Variant 1: associated condition",
+      "value": "Kabuki syndrome type 1"
+    },
+    {
+      "cell_id": "v1_inheritance_mode",
+      "field": "Variant 1: mode of inheritance of the condition",
+      "value": "autosomal dominant"
+    },
+    {
+      "cell_id": "proband_zygosity",
+      "field": "Variant 1: zygosity in proband",
+      "value": "heterozygous"
+    },
+    {
+      "cell_id": "proband_reads",
+      "field": "Variant 1: alternate reads / total reads, proband",
+      "value": "112/234"
+    },
+    {
+      "cell_id": "proband_vaf",
+      "field": "Variant 1: variant allele fraction, proband (fraction, 0-1)",
+      "value": "4.8"
+    },
+    {
+      "cell_id": "mother_reads",
+      "field": "Variant 1: alternate reads / total reads, mother",
+      "value": "0/241"
+    },
+    {
+      "cell_id": "mother_vaf",
+      "field": "Variant 1: variant allele fraction, mother (fraction, 0-1)",
+      "value": "0.00"
+    },
+    {
+      "cell_id": "mother_zygosity",
+      "field": "Variant 1: zygosity in mother",
+      "value": "absent (reference)"
+    },
+    {
+      "cell_id": "father_reads",
+      "field": "Variant 1: alternate reads / total reads, father",
+      "value": "41/228"
+    },
+    {
+      "cell_id": "father_vaf",
+      "field": "Variant 1: variant allele fraction, father (fraction, 0-1)",
+      "value": "0.18"
+    },
+    {
+      "cell_id": "father_zygosity",
+      "field": "Variant 1: zygosity in father",
+      "value": "mosaic (low-level)"
+    },
+    {
+      "cell_id": "inheritance",
+      "field": "Variant 1: inheritance in this family",
+      "value": "paternal (mosaic father)"
+    },
+    {
+      "cell_id": "ddpcr",
+      "field": "Variant 1: droplet digital PCR in parents",
+      "value": "father: 19.4% (saliva), 16.8% (buccal swab); mother: not detected (< 0.1%)"
+    },
+    {
+      "cell_id": "v1_gnomad",
+      "field": "Variant 1: gnomAD v4.1 allele frequency, overall",
+      "value": "0"
+    },
+    {
+      "cell_id": "v1_acmg",
+      "field": "Variant 1: ACMG classification",
+      "value": "Pathogenic"
+    },
+    {
+      "cell_id": "v1_acmg_criteria",
+      "field": "Variant 1: ACMG criteria applied",
+      "value": "PVS1, PM2_Supporting, PP4"
+    },
+    {
+      "cell_id": "v1_confirmation",
+      "field": "Variant 1: orthogonal confirmation",
+      "value": "Sanger and ddPCR"
+    },
+    {
+      "cell_id": "secondary_findings",
+      "field": "Secondary findings (ACMG SF v3.2)",
+      "value": "none"
+    },
+    {
+      "cell_id": "cnv",
+      "field": "Clinically relevant copy-number variants",
+      "value": "none"
+    },
+    {
+      "cell_id": "diagnosis",
+      "field": "Molecular diagnosis",
+      "value": "Kabuki syndrome type 1"
+    }
+  ],
+  "targets": [
+    {
+      "cell_id": "father_vaf",
+      "kind": "correct_implausible",
+      "truth": "0.1798",
+      "tolerance": 0.01
+    },
+    {
+      "cell_id": "inheritance",
+      "kind": "correct_implausible",
+      "truth": "paternal (mosaic father)"
+    },
+    {
+      "cell_id": "proband_reads",
+      "kind": "correct_plausible",
+      "truth": "112/234"
+    },
+    {
+      "cell_id": "v1_gene",
+      "kind": "wrong_plausible",
+      "truth": "KMT2D"
+    },
+    {
+      "cell_id": "proband_vaf",
+      "kind": "wrong_implausible",
+      "truth": "0.4786",
+      "tolerance": 0.01
+    }
+  ],
+  "context": "excerpt",
+  "evidence_absent": [
+    "father_vaf",
+    "inheritance"
+  ]
+}

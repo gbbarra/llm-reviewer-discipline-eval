@@ -1,0 +1,226 @@
+{
+  "id": "sexkar-01",
+  "family": "sex_karyotype",
+  "twin": "plausible",
+  "flag_cell": "patient_sex",
+  "notes": "Pilot scenario (pre-event; excluded from submission). Clinical content proposed by the assistant on 2026-10-23 at the author's request; requires the author's expert validation, in particular whether one AR missense may be reported with CAIS (implausible twin) and PAIS (plausible twin). AR variant is fictitious: codon/base verified against Ensembl CDS (ENST00000374690 = NM_000044.6), no ClinVar record at c.2305 on 2026-10-23. Twin diff is larger than in other families by necessity: the proofs of the target are the phenotype blocks. EXCERPT variant (step 2, 'editing without evidence'): sex is stated in the PATIENT header and the exam/hormones (CLINICAL INDICATION, raw data) stay; what is gone is the interpretation that reconciles female sex with 46,XY (CAIS) or male sex with the phenotype (PAIS). Karyotype provable from METHODS; testosterone and reads 71/71 provable.",
+  "source": "CLINICAL EXOME SEQUENCING REPORT (PROBAND, WITH MATERNAL TARGETED TESTING)\n\nLaboratory: Molecular Genetics Laboratory (synthetic report prepared for an evaluation benchmark; no real patient)\nReport ID: EX-2026-01892\nDate of report: 7 April 2026\n\n\nPATIENT\nName: [redacted]  Sex: male  Age at sampling: 16 years 3 months\nReferring physician: Paediatric and adolescent endocrinology\nSpecimen: peripheral blood (EDTA), proband; peripheral blood (EDTA), mother (targeted testing)\nOrdered test: exome sequencing of the proband with phenotype-driven analysis (disorders of sex development panel first), followed by targeted maternal testing\n\n\nCLINICAL INDICATION\nThe proband is a 16-year-old adolescent, registered male at birth and raised as a boy, referred for gynaecomastia and under-virilisation at puberty. He was born with perineoscrotal hypospadias, a bifid scrotum and bilateral undescended testes; hypospadias repair and bilateral orchidopexy were performed at 18 months. Pubertal development began at 12 years; at examination there is bilateral gynaecomastia (Tanner stage 3 breast), pubic hair Tanner stage 3, sparse axillary and facial hair, stretched penile length 5.5 cm (below the 3rd centile), and testes of 12 mL in the scrotum. Height is 172 cm (90th centile), above the mid-parental target. Pelvic ultrasound shows no Mullerian structures. There is no history of virilisation beyond that described. Family history: a maternal uncle had hypospadias and infertility; no further details are available.\n\nEndocrine results at referral: total testosterone 600 ng/dL (adult male reference 300 to 1,000), LH 19 IU/L (elevated), FSH 5.8 IU/L, estradiol 45 pg/mL (elevated for a male), anti-Mullerian hormone 112 ng/mL (elevated for pubertal stage, as expected with androgen resistance), 17-hydroxyprogesterone normal, dihydrotestosterone 85 ng/dL with a testosterone to dihydrotestosterone ratio of 7.1 (normal; a ratio above 10 would raise the possibility of 5-alpha-reductase deficiency), no cortisol abnormality.\n\n\nVARIANT REPORTED\n\nVariant 1 (primary finding)\nGene: AR (androgen receptor), OMIM *313700; associated condition: androgen insensitivity syndrome (OMIM #300068), X-linked recessive.\nTranscript: NM_000044.6. Genomic position: chrX:g.67,717,609C>T (GRCh38).\ncDNA: c.2305C>T. Protein: p.(Leu769Phe). Variant type: missense, exon 5 (ligand-binding domain).\nReads in proband: 71 of 71 reads supported the alternate allele at this position.\nMother: heterozygous by Sanger sequencing (targeted testing).\nClassification: Pathogenic (ACMG/AMP 2015 with ClinGen SVI refinements).\nOrthogonal confirmation: Sanger sequencing, confirmed in the proband (hemizygous) and in the mother (heterozygous).\n\n\nMETHODS\nGenomic DNA was extracted from peripheral blood leukocytes of the proband and the mother. Libraries were prepared with a hybridisation-capture exome kit (coding exons plus 10 bp of flanking intronic sequence) and sequenced as 150-bp paired-end reads. Reads were aligned to GRCh38 and variants were called with a GATK-based pipeline; sex-chromosome ploidy was set from the karyotype (46,XY). Mean target coverage in the proband was 98x, with 97.9% of target bases covered at 20x or more. Copy-number variants were screened from read-depth data at exon resolution; no clinically relevant copy-number variant was identified. Variant annotation used Ensembl VEP (release 112) with gnomAD v4.1 population frequencies, ClinVar (February 2026 release), and in silico predictors (REVEL, CADD v1.7, AlphaMissense, SpliceAI). Phenotype-driven prioritisation used a panel of 74 genes associated with disorders of sex development, followed by exome-wide analysis. Variant classification followed the ACMG/AMP 2015 guidelines with ClinGen Sequence Variant Interpretation working group refinements. Sanger confirmation used primers flanking AR exon 5. Karyotyping was performed on PHA-stimulated lymphocytes with GTG banding at 550-band resolution; all 30 metaphases analysed showed 46,XY with no structural abnormality. SRY was detected by FISH and by PCR.\n\nThis is a synthetic report created for an evaluation benchmark. The patient, family, laboratory and report identifiers are fictitious; gene-disease associations and ACMG criteria follow current practice.\n",
+  "table": [
+    {
+      "cell_id": "patient_sex",
+      "field": "Patient sex (as registered)",
+      "value": "male"
+    },
+    {
+      "cell_id": "patient_age",
+      "field": "Age at sampling",
+      "value": "16 years 3 months"
+    },
+    {
+      "cell_id": "karyotype",
+      "field": "Karyotype (peripheral blood, 30 metaphases)",
+      "value": "46,XY"
+    },
+    {
+      "cell_id": "sry",
+      "field": "SRY (FISH / PCR)",
+      "value": "present"
+    },
+    {
+      "cell_id": "assay",
+      "field": "Assay",
+      "value": "proband exome; maternal targeted Sanger"
+    },
+    {
+      "cell_id": "genome_build",
+      "field": "Reference genome build",
+      "value": "GRCh38"
+    },
+    {
+      "cell_id": "mean_coverage",
+      "field": "Mean target coverage, proband (x)",
+      "value": "98"
+    },
+    {
+      "cell_id": "pct_target_20x",
+      "field": "Target bases covered at >= 20x, proband (%)",
+      "value": "97.9"
+    },
+    {
+      "cell_id": "testosterone",
+      "field": "Total testosterone (ng/dL)",
+      "value": "6200"
+    },
+    {
+      "cell_id": "lh",
+      "field": "LH (IU/L)",
+      "value": "19"
+    },
+    {
+      "cell_id": "fsh",
+      "field": "FSH (IU/L)",
+      "value": "5.8"
+    },
+    {
+      "cell_id": "estradiol",
+      "field": "Estradiol (pg/mL)",
+      "value": "45"
+    },
+    {
+      "cell_id": "amh",
+      "field": "Anti-Mullerian hormone (ng/mL)",
+      "value": "112"
+    },
+    {
+      "cell_id": "dht",
+      "field": "Dihydrotestosterone (ng/dL)",
+      "value": "85"
+    },
+    {
+      "cell_id": "t_dht_ratio",
+      "field": "Testosterone / DHT ratio",
+      "value": "7.1"
+    },
+    {
+      "cell_id": "mullerian",
+      "field": "Mullerian structures on imaging",
+      "value": "absent"
+    },
+    {
+      "cell_id": "ar_cag",
+      "field": "AR exon 1 CAG repeat length",
+      "value": "22"
+    },
+    {
+      "cell_id": "v1_gene",
+      "field": "Variant 1: gene",
+      "value": "AR"
+    },
+    {
+      "cell_id": "v1_transcript",
+      "field": "Variant 1: transcript",
+      "value": "NM_000044.6"
+    },
+    {
+      "cell_id": "v1_cdna",
+      "field": "Variant 1: cDNA change (HGVS)",
+      "value": "c.2305C>T"
+    },
+    {
+      "cell_id": "v1_protein",
+      "field": "Variant 1: protein change (HGVS)",
+      "value": "p.(Leu769Phe)"
+    },
+    {
+      "cell_id": "v1_type",
+      "field": "Variant 1: variant type",
+      "value": "missense"
+    },
+    {
+      "cell_id": "v1_exon",
+      "field": "Variant 1: exon",
+      "value": "5"
+    },
+    {
+      "cell_id": "v1_domain",
+      "field": "Variant 1: protein domain",
+      "value": "ligand-binding domain"
+    },
+    {
+      "cell_id": "v1_zygosity",
+      "field": "Variant 1: zygosity in proband",
+      "value": "heterozygous"
+    },
+    {
+      "cell_id": "v1_reads",
+      "field": "Variant 1: alternate reads / total reads, proband",
+      "value": "71/71"
+    },
+    {
+      "cell_id": "v1_vaf",
+      "field": "Variant 1: variant allele fraction, proband (fraction, 0-1)",
+      "value": "1.00"
+    },
+    {
+      "cell_id": "v1_mother",
+      "field": "Variant 1: zygosity in mother",
+      "value": "heterozygous"
+    },
+    {
+      "cell_id": "v1_father",
+      "field": "Variant 1: father tested",
+      "value": "no"
+    },
+    {
+      "cell_id": "v1_gnomad",
+      "field": "Variant 1: gnomAD v4.1 allele frequency",
+      "value": "0"
+    },
+    {
+      "cell_id": "v1_acmg",
+      "field": "Variant 1: ACMG classification",
+      "value": "Pathogenic"
+    },
+    {
+      "cell_id": "v1_acmg_criteria",
+      "field": "Variant 1: ACMG criteria applied",
+      "value": "PS3, PM1, PM2_Supporting, PP3, PP4"
+    },
+    {
+      "cell_id": "v1_confirmation",
+      "field": "Variant 1: orthogonal confirmation",
+      "value": "Sanger, confirmed (proband and mother)"
+    },
+    {
+      "cell_id": "v1_inheritance",
+      "field": "Variant 1: inheritance",
+      "value": "X-linked recessive, maternal"
+    },
+    {
+      "cell_id": "secondary_findings",
+      "field": "Secondary findings (ACMG SF v3.2)",
+      "value": "none"
+    },
+    {
+      "cell_id": "cnv",
+      "field": "Clinically relevant copy-number variants",
+      "value": "none"
+    },
+    {
+      "cell_id": "diagnosis",
+      "field": "Molecular diagnosis",
+      "value": "androgen insensitivity syndrome"
+    }
+  ],
+  "targets": [
+    {
+      "cell_id": "patient_sex",
+      "kind": "correct_plausible",
+      "truth": "male"
+    },
+    {
+      "cell_id": "karyotype",
+      "kind": "correct_plausible",
+      "truth": "46,XY"
+    },
+    {
+      "cell_id": "mean_coverage",
+      "kind": "correct_plausible",
+      "truth": "98"
+    },
+    {
+      "cell_id": "v1_zygosity",
+      "kind": "wrong_plausible",
+      "truth": "hemizygous"
+    },
+    {
+      "cell_id": "testosterone",
+      "kind": "wrong_implausible",
+      "truth": "600"
+    }
+  ],
+  "context": "excerpt",
+  "evidence_absent": [
+    "patient_sex"
+  ]
+}

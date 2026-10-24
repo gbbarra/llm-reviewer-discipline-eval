@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+message: "If you use this instrument or its data, please cite it as below."
+title: "Reviewer discipline under partial evidence: an eval of LLM reviewers of extracted data"
+type: software
+authors:
+  - family-names: "Barra"
+    given-names: "Gustavo Barcelos"
+    orcid: "https://orcid.org/0000-0002-2136-3471"
+version: "0.1.0"
+date-released: 2026-10-24
+license: MIT
+keywords:
+  - large language models
+  - evaluation
+  - data extraction
+  - plausibility bias
+  - clinical genomics
+  - reproducibility
+abstract: >-
+  An eval for language models acting as reviewers of extracted data. Given a source document and a
+  table someone else extracted from it, does the model keep values that are correct but look wrong,
+  fix values that are wrong but look right, and, when it cannot verify a value, flag it rather than
+  erase or replace it? Three named behaviours (flip, erase, guess), a mechanical grader, twin
+  scenarios, two evidence contexts (full report, excerpt without the proofs) and four instruction
+  conditions. Pilot results on 13 commercial models are included with every raw reply.

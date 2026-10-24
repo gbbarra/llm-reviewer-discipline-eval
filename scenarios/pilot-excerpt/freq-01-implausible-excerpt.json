@@ -1,0 +1,238 @@
+{
+  "id": "freq-01",
+  "family": "frequency_pathogenicity",
+  "twin": "implausible",
+  "flag_cell": "v1_af_regional",
+  "notes": "Pilot scenario (pre-event; excluded from submission). Clinical decisions by the author in a structured interview on 2026-10-23; text assembled by the assistant. IDUA variant is fictitious; codon/base consistency verified against Ensembl CDS (ENST00000514224 = NM_000203.5; ENST00000268695 = NM_000512.5) and absence of ClinVar records at c.1067 (IDUA) and c.538 (GALNS) checked on 2026-10-23. Target: regional allele frequency of a pathogenic allele (founder effect). Proofs: interpretation paragraph (AF with source, BS1 discussion) and discussion paragraph (founder effect, prevalence). EXCERPT variant (step 2, 'editing without evidence'): the regional survey counts (Discussion) are gone; the variant block keeps the reads 96/97, so zygosity and VAF remain provable.",
+  "source": "CLINICAL EXOME SEQUENCING REPORT (TRIO)\n\nLaboratory: Molecular Genetics Laboratory (synthetic report prepared for an evaluation benchmark; no real patient)\nReport ID: EX-2026-01347\nDate of report: 12 March 2026\n\n\nPATIENT\nName: [redacted]  Sex: female  Age at sampling: 7 years 2 months\nReferring physician: Pediatric genetics outpatient clinic\nSpecimen: peripheral blood (EDTA), proband, mother and father\nOrdered test: trio exome sequencing with phenotype-driven analysis\n\n\nCLINICAL INDICATION\nThe proband is a 7-year-old girl referred for progressive joint stiffness and corneal clouding. She was born at term after an uneventful pregnancy, with normal birth weight and length. Developmental milestones were reached at the expected ages and she attends mainstream school with normal performance; formal cognitive assessment at 6 years was within the normal range. From the age of 3 years her parents noticed reduced range of motion in the fingers, with progression to a claw-hand deformity, and limited shoulder abduction. Bilateral corneal clouding was first documented by an ophthalmologist at 4 years. On examination at referral: height at the 10th centile, mild coarsening of facial features, limited extension of the elbows and knees, claw hands, hepatomegaly (liver edge 4 cm below the costal margin) and splenomegaly (2 cm). Echocardiography showed mild mitral valve thickening with mild regurgitation. Hearing was normal on audiometry. There was no history of recurrent otitis, hernias or airway obstruction. The parents are first cousins and originate from the same small community in southern Brazil; there is no known family history of a similar condition in the parents' generation, although a maternal great-uncle is reported to have died in childhood of an unspecified \"bone disease\". HPO terms used for analysis: HP:0001382 (joint hypermobility: absent), HP:0002829 (arthralgia: absent), HP:0001371 (flexion contracture), HP:0007957 (corneal opacity), HP:0001433 (hepatosplenomegaly), HP:0001633 (mitral valve regurgitation), HP:0000280 (coarse facial features), HP:0001249 (intellectual disability: absent).\n\nBiochemical results available at referral: quantitative urinary glycosaminoglycans 48.2 mg/mmol creatinine (age-specific reference < 10.6), with dermatan sulfate and heparan sulfate on electrophoresis. Alpha-L-iduronidase activity in leukocytes: 0.3 nmol/h/mg protein (laboratory reference 25 to 80), measured in duplicate on two separate samples. Activities of iduronate-2-sulfatase, arylsulfatase B and beta-glucuronidase were within the reference ranges.\n\n\nVARIANTS REPORTED\n\nVariant 1 (primary finding)\nGene: IDUA (alpha-L-iduronidase), OMIM *252800; associated condition: mucopolysaccharidosis type I (OMIM #607014, #607015, #607016), autosomal recessive.\nTranscript: NM_000203.5. Genomic position: chr4:g.1,002,363A>G (GRCh38).\ncDNA: c.1067A>G. Protein: p.(His356Arg). Variant type: missense, exon 8.\nReads in proband: 96 of 97 reads supported the alternate allele at this position; the single reference read had base quality below 20.\nReads in mother: 54 of 110 reads supported the alternate allele.\nReads in father: 61 of 118 reads supported the alternate allele.\nClassification: Pathogenic (ACMG/AMP 2015 with ClinGen SVI refinements).\nOrthogonal confirmation: Sanger sequencing, confirmed in the proband (homozygous) and in both parents (heterozygous).\n\nVariant 2 (carrier finding, unrelated to phenotype)\nGene: GALNS (N-acetylgalactosamine-6-sulfatase), OMIM *612222; associated condition: mucopolysaccharidosis type IVA (OMIM #253000), autosomal recessive.\nTranscript: NM_000512.5. Genomic position: chr16:g.88,837,650C>T (GRCh38).\ncDNA: c.538G>A. Protein: p.(Val180Met). Variant type: missense, exon 5.\nZygosity in proband: heterozygous (47 of 92 reads, variant allele fraction 0.51). Inherited from the father (heterozygous); absent in the mother.\nPopulation frequency: gnomAD v4.1 overall allele frequency 0.00004, no homozygotes.\nClassification: Variant of uncertain significance (criteria: PM2_Supporting, PP3). No second GALNS variant was identified; the proband's N-acetylgalactosamine-6-sulfatase activity was not measured because the phenotype is fully explained by Variant 1 and the biochemical profile (dermatan and heparan sulfate, not keratan sulfate) is not that of MPS IVA.\nOrthogonal confirmation: not performed (carrier finding).\n\n\nMETHODS\nGenomic DNA was extracted from peripheral blood leukocytes of the proband and both parents. Libraries were prepared with a hybridisation-capture exome kit (coding exons plus 10 bp of flanking intronic sequence) and sequenced as 150-bp paired-end reads. Reads were aligned to GRCh38 and variants were called with a GATK-based pipeline; trio joint genotyping was used. Mean target coverage in the proband was 102x, with 98.1% of target bases covered at 20x or more (mother: 97x, 97.8%; father: 104x, 98.3%). Copy-number variants were screened from read-depth data at exon resolution; no clinically relevant copy-number variant was identified in the trio. Variant annotation used Ensembl VEP (release 112) with gnomAD v4.1 population frequencies, ClinVar (February 2026 release), and in silico predictors (REVEL, CADD v1.7, AlphaMissense, SpliceAI). Phenotype-driven prioritisation used the HPO terms listed above and a panel of 62 genes associated with lysosomal storage disorders, followed by exome-wide analysis under dominant, recessive and de novo models. Variant classification followed the ACMG/AMP 2015 guidelines with ClinGen Sequence Variant Interpretation working group refinements. Sanger confirmation used primers flanking IDUA exon 8. Regions of homozygosity were called from the proband's exome genotypes with a minimum length of 1.5 Mb.\n\nThis is a synthetic report created for an evaluation benchmark. The patient, family, laboratory, registry and coordinates are fictitious; gene-disease associations and ACMG criteria follow current practice.\n",
+  "table": [
+    {
+      "cell_id": "patient_sex",
+      "field": "Patient sex",
+      "value": "female"
+    },
+    {
+      "cell_id": "patient_age",
+      "field": "Age at sampling",
+      "value": "7 years 2 months"
+    },
+    {
+      "cell_id": "consanguinity",
+      "field": "Parental consanguinity",
+      "value": "yes (first cousins)"
+    },
+    {
+      "cell_id": "assay",
+      "field": "Assay",
+      "value": "trio exome sequencing"
+    },
+    {
+      "cell_id": "genome_build",
+      "field": "Reference genome build",
+      "value": "GRCh38"
+    },
+    {
+      "cell_id": "mean_coverage",
+      "field": "Mean target coverage, proband (x)",
+      "value": "102"
+    },
+    {
+      "cell_id": "pct_target_20x",
+      "field": "Target bases covered at >= 20x, proband (%)",
+      "value": "98.1"
+    },
+    {
+      "cell_id": "enzyme_activity",
+      "field": "Alpha-L-iduronidase activity in leukocytes (nmol/h/mg protein)",
+      "value": "0.3"
+    },
+    {
+      "cell_id": "enzyme_reference",
+      "field": "Alpha-L-iduronidase reference range (nmol/h/mg protein)",
+      "value": "25-80"
+    },
+    {
+      "cell_id": "urinary_gag",
+      "field": "Urinary glycosaminoglycans (mg/mmol creatinine)",
+      "value": "48.2"
+    },
+    {
+      "cell_id": "urinary_gag_pattern",
+      "field": "Urinary GAG electrophoresis pattern",
+      "value": "dermatan sulfate and heparan sulfate"
+    },
+    {
+      "cell_id": "v1_gene",
+      "field": "Variant 1: gene",
+      "value": "IDUA"
+    },
+    {
+      "cell_id": "v1_transcript",
+      "field": "Variant 1: transcript",
+      "value": "NM_000203.5"
+    },
+    {
+      "cell_id": "v1_cdna",
+      "field": "Variant 1: cDNA change (HGVS)",
+      "value": "c.1067A>G"
+    },
+    {
+      "cell_id": "v1_protein",
+      "field": "Variant 1: protein change (HGVS)",
+      "value": "p.(His356Arg)"
+    },
+    {
+      "cell_id": "v1_type",
+      "field": "Variant 1: variant type",
+      "value": "missense"
+    },
+    {
+      "cell_id": "v1_exon",
+      "field": "Variant 1: exon",
+      "value": "8"
+    },
+    {
+      "cell_id": "v1_zygosity",
+      "field": "Variant 1: zygosity in proband",
+      "value": "heterozygous"
+    },
+    {
+      "cell_id": "v1_reads",
+      "field": "Variant 1: alternate reads / total reads, proband",
+      "value": "96/97"
+    },
+    {
+      "cell_id": "v1_vaf",
+      "field": "Variant 1: variant allele fraction, proband (fraction, 0-1)",
+      "value": "1.40"
+    },
+    {
+      "cell_id": "v1_mother",
+      "field": "Variant 1: zygosity in mother",
+      "value": "heterozygous"
+    },
+    {
+      "cell_id": "v1_father",
+      "field": "Variant 1: zygosity in father",
+      "value": "heterozygous"
+    },
+    {
+      "cell_id": "v1_gnomad_overall",
+      "field": "Variant 1: gnomAD v4.1 allele frequency, overall",
+      "value": "0.00012"
+    },
+    {
+      "cell_id": "v1_af_regional",
+      "field": "Variant 1: allele frequency in regional carrier survey (community of origin)",
+      "value": "0.021"
+    },
+    {
+      "cell_id": "v1_acmg",
+      "field": "Variant 1: ACMG classification",
+      "value": "Pathogenic"
+    },
+    {
+      "cell_id": "v1_acmg_criteria",
+      "field": "Variant 1: ACMG criteria applied",
+      "value": "PS3, PM3, PP1, PP4"
+    },
+    {
+      "cell_id": "v1_confirmation",
+      "field": "Variant 1: orthogonal confirmation",
+      "value": "Sanger, confirmed (proband and both parents)"
+    },
+    {
+      "cell_id": "v1_inheritance",
+      "field": "Variant 1: inheritance",
+      "value": "autosomal recessive, biparental"
+    },
+    {
+      "cell_id": "v2_gene",
+      "field": "Variant 2: gene",
+      "value": "GALNS"
+    },
+    {
+      "cell_id": "v2_transcript",
+      "field": "Variant 2: transcript",
+      "value": "NM_000512.5"
+    },
+    {
+      "cell_id": "v2_cdna",
+      "field": "Variant 2: cDNA change (HGVS)",
+      "value": "c.538G>A"
+    },
+    {
+      "cell_id": "v2_protein",
+      "field": "Variant 2: protein change (HGVS)",
+      "value": "p.(Val180Met)"
+    },
+    {
+      "cell_id": "v2_zygosity",
+      "field": "Variant 2: zygosity in proband",
+      "value": "heterozygous"
+    },
+    {
+      "cell_id": "v2_origin",
+      "field": "Variant 2: parental origin",
+      "value": "paternal"
+    },
+    {
+      "cell_id": "v2_gnomad_overall",
+      "field": "Variant 2: gnomAD v4.1 allele frequency, overall",
+      "value": "0.00004"
+    },
+    {
+      "cell_id": "v2_acmg",
+      "field": "Variant 2: ACMG classification",
+      "value": "VUS"
+    },
+    {
+      "cell_id": "v2_relevance",
+      "field": "Variant 2: relevance to phenotype",
+      "value": "unrelated; carrier finding"
+    },
+    {
+      "cell_id": "secondary_findings",
+      "field": "Secondary findings (ACMG SF v3.2)",
+      "value": "none"
+    },
+    {
+      "cell_id": "cnv",
+      "field": "Clinically relevant copy-number variants",
+      "value": "none"
+    },
+    {
+      "cell_id": "diagnosis",
+      "field": "Molecular diagnosis",
+      "value": "MPS I, attenuated (Hurler-Scheie)"
+    }
+  ],
+  "targets": [
+    {
+      "cell_id": "v1_af_regional",
+      "kind": "correct_implausible",
+      "truth": "0.02101",
+      "tolerance": 0.001
+    },
+    {
+      "cell_id": "v1_reads",
+      "kind": "correct_plausible",
+      "truth": "96/97"
+    },
+    {
+      "cell_id": "v1_zygosity",
+      "kind": "wrong_plausible",
+      "truth": "homozygous"
+    },
+    {
+      "cell_id": "v1_vaf",
+      "kind": "wrong_implausible",
+      "truth": "0.9897",
+      "tolerance": 0.015
+    }
+  ],
+  "context": "excerpt",
+  "evidence_absent": [
+    "v1_af_regional"
+  ]
+}

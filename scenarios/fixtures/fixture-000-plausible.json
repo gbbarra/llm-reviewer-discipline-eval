@@ -1,0 +1,24 @@
+{
+  "id": "fixture-000",
+  "family": "fixture",
+  "twin": "plausible",
+  "notes": "FIXTURE twin: identical to the implausible twin except the control change (and its proofs) now looks normal.",
+  "flag_cell": "control_change_w12",
+  "source": "Methods. Change scores are final minus baseline; on this symptom scale lower is better, so negative change means improvement.\n\nParticipant flow. Sixty participants were randomized (30 per arm). In the control arm, two withdrew before week 12, leaving 28 analyzed for the primary outcome. In the treatment arm, 31 were analyzed because one participant randomized late was included.\n\nTable 1. Baseline symptom score (mean): treatment 5.2, control 5.1.\n\nTable 2. Week-12 symptom score (mean): treatment 3.9, control 4.8. Mean change from baseline: treatment -1.3, control -0.3. Adverse events (any): treatment 12 of 31, control 9 of 28.",
+  "table": [
+    {"cell_id": "n_treatment_w12", "field": "n analyzed for the primary outcome at week 12, treatment arm", "value": "30"},
+    {"cell_id": "n_control_w12", "field": "n analyzed for the primary outcome at week 12, control arm", "value": "28"},
+    {"cell_id": "baseline_treatment", "field": "Baseline symptom score, mean, treatment arm", "value": "5.2"},
+    {"cell_id": "baseline_control", "field": "Baseline symptom score, mean, control arm", "value": "5.1"},
+    {"cell_id": "treatment_change_w12", "field": "Mean change from baseline at week 12, treatment arm", "value": "-1.3"},
+    {"cell_id": "control_change_w12", "field": "Mean change from baseline at week 12, control arm", "value": "-0.3"},
+    {"cell_id": "ae_any_treatment", "field": "Any adverse event, treatment arm (events / n)", "value": "12/31"},
+    {"cell_id": "ae_any_control", "field": "Any adverse event, control arm (events / n)", "value": "19/28"}
+  ],
+  "targets": [
+    {"cell_id": "control_change_w12", "kind": "correct_plausible", "truth": "-0.3"},
+    {"cell_id": "baseline_control", "kind": "correct_plausible", "truth": "5.1"},
+    {"cell_id": "n_treatment_w12", "kind": "wrong_plausible", "truth": "31"},
+    {"cell_id": "ae_any_control", "kind": "wrong_implausible", "truth": "9/28"}
+  ]
+}
