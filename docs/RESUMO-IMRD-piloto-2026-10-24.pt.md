@@ -111,7 +111,7 @@ Maverick não dispõe do parâmetro. Para separar o efeito do raciocínio do efe
 GPT-6 Luna e DeepSeek V4 Pro foram executados no trecho com raciocínio desligado e "low", e os doze modelos
 com parâmetro de raciocínio foram executados com esforço "high" na condição neutra do trecho.
 Cada célula foi medida em 3 laudos × 2 gêmeos × 3 repetições por condição, em conversas independentes e ordem
-aleatória. Total: 3.011 respostas únicas, nenhuma fora do formato. As correções do instrumento
+aleatória. Total: 3.022 respostas únicas, nenhuma fora do formato. As correções do instrumento
 feitas após a leitura das respostas limitaram-se a reconhecer formas de escrita (marcadores de ausência,
 aproximações, unidades) e foram aplicadas igualmente a todos os modelos e rodadas.
 
