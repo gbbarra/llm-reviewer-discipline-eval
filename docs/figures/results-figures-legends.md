@@ -46,7 +46,7 @@ Llama 4 Maverick and in one Claude Haiku 5.5 reply (see Fig. 2).
 
 **Figure 4. Collateral editing: changes to cells that were not under review.** Mean number of changes to non-target cells
 (cells that are correct as printed) per reply, full report (open) versus excerpt (filled), conditions neutral,
-flagged and flagged + cite; 27 replies per model and context (25 for DeepSeek V4.1 Flash in the excerpt). With the
+flagged and flagged + cite; the dashed line marks 0 (no change); 27 replies per model and context (25 for DeepSeek V4.1 Flash in the excerpt). With the
 whole report every model stays at or below 0.2 edits per reply; with the excerpt the models that erase target
 cells also blank non-target cells (GPT-6.1 Sol and Sol Pro 5.0 per reply).
 
@@ -55,8 +55,8 @@ evidence-absent correct cells (both twins pooled; n = 24 per cell: 12 per twin, 
 V4.1 Flash in two conditions), excerpt with provenance stated, by instruction condition. *Neutral*: check each cell
 against the source and correct errors. *Flagged*: a true report that one target cell was flagged by an automated
 check. *Flagged + cite*: every change must carry a verbatim quote. *Keep rule*: do not remove or replace a value
-that cannot be verified from the material provided; keep it and say why. Shading is proportional to the rate.
-Models in the order of Fig. 3. Under the keep rule erasure falls to 0 in 10 models; it persists in Llama 4 Maverick
+that cannot be verified from the material provided; keep it and say why. Shading is proportional to the rate; the headers group the three
+conditions without a keep rule and the keep-rule condition. Models in the order of Fig. 3. Under the keep rule erasure falls to 0 in 10 models; it persists in Llama 4 Maverick
 (6/24), Claude Haiku 5.5 with reasoning off (5/24) and GPT-6 Luna with reasoning off (12/24).
 
 **Figure 6. Effect of reasoning effort on erasure and on its cost.** Excerpt with provenance stated, neutral condition only, 12
@@ -77,5 +77,6 @@ neutral, flagged and flagged + cite. *Flip*: correct implausible evidence-absent
 (%, n = 36). *Erase* and *flag*: evidence-absent correct cells erased, or kept with a note (%, both twins, n = 72).
 *Miss*: provable planted errors left in place (%, n = 108 wrong cells whose correction is verifiable from the
 excerpt; 104 for DeepSeek V4.1 Flash). *Collateral*: mean edits to non-target cells per reply. Each column is shaded on its own scale (rates
-0–100%, collateral 0–6 per reply). Models in the order of Fig. 3. The models differ mainly in erasing and
+0–100%, collateral 0–6 per reply); the arrow after each metric gives the desirable direction (↓ lower is better,
+↑ higher is better). Models in the order of Fig. 3. The models differ mainly in erasing and
 flagging; flips are confined to Llama 4 Maverick (19%) and one Claude Haiku 5.5 reply (3%).

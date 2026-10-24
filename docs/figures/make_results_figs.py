@@ -379,11 +379,18 @@ def fig2():
                 row("fig2", m, "flip", k, n, context=ctx, twin=tw, reasoning=agg[m]["reasoning"],
                     conditions="neutral+flagged+flagged_cite")
         pct_axis(ax)
-        ax.set_xlabel("Correct values replaced by another value (%), 95% CI")
+        ax.set_xlabel("Flip rate: correct values replaced by another value (%), Wilson 95% CI")
         ax.set_title(title)
         n_i = sum(agg[ORDER[0]]["implausible"].values())
         ax.text(1.0, len(ORDER) - 0.75, f"n = {n_i} cells per twin per model", ha="right", va="bottom",
                 fontsize=7, color=MID)
+        ax.text(1.0, llama_y, "no reasoning parameter", ha="right", va="center", fontsize=6.5, color=MID,
+                style="italic")
+        if ctx == "full":
+            zero = [m for m in ORDER if m != LLAMA
+                    and agg[m]["implausible"]["switched"] == 0 and agg[m]["plausible"]["switched"] == 0]
+            ax.text(1.0, 1.0, f"{len(zero)} models with a reasoning setting: 0/{n_i}\nin both twins "
+                    "(points overlap at 0)", ha="right", va="center", fontsize=6.5, color=MID)
     ylabels(axA, ORDER)
     axB.set_yticks(range(len(ORDER)))
     axB.set_yticklabels([])
@@ -438,6 +445,7 @@ def fig3():
     ax.set_xticks([0, 0.25, 0.5, 0.75, 1])
     ax.set_xticklabels(["0", "25", "50", "75", "100"])
     ax.set_xlabel("Correct values whose proof is absent from the excerpt (%); I = implausible twin, P = plausible twin")
+    ax.text(1.012, ys[0] - 0.7, "twin   n", va="bottom", fontsize=7, color=MID, clip_on=False)
     fig.text(0.015, 0.985, "Reviewer behaviour under partial evidence: keep, flag, erase or replace", ha="left", va="top", fontsize=7.5, fontweight="bold")
     h = [Patch(color=c, label=l) for _, l, c in CATS]
     fig.legend(handles=h, loc="lower left", bbox_to_anchor=(0.2, 0.905), ncol=4, frameon=False,
@@ -450,8 +458,9 @@ def fig3():
 # ---------------------------------------------------------------- Fig. 4
 def fig4():
     fig, ax = plt.subplots(figsize=(W2 * 0.62, 92 * MM))
-    fig.subplots_adjust(left=0.3, right=0.96, top=0.87, bottom=0.13)
+    fig.subplots_adjust(left=0.3, right=0.96, top=0.87, bottom=0.18)
     clean(ax)
+    ax.axvline(0, color=GREEN, lw=0.8, ls=(0, (4, 3)), alpha=0.7, zorder=1)
     for y, m in enumerate(ORDER):
         e, ne = EXC_AGG[m]["coll"]
         f, nf = FULL_AGG[m]["coll"]
@@ -469,10 +478,13 @@ def fig4():
     fig.text(0.02, 0.985, "Collateral editing: changes to cells that were not under review", ha="left", va="top",
              fontsize=7.5, fontweight="bold")
     h = [Line2D([], [], marker="o", ls="", mfc="white", mec=INK, ms=4, label="full report"),
-         Line2D([], [], marker="o", ls="", mfc=INK, mec=INK, ms=4, label="excerpt")]
-    fig.legend(handles=h, loc="lower left", bbox_to_anchor=(0.29, 0.875), ncol=2, frameon=False,
-               handletextpad=0.3, columnspacing=1.2)
-    fig.text(0.96, 0.885, "neutral, flagged, flagged + cite", ha="right", va="bottom", fontsize=7, color=MID)
+         Line2D([], [], marker="o", ls="", mfc=INK, mec=INK, ms=4, label="excerpt"),
+         Line2D([], [], ls=(0, (4, 3)), color=GREEN, lw=0.8, label="0 = no change")]
+    fig.legend(handles=h, loc="lower left", bbox_to_anchor=(0.29, 0.875), ncol=3, frameon=False,
+               handletextpad=0.3, columnspacing=1.2, handlelength=1.6)
+    fig.text(0.96, 0.935, "neutral, flagged, flagged + cite", ha="right", va="bottom", fontsize=7, color=MID)
+    fig.text(0.3, 0.02, "Non-target cells are correct as printed;\nany change to them is a reviewer error.",
+             ha="left", va="bottom", fontsize=6.5, color=MID)
     save(fig, "fig4-collateral-edits")
 
 
@@ -482,7 +494,7 @@ ERASE_CMAP = LinearSegmentedColormap.from_list("erase", ["#FFFFFF", "#F8E0CF", V
 
 def fig5():
     fig, ax = plt.subplots(figsize=(W2 * 0.62, 100 * MM))
-    fig.subplots_adjust(left=0.3, right=0.97, top=0.86, bottom=0.1)
+    fig.subplots_adjust(left=0.3, right=0.97, top=0.8, bottom=0.1)
     for y, m in enumerate(ORDER):
         for x, cond in enumerate(CONDS):
             k, n, flag = EXC_AGG[m]["by_cond"][cond]
@@ -502,7 +514,10 @@ def fig5():
     ylabels(ax, ORDER)
     for s in ax.spines.values():
         s.set_visible(False)
-    ax.set_title("Effect of the instruction on erasure", x=-0.42, pad=16)
+    for x0, x1, lab in ((-0.45, 2.45, "without a keep rule"), (2.55, 3.45, "keep rule")):
+        ax.plot([x0, x1], [-1.3, -1.3], color=MID, lw=0.5, clip_on=False)
+        ax.text((x0 + x1) / 2, -1.4, lab, ha="center", va="bottom", fontsize=6.5, color=MID, style="italic")
+    ax.set_title("Effect of the instruction on erasure", x=-0.42, pad=28)
     fig.text(0.97, 0.025, "Erased / evidence-absent correct cells, both twins, excerpt (9 replies per twin "
              "per condition)", ha="right", fontsize=7, color=MID)
     save(fig, "fig5-instruction-erasure")
@@ -517,9 +532,11 @@ LV_STYLE = {"off": dict(mfc="white", mec=INK), "low": dict(mfc="#9A9A9A", mec="#
 def fig6():
     fig, (axA, axB) = plt.subplots(1, 2, figsize=(W2, 104 * MM), sharey=True,
                                    gridspec_kw=dict(wspace=0.08))
-    fig.subplots_adjust(left=0.155, right=0.98, top=0.83, bottom=0.12)
+    fig.subplots_adjust(left=0.155, right=0.98, top=0.83, bottom=0.16)
     fig.text(0.015, 0.985, "Effect of reasoning effort on erasure and on its cost", ha="left", va="top",
              fontsize=7.5, fontweight="bold")
+    fig.text(0.155, 0.02, "Points of one model are offset vertically so that equal values stay visible: "
+             "off above, low centre, high below.", ha="left", va="bottom", fontsize=6.5, color=MID)
     order = ORDER
     for ax in (axA, axB):
         clean(ax)
@@ -555,7 +572,7 @@ def fig6():
     axB.set_xticks([300, 1000, 3000, 10000])
     axB.set_xticklabels(["300", "1,000", "3,000", "10,000"])
     axB.minorticks_off()
-    axB.set_xlabel("Output tokens per reply (mean, log scale); ×: high / low")
+    axB.set_xlabel("Output tokens per reply (mean, log scale); × = high / low ratio")
     axB.set_title("B  Output tokens")
     h = [Line2D([], [], marker="o", ls="", ms=4, mew=0.8, label=f"reasoning {l}", **LV_STYLE[l]) for l in LEVELS]
     fig.legend(handles=h, loc="upper left", bbox_to_anchor=(0.155, 0.945), ncol=3, frameon=False,
@@ -567,9 +584,9 @@ def fig6():
 
 # ---------------------------------------------------------------- Fig. S1
 def figS1():
-    metrics = [("flip", "flip\n(implausible)", BLUE, 1.0), ("erase", "erase", VERM, 1.0),
-               ("flag", "flag", GREEN, 1.0), ("miss", "miss\n(provable error)", "#555555", 1.0),
-               ("coll", "collateral\nedits / reply", "#555555", 6.0)]
+    metrics = [("flip", "flip ↓\n(implausible)", BLUE, 1.0), ("erase", "erase ↓", VERM, 1.0),
+               ("flag", "flag ↑", GREEN, 1.0), ("miss", "miss ↓\n(provable error)", "#555555", 1.0),
+               ("coll", "collateral ↓\nedits / reply", "#555555", 6.0)]
     fig, ax = plt.subplots(figsize=(W2 * 0.7, 100 * MM))
     fig.subplots_adjust(left=0.27, right=0.98, top=0.84, bottom=0.09)
     for y, m in enumerate(ORDER):
@@ -605,8 +622,8 @@ def figS1():
         s.set_visible(False)
     ax.set_title("Summary of the five reviewer-discipline metrics",
                  x=-0.36, pad=24)
-    fig.text(0.98, 0.025, "Excerpt, three no-rule conditions; rates in %, collateral as mean per reply",
-             ha="right", fontsize=7, color=MID)
+    fig.text(0.98, 0.025, "Excerpt, three no-rule conditions; rates in %, collateral as mean per reply; "
+             "↓ lower is better, ↑ higher is better", ha="right", fontsize=7, color=MID)
     save(fig, "figS1-metric-summary")
 
 

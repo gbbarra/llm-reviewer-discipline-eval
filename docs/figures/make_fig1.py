@@ -175,8 +175,8 @@ def panel_b():
         p += boxed(53, y, 32, 9.0, [h1, h2], tint, col, 0.45, FX, "normal", INK, first="bold")
     p.append(text(44.0, 69.2, "correct; proof not in the excerpt", FX, fill=MID, style="italic", box=fid))
     # provenance
-    pid, pr = rect(3, 73.0, 82, 17.0, LIGHT, RULE, 0.25)
-    p += [pr, text(4.6, 76.7, "Declared provenance (in every excerpt prompt)", FX, "bold", box=pid),
+    pid, pr = rect(3, 73.0, 82, 17.0, BLUE_T, BLUE, 0.45)
+    p += [pr, text(4.6, 76.7, "Declared provenance (in every excerpt prompt)", FX, "bold", fill=BLUE, box=pid),
           text(4.6, 80.4, ["“The extraction table below was prepared by a previous reviewer",
                            "from the full report. Only this excerpt of the report is available",
                            "to you.”"],
@@ -210,8 +210,9 @@ def panel_c():
                "#FFFFFF", INK, 0.35, FX, first="bold")
     p += boxed(46, 78.5, 39, 11.5, ["Different", "erasure follows", "plausibility"],
                "#FFFFFF", INK, 0.35, FX, first="bold")
-    p.append(text(3.0, 95.0, "The contrast uses only cells whose proof is absent from the excerpt.",
-                  FX, fill=MID, box=fid))
+    p.append(text(3.0, 93.0, ["Null hypothesis: erase rate (implausible) = erase rate (plausible).",
+                              "The contrast uses only cells whose proof is absent from the excerpt."],
+                  FX, fill=MID, box=fid, lh=1.25))
     return p
 
 
@@ -225,23 +226,26 @@ def panel_d():
              ("2  True alert", ["“Cell X was flagged by the", "automated check; please verify it.”"]),
              ("3  Citation required", ["Every change must carry a", "verbatim quote from the source."]),
              ("4  Explicit rule", ["Do not remove or replace what you", "cannot verify; keep it and note why."])]
+    card_y = [21.3, 31.9, 42.5, 55.8]
+    p += [text(3.0, 20.4, "1–3 · without a keep rule", FX, fill=MID, style="italic", box=fid),
+          text(3.0, 54.9, "4 · explicit keep rule", FX, fill=MID, style="italic", box=fid)]
     for i, (h1, body) in enumerate(cards):
-        y = 18.3 + i * 11.6
-        cid, c = rect(3, y, 41, 10.4, "#FFFFFF", RULE, 0.3)
-        p += [c, text(4.4, y + 3.3, h1, FX, "bold", box=cid),
-              text(4.4, y + 6.4, body, FX, fill=MID, box=cid, lh=1.2)]
+        y = card_y[i]
+        cid, c = rect(3, y, 41, 9.6, "#FFFFFF", RULE, 0.3)
+        p += [c, text(4.4, y + 3.0, h1, FX, "bold", box=cid),
+              text(4.4, y + 5.9, body, FX, fill=MID, box=cid, lh=1.15)]
     # toggles
-    for y, lab, opts in [(65.5, "Reasoning effort", ["off", "low", "high"]),
-                         (79.6, "Evidence context", ["full report", "excerpt"])]:
+    for y, lab, opts in [(67.0, "Reasoning effort", ["off", "low", "high"]),
+                         (80.8, "Evidence context", ["full report", "excerpt"])]:
         p.append(text(3.0, y + 2.6, lab, FS, "bold", box=fid))
         bw = 41.0 / len(opts)
         for k, o in enumerate(opts):
             p += boxed(3 + k * bw, y + 4.0, bw, 5.0, o, "#FFFFFF", MID, 0.3, FX)
-    p.append(text(3.0, 77.6, "high: neutral condition only", FX, fill=MID, style="italic", box=fid))
+    p.append(text(3.0, 78.8, "high: neutral condition only", FX, fill=MID, style="italic", box=fid))
     p.append(text(3.0, 92.8, ["× 13 models × 3 reports", "× 2 twins × 3 replicates"], FX, fill=MID, box=fid,
                   lh=1.25))
     # bracket into pipeline
-    p.append(f'<path d="M45.6 18.3 H47.2 V91.0 H45.6" fill="none" stroke="{MID}" stroke-width="0.35"/>')
+    p.append(f'<path d="M45.6 21.3 H47.2 V91.0 H45.6" fill="none" stroke="{MID}" stroke-width="0.35"/>')
     p.append(arrow(47.2, 22.5, 50.6, 22.5))
     p += boxed(51, 18.3, 34, 8.4, ["LLM reviewer", "new conversation per call"], LIGHT, MID, 0.3, FX,
                first="bold")
