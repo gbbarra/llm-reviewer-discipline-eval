@@ -1,6 +1,7 @@
 # Submissão ao Preprints.org: o que vai em cada campo
 
-Manuscrito: `PREPRINTS-manuscript.en.docx` (Word, 17 páginas, figuras embutidas), gerado por
+Manuscrito: `PREPRINTS-manuscript.en.docx` (Word, 17 páginas, figuras embutidas; o mesmo texto em PDF, para
+conferência, em `PREPRINTS-manuscript.en.pdf`), gerado por
 `build_preprints_org.py` a partir de `../PREPRINT-medRxiv-2026-10-24.en.md`, com as correções de 28/10/2026 e as
 declarações reescritas (Base by Base responsável pela pesquisa; CNPJ só nas declarações).
 
