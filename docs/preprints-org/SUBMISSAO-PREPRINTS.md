@@ -11,10 +11,13 @@ declarações reescritas (Base by Base responsável pela pesquisa; CNPJ só nas 
 - **Licença CC BY 4.0 obrigatória** para todos os preprints; o autor mantém o copyright. Coerente com o
   repositório público, que já está em CC BY 4.0.
 - **Dados disponíveis** em repositório reconhecido: o GitHub do estudo atende.
+- **Uso de IA documentado em Métodos** (política COPE adotada pelo Preprints.org): o manuscrito tem a subseção
+  "Use of AI-assisted tools" em Methods, além da declaração no final. Ferramentas de IA não podem ser autoras.
+- **Resumo gráfico** em JPG ou PNG; um print do resumo em texto não vale.
 - A triagem verifica conteúdo científico básico, **formação do autor** e conformidade ética; costuma levar menos
   de um dia útil.
-- Não consegui abrir as páginas do Preprints.org a partir da sessão. O limite de palavras do resumo e a lista
-  de áreas não estavam nas fontes que encontrei: confira no formulário.
+- Regras conferidas em https://www.preprints.org/instructions-for-authors (via busca, 28/10/2026). O limite de
+  palavras do resumo e a lista de áreas não aparecem nas instruções: confira no formulário.
 
 ## Antes de começar (só você pode fazer)
 
