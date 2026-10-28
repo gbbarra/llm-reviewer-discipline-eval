@@ -4,10 +4,14 @@ Layout imitates a LaTeX article (Latin Modern, numbered sections, centred title
 block and abstract, indented paragraphs). Latin Modern fonts (GUST Font License)
 are in docs/fonts.
 
-Usage: python docs/build_preprint_pdf.py
+Usage: python docs/build_preprint_pdf.py [--src MD] [--pdf PDF] [--date "28 October 2026"]
+Chrome: set CHROME to the browser executable when it is not at the default Windows path.
 """
+import argparse
+import os
 import re
 import subprocess
+import sys
 from pathlib import Path
 
 import markdown
@@ -16,7 +20,7 @@ DOCS = Path(__file__).resolve().parent
 SRC = DOCS / "PREPRINT-medRxiv-2026-10-24.en.md"
 HTML = DOCS / "PREPRINT-medRxiv-2026-10-24.en.html"
 PDF = DOCS / "PREPRINT-medRxiv-2026-10-24.en.pdf"
-CHROME = r"C:\Program Files\Google\Chrome\Application\chrome.exe"
+CHROME = os.environ.get("CHROME", r"C:\Program Files\Google\Chrome\Application\chrome.exe")
 DATE = "24 October 2026"
 
 CSS = """
@@ -36,7 +40,8 @@ a { color: #000; text-decoration: none; }
 code { font-family: 'Consolas', monospace; font-size: 9pt; }
 
 .titleblock { text-align: center; margin: 0 0 0.6cm; }
-.titleblock h1 { font-size: 17pt; line-height: 1.25; font-weight: bold; margin: 0 0 14pt; }
+.titleblock h1 { font-size: 17pt; line-height: 1.25; font-weight: bold; margin: 0 0 14pt;
+  hyphens: none; -webkit-hyphens: none; }
 .titleblock .author { font-size: 12pt; margin-bottom: 4pt; }
 .titleblock .affil, .titleblock .corr, .titleblock .date { font-size: 10pt; margin-bottom: 2pt; }
 .titleblock .date { margin-top: 8pt; }
@@ -70,8 +75,8 @@ def field(md: str, label: str) -> str:
     return re.search(rf"\*\*{re.escape(label)}:\*\*\s*(.+)", md).group(1).strip()
 
 
-def build_html() -> str:
-    md = SRC.read_text(encoding="utf-8")
+def build_html(src: Path = SRC, date: str = DATE) -> str:
+    md = src.read_text(encoding="utf-8")
     front, _, rest = md.partition("## Abstract")
     title = re.search(r"^# (.+)$", front, re.M).group(1)
     author = re.search(r"^\*\*(.+?)\*\*¹", front, re.M).group(1)
@@ -110,7 +115,7 @@ def build_html() -> str:
         f'<div class="author">{author}<sup>1</sup></div>'
         f'<div class="affil"><sup>1</sup>{affil}</div>'
         f'<div class="corr">Correspondence: {corr}</div>'
-        f'<div class="date">{DATE}</div></div>'
+        f'<div class="date">{date}</div></div>'
         f'<div class="abstract"><h2>Abstract</h2>{abstract}</div>'
         f'<div class="meta"><p><strong>Keywords:</strong> {keywords}</p></div>'
     )
@@ -121,12 +126,19 @@ def build_html() -> str:
 
 
 def main() -> None:
-    HTML.write_text(build_html(), encoding="utf-8")
-    subprocess.run([CHROME, "--headless=new", "--disable-gpu", "--no-pdf-header-footer",
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--src", type=Path, default=SRC)
+    ap.add_argument("--pdf", type=Path, default=PDF)
+    ap.add_argument("--date", default=DATE)
+    args = ap.parse_args()
+    # The HTML stays in docs/ so that figure paths (figures/...) resolve for any source file.
+    HTML.write_text(build_html(args.src, args.date), encoding="utf-8")
+    flags = ["--no-sandbox"] if sys.platform != "win32" and os.geteuid() == 0 else []
+    subprocess.run([CHROME, "--headless=new", "--disable-gpu", "--no-pdf-header-footer", *flags,
                     "--allow-file-access-from-files", "--virtual-time-budget=10000",
-                    f"--print-to-pdf={PDF}", HTML.as_uri()], check=True)
+                    f"--print-to-pdf={args.pdf.resolve()}", HTML.as_uri()], check=True)
     HTML.unlink()
-    print(PDF)
+    print(args.pdf)
 
 
 if __name__ == "__main__":
