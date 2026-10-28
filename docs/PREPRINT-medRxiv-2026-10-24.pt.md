@@ -4,7 +4,7 @@
 
 **Gustavo Barcelos Barra**¹
 
-¹ Base by Base, Brasília, DF, Brasil. ORCID 0000-0002-2136-3471.
+¹ Base by Base (CNPJ 69.561.948/0001-12), Brasília, DF, Brasil. ORCID 0000-0002-2136-3471.
 
 **Correspondência:** Gustavo Barcelos Barra, gustavo@basebybase.com
 
@@ -174,19 +174,21 @@ Em conclusão, com a prova no material, modelos de linguagem com raciocínio pre
 
 ## Declarações
 
-**Contribuições do autor.** G.B.B. concebeu o estudo, escreveu os cenários, executou as rodadas, analisou os dados e escreveu o manuscrito.
+**Responsabilidade pela pesquisa.** Este estudo foi conduzido e financiado pela Base by Base (CNPJ 69.561.948/0001-12), Brasília, DF, Brasil, responsável pela pesquisa e por qualquer correspondência sobre integridade científica (contato: gustavo@basebybase.com).
 
-**Financiamento.** O estudo não recebeu financiamento externo. O custo das chamadas de API foi coberto pelo autor.
+**Contribuições do autor.** G.B.B.: concepção, metodologia, software, investigação, análise formal, curadoria de dados, visualização e redação (rascunho original, revisão e edição).
 
-**Conflitos de interesse.** O autor é coordenador do setor de genômica do Laboratório Sabin, laboratório clínico privado em Brasília. O estudo é independente, foi conduzido fora das atividades do laboratório e não representa a posição do Laboratório Sabin nem de nenhuma outra instituição. Não há vínculo com os desenvolvedores dos modelos avaliados.
+**Financiamento.** Financiado pela Base by Base; sem financiamento externo.
+
+**Conflitos de interesse.** G.B.B. é funcionário do Laboratório Sabin (Brasília, Brasil); este trabalho foi realizado de forma independente desse vínculo. O autor declara não haver outros conflitos de interesse.
 
 **Agradecimentos.** O autor agradece ao Laboratório Sabin, Brasília, DF, e, em especial, a Janete Ana Ribeiro Vaz e Sandra Santana Costa Soares, pelo incentivo constante à sua atividade de pesquisa.
 
-**Aprovação ética e consentimento.** Não se aplicam. O estudo não envolveu seres humanos nem dados de pacientes; os laudos são sintéticos e as variantes, fictícias.
+**Aprovação ética e consentimento.** Não se aplicam: não foram usados seres humanos, dados de pacientes nem informações identificáveis; todos os laudos são sintéticos e todas as variantes, fictícias.
 
-**Disponibilidade de dados e código.** O código do instrumento e do corretor, os cenários, os prompts enviados, os logs brutos e corrigidos de todas as 3.022 respostas, os scripts das figuras e o arquivo com todos os números plotados estão em https://github.com/gbbarra/llm-reviewer-discipline-eval (código sob licença MIT; texto, cenários e figuras sob CC BY 4.0).
+**Disponibilidade de dados e código.** Código, cenários, prompts enviados, logs brutos e corrigidos das 3.022 respostas, scripts das figuras e os dados de origem de cada figura: https://github.com/gbbarra/llm-reviewer-discipline-eval.
 
-**Uso de inteligência artificial.** Assistentes baseados em modelos de linguagem foram usados na escrita do código, na geração das figuras e na redação e revisão do texto: Claude (Anthropic) e, na revisão de estilo e de estrutura do texto, Gemini 3.8 Flash (Google). O autor conferiu cada número do manuscrito contra os dados e assume a responsabilidade pelo conteúdo. Os modelos usados como assistentes incluem versões da família avaliada; a execução e a correção das rodadas foram feitas por código determinístico, e a classificação dos desfechos não envolveu modelo de linguagem.
+**Uso de inteligência artificial.** O Claude (Anthropic) auxiliou na escrita do código, na geração das figuras e na redação e revisão do texto; o Gemini 3.8 Flash (Google) revisou estilo e estrutura. Os modelos usados como assistentes incluem versões das famílias avaliadas. O autor conferiu cada número contra os dados e assume total responsabilidade pelo conteúdo. As rodadas foram executadas e corrigidas por código determinístico; nenhum modelo de linguagem classificou desfechos.
 
 ---
 

@@ -11,7 +11,7 @@ Manuscrito: `TECHRXIV-manuscript.en.pdf` (16 páginas, 1,4 MB; limite do TechRxi
   paciente nem recomendação clínica.
 - **Só inglês**, qualquer formato de arquivo (vamos de PDF), até 10 MB por arquivo.
 - **Recusa** conteúdo que já tenha DOI, conjunto de dados ou código isolados, e afiliação apresentada de forma
-  enganosa. O manuscrito não tem DOI; a afiliação é Base by Base, como ela é.
+  enganosa. O manuscrito não tem DOI; a afiliação é a Base by Base, MEI com CNPJ, declarada como responsável pela pesquisa.
 - Triagem por moderadores do IEEE, normalmente em até 4 dias úteis. Recurso: appeal@TechRxiv.org.
 - Não consegui abrir a página de diretrizes do TechRxiv a partir da sessão (domínio bloqueado na rede); confira
   no formulário a lista de categorias e as opções de licença, que podem ter mudado.
@@ -31,10 +31,10 @@ Manuscrito: `TECHRXIV-manuscript.en.pdf` (16 páginas, 1,4 MB; limite do TechRxi
 | Arquivo | `TECHRXIV-manuscript.en.pdf` |
 | Título | Discipline of language models reviewing data extracted from genomic reports under full and partial evidence: plausibility bias, erasure, and the effect of a keep rule |
 | Autor | Gustavo Barcelos Barra; ORCID 0000-0002-2136-3471; gustavo@basebybase.com |
-| Afiliação | Base by Base, Brasília, DF, Brazil |
+| Afiliação | Base by Base (CNPJ 69.561.948/0001-12), Brasília, DF, Brazil |
 | Categoria (assunto) | **Computing and Processing**; se aceitar uma segunda, **Bioengineering** |
 | Palavras-chave | large language models; data extraction; automated review; clinical genomics; plausibility bias; context faithfulness; prompt engineering; data safety |
-| Financiamento | None. (The study received no external funding; API costs were covered by the author.) |
+| Financiamento | Self-funded by Base by Base; no external funding. |
 | Conflito de interesses | texto abaixo |
 | Dados e código | https://github.com/gbbarra/llm-reviewer-discipline-eval |
 | Licença | CC BY 4.0 (recomendado; ver acima) |
@@ -49,11 +49,15 @@ Conclusions. In models with reasoning, the risk is not the flipping of atypical 
 
 ### Conflito de interesses (colar)
 
-The author is the coordinator of the genomics sector of Laboratório Sabin, a private clinical laboratory in Brasília. The study is independent, was conducted outside the laboratory's activities, and does not represent the position of Laboratório Sabin or of any other institution. There is no relationship with the developers of the models evaluated.
+G.B.B. is employed by Laboratório Sabin (Brasília, Brazil); this work was carried out independently of that employment. The author declares no other competing interests.
+
+### Responsabilidade pela pesquisa (se o formulário tiver campo de declarações adicionais)
+
+This study was conducted and funded by Base by Base (CNPJ 69.561.948/0001-12), Brasília, DF, Brazil, which is responsible for the research and for any correspondence on research integrity (contact: gustavo@basebybase.com).
 
 ### Uso de IA (se o formulário pedir; também está no manuscrito)
 
-Language-model-based assistants were used in writing the code, generating the figures, and drafting and revising the text: Claude (Anthropic) and, for the review of style and structure of the text, Gemini 3.8 Flash (Google). The author checked every number in the manuscript against the data and takes responsibility for the content. The models used as assistants include versions of the evaluated family; the execution and grading of the runs were done by deterministic code, and the classification of outcomes did not involve a language model.
+Claude (Anthropic) assisted in writing the code, generating the figures, and drafting and revising the text; Gemini 3.8 Flash (Google) reviewed style and structure. The models used as assistants include versions of the evaluated families. The author verified every number against the data and takes full responsibility for the content. The runs were executed and graded by deterministic code; no language model classified outcomes.
 
 ## Depois da submissão
 

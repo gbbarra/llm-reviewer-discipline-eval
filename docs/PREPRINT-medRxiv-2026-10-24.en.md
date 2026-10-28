@@ -4,7 +4,7 @@
 
 **Gustavo Barcelos Barra**¹
 
-¹ Base by Base, Brasília, DF, Brazil. ORCID 0000-0002-2136-3471.
+¹ Base by Base (CNPJ 69.561.948/0001-12), Brasília, DF, Brazil. ORCID 0000-0002-2136-3471.
 
 **Correspondence:** Gustavo Barcelos Barra, gustavo@basebybase.com
 
@@ -174,19 +174,21 @@ In conclusion, with the proof in the material, language models with reasoning pr
 
 ## Declarations
 
-**Author contributions.** G.B.B. conceived the study, wrote the scenarios, executed the runs, analysed the data, and wrote the manuscript.
+**Research responsibility.** This study was conducted and funded by Base by Base (CNPJ 69.561.948/0001-12), Brasília, DF, Brazil, which is responsible for the research and for any correspondence on research integrity (contact: gustavo@basebybase.com).
 
-**Funding.** The study received no external funding. The cost of the API calls was covered by the author.
+**Author contributions.** G.B.B.: conceptualization, methodology, software, investigation, formal analysis, data curation, visualization, and writing (original draft, review and editing).
 
-**Conflicts of interest.** The author is the coordinator of the genomics sector of Laboratório Sabin, a private clinical laboratory in Brasília. The study is independent, was conducted outside the laboratory's activities, and does not represent the position of Laboratório Sabin or of any other institution. There is no relationship with the developers of the models evaluated.
+**Funding.** Self-funded by Base by Base; no external funding.
+
+**Competing interests.** G.B.B. is employed by Laboratório Sabin (Brasília, Brazil); this work was carried out independently of that employment. The author declares no other competing interests.
 
 **Acknowledgements.** The author thanks Laboratório Sabin, Brasília, DF, and, in particular, Janete Ana Ribeiro Vaz and Sandra Santana Costa Soares, for their constant encouragement of the author's research activity.
 
-**Ethics approval and consent.** Not applicable. The study did not involve human participants or patient data; the reports are synthetic and the variants fictitious.
+**Ethics approval and consent.** Not applicable: no human participants, patient data, or identifiable information were used; all reports are synthetic and all variants fictitious.
 
-**Data and code availability.** The instrument and grader code, the scenarios, the prompts sent, the raw and graded logs of all 3,022 responses, the figure scripts, and the file with all plotted numbers are at https://github.com/gbbarra/llm-reviewer-discipline-eval (code under the MIT licence; text, scenarios, and figures under CC BY 4.0).
+**Data and code availability.** Code, scenarios, prompts sent, raw and graded logs of all 3,022 responses, figure scripts, and the source data of every figure: https://github.com/gbbarra/llm-reviewer-discipline-eval.
 
-**Use of artificial intelligence.** Language-model-based assistants were used in writing the code, generating the figures, and drafting and revising the text: Claude (Anthropic) and, for the review of style and structure of the text, Gemini 3.8 Flash (Google). The author checked every number in the manuscript against the data and takes responsibility for the content. The models used as assistants include versions of the evaluated family; the execution and grading of the runs were done by deterministic code, and the classification of outcomes did not involve a language model.
+**Use of artificial intelligence.** Claude (Anthropic) assisted in writing the code, generating the figures, and drafting and revising the text; Gemini 3.8 Flash (Google) reviewed style and structure. The models used as assistants include versions of the evaluated families. The author verified every number against the data and takes full responsibility for the content. The runs were executed and graded by deterministic code; no language model classified outcomes.
 
 ---
 
