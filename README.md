@@ -118,7 +118,7 @@ Gemini 3.8 Flash and halves it in GPT-6.1 Sol and Grok 4.7, but barely moves GPT
 DeepSeek models, at 2–20× the output tokens. Llama 4 Maverick flips in the full report under every condition
 (11/60), including the explicit rule.
 
-Reading: across the 12 models with a reasoning setting, 1 flip in 972 correct-implausible opportunities (three
+Reading: across the 12 models with a reasoning setting, 1 flip in 970 parsed correct-implausible cells (972 nominal; three
 no-rule conditions, both contexts; Wilson 95% upper bound 0.6%): Claude Haiku 5.5 with reasoning off wrote
 0.19 for a father's allele fraction of 0.18 whose read counts were not in the excerpt. The flips that look
 like plausibility bias come from Llama 4 Maverick (18/96 across both contexts). Erasing is **symmetric** between twins, so it is not plausibility bias; it
