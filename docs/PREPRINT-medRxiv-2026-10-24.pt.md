@@ -4,7 +4,7 @@
 
 **Gustavo Barcelos Barra**¹
 
-¹ Base by Base (CNPJ 69.561.948/0001-12), Brasília, DF, Brasil. ORCID 0000-0002-2136-3471.
+¹ Base by Base, Brasília, DF, Brasil. ORCID 0000-0002-2136-3471.
 
 **Correspondência:** Gustavo Barcelos Barra, gustavo@basebybase.com
 

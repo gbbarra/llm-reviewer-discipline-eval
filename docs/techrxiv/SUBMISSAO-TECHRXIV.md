@@ -31,7 +31,7 @@ Manuscrito: `TECHRXIV-manuscript.en.pdf` (16 páginas, 1,4 MB; limite do TechRxi
 | Arquivo | `TECHRXIV-manuscript.en.pdf` |
 | Título | Discipline of language models reviewing data extracted from genomic reports under full and partial evidence: plausibility bias, erasure, and the effect of a keep rule |
 | Autor | Gustavo Barcelos Barra; ORCID 0000-0002-2136-3471; gustavo@basebybase.com |
-| Afiliação | Base by Base (CNPJ 69.561.948/0001-12), Brasília, DF, Brazil |
+| Afiliação | Base by Base, Brasília, DF, Brazil (o CNPJ fica só na declaração "Research responsibility") |
 | Categoria (assunto) | **Computing and Processing**; se aceitar uma segunda, **Bioengineering** |
 | Palavras-chave | large language models; data extraction; automated review; clinical genomics; plausibility bias; context faithfulness; prompt engineering; data safety |
 | Financiamento | Self-funded by Base by Base; no external funding. |
